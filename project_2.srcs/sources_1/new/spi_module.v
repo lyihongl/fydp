@@ -22,85 +22,91 @@
 
 module spi_module#(
     DAC_BITS = 12,
-    SHIFT_SIZE = 23
+    SHIFT_SIZE = 25
 )(
-    input rst,
+    //input rst,
     input start_tx,
     input clk,
     input [DAC_BITS-1:0] data,
     //input cook,
     output spi_clk,
-    output reg sdi,
-    output reg LD
+    output sdi,
+    output LD
     );
     
-    reg [1:0] clk_counter;
-    reg [4:0] clk_sync_counter;
-    reg [4:0] SCK_counter;
-    reg [DAC_BITS-1:0] shift;
-    reg internal_SCK;
-    wire output_SCK;
-    assign output_SCK = ~LD;
+    reg begin_out = 1'b0;
+    reg [SHIFT_SIZE-1:0] internal_shift = {SHIFT_SIZE{1'b0}};
 
-    assign spi_clk = internal_SCK && output_SCK;
+    assign sdi = begin_out ? internal_shift[SHIFT_SIZE-1] : 1'b0;
+    assign spi_clk = (begin_out && internal_shift != 0'h00) ? clk : 1'b0;
 
     localparam [3:0] write_to_input = 4'h0;
     localparam [3:0] update_dac_reg = 4'h1;
-    localparam [3:0] write_and_update_dac_reg = 4'h3;
+    localparam [3:0] write_and_update_dac_reg = 4'b0011;
     localparam [3:0] power_down = 4'h4;
     localparam [3:0] select_iref = 4'h6;
     localparam [3:0] select_supply_as_ref = 4'h7;
-    reg write_ready;
-    reg stop_tx;
-
-    
-
-    always @(posedge clk) begin
-        if(rst) begin
-            stop_tx <= 0;
-
-            //cooking <= 0;
-            clk_counter <= 2'b0;
-            //spi_clk <= 0;
-            sdi <= 0;
-            LD <= 1;
-            shift <= data;
-            clk_sync_counter <= 2'b0;
-            SCK_counter <= 0;
-            internal_SCK <= 0;
-            //output_SCK <= 0;
-            write_ready <= 0;
-        end else begin
-            clk_counter <= clk_counter + 1;
-            if(clk_counter == 2'h2) begin
-                internal_SCK <= ~internal_SCK;
-            end
-        end
-    end
-    reg [SHIFT_SIZE-1:0] outshift;
-    always @(negedge internal_SCK) begin
+    reg tx = 1'b0;
+//    reg LD_i = 1'b1;
+    assign LD = ~tx;
+    always @(negedge clk) begin
+//        LD_i <= 1;    
+        begin_out <= 0;
         if(start_tx) begin
-            LD <= 0;
+            tx <= start_tx;
+            internal_shift <= {1'b0, 1'b0, write_and_update_dac_reg, 4'b0, data, 4'hf};
         end
-        if(~LD && write_ready) begin
-            sdi <= outshift[SHIFT_SIZE-1];
-            outshift <= {outshift[SHIFT_SIZE-2:0], 1'b0};
-        end
-    end
-    always @(posedge internal_SCK) begin
-        if(write_ready && outshift == 0) begin
-            stop_tx <= 1;
-        end
-        if(stop_tx == 1) begin
-            LD <= 1;
-            stop_tx <= 0;
-        end
-    end
-    always @(posedge spi_clk) begin
-        SCK_counter <= SCK_counter + 1;
-        if(~write_ready) begin
-            outshift <= {1, write_to_input[1:0], write_to_input, data, 4'hf};
-            write_ready <= 1;
+        if(tx == 1'b1) begin
+//            if(LD == 0) begin
+            internal_shift <= {internal_shift[SHIFT_SIZE-2:0], 1'b0};
+            begin_out <= 1;
+//            LD_i <= 0;
+            if(internal_shift == 0'h00) begin
+//                LD_i <= 1;
+                tx <= 0;
+            end
+//            end 
+//            else begin
+//                internal_shift <= {1'b0, 1'b0, write_and_update_dac_reg, 4'b0, data, 4'hf};
+//                LD_i <= 0;
+//            end
         end
     end
+    //always @(negedge internal_SCK) begin
+    //    if(rst) begin
+    //        sdi <= 0;
+    //    end else begin
+    //        sdi <= 1;
+    //    end
+
+//        if(start_tx) begin
+//            LD <= 1'b0;
+//        end else begin
+//            LD <= 1'b1;
+//        end
+//        if(~LD && write_ready) begin
+//            sdi <= outshift[SHIFT_SIZE-1];
+//            //outshift <= 1;
+//        end
+    //end
+//    always @(posedge internal_SCK) begin
+//        write_ready_delay <= ~LD;
+//        output_SCK <= write_ready_delay;
+//        if(write_ready && outshift == 0) begin
+//            stop_tx <= 1;
+//        end
+//        if(stop_tx == 1) begin
+//            LD <= 1;
+//            stop_tx <= 0;
+//        end
+//    end
+//    always @(posedge spi_clk) begin
+//        //SCK_counter <= SCK_counter + 1;
+//        if(~write_ready) begin
+//            outshift <= {1'b1, write_to_input[1:0], write_to_input, data, 4'hf};
+//            write_ready <= 1;
+//        end else begin
+//            outshift <= {outshift[SHIFT_SIZE-2:0], 1'b0};
+//        end
+//    end
 endmodule

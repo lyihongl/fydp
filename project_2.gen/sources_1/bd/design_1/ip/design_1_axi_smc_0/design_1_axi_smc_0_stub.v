@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Wed Jan 17 14:22:39 2024
+// Date        : Wed Jan 17 13:43:00 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 // Command     : write_verilog -force -mode synth_stub -rename_top design_1_axi_smc_0 -prefix
 //               design_1_axi_smc_0_ design_1_axi_smc_0_stub.v

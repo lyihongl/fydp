@@ -23,6 +23,7 @@
 #include "xparameters.h"
 #include "xil_io.h"
 #include "xil_cache.h"
+#include "xgpio.h"
 
 #define BASE_ADDR 0x40000000
 #define HIGH_ADDR 0x40003FFF
@@ -36,6 +37,16 @@ int main()
     int index = 2;
     int read_addr = BASE_ADDR + 8*index;
     int data_out;
+
+    XGpio output;
+
+    XGpio_Initialize(&output, XPAR_XGPIOPS_0_BASEADDR);
+
+    XGpio_SetDataDirection(&output, 1, 0);
+
+    while(1){
+        XGpio_DiscreteWrite(&output, 1, 1);
+    }
 
     for(int i = 0; i<5; i++){
         Xil_Out32(init_addr, data_in[i]);

@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Wed Jan 17 14:55:17 2024
+//Date        : Sat Feb 10 16:45:52 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=6,numReposBlks=6,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=2,da_bram_cntlr_cnt=2,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_board_cnt=4,da_bram_cntlr_cnt=3,da_clkrst_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -33,8 +33,10 @@ module design_1
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    clk_20M,
     reset_rtl,
-    sys_clock);
+    sys_clock,
+    t);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *) inout [2:0]DDR_ba;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *) inout DDR_cas_n;
@@ -56,8 +58,10 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
+  output clk_20M;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET_RTL RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET_RTL, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset_rtl;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN design_1_sys_clock, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input sys_clock;
+  output [4:0]t;
 
   wire [12:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
@@ -66,6 +70,7 @@ module design_1
   wire axi_bram_ctrl_0_BRAM_PORTA_EN;
   wire axi_bram_ctrl_0_BRAM_PORTA_RST;
   wire [3:0]axi_bram_ctrl_0_BRAM_PORTA_WE;
+  wire [0:0]axi_gpio_0_gpio_io_o;
   wire [12:0]axi_smc_M00_AXI_ARADDR;
   wire [2:0]axi_smc_M00_AXI_ARPROT;
   wire axi_smc_M00_AXI_ARREADY;
@@ -85,6 +90,24 @@ module design_1
   wire axi_smc_M00_AXI_WREADY;
   wire [3:0]axi_smc_M00_AXI_WSTRB;
   wire axi_smc_M00_AXI_WVALID;
+  wire [8:0]axi_smc_M01_AXI_ARADDR;
+  wire axi_smc_M01_AXI_ARREADY;
+  wire axi_smc_M01_AXI_ARVALID;
+  wire [8:0]axi_smc_M01_AXI_AWADDR;
+  wire axi_smc_M01_AXI_AWREADY;
+  wire axi_smc_M01_AXI_AWVALID;
+  wire axi_smc_M01_AXI_BREADY;
+  wire [1:0]axi_smc_M01_AXI_BRESP;
+  wire axi_smc_M01_AXI_BVALID;
+  wire [31:0]axi_smc_M01_AXI_RDATA;
+  wire axi_smc_M01_AXI_RREADY;
+  wire [1:0]axi_smc_M01_AXI_RRESP;
+  wire axi_smc_M01_AXI_RVALID;
+  wire [31:0]axi_smc_M01_AXI_WDATA;
+  wire axi_smc_M01_AXI_WREADY;
+  wire [3:0]axi_smc_M01_AXI_WSTRB;
+  wire axi_smc_M01_AXI_WVALID;
+  wire clk_wiz_0_clk_out1;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
   wire processing_system7_0_DDR_CAS_N;
@@ -149,9 +172,19 @@ module design_1
   wire reset_rtl_1;
   wire [0:0]rst_ps7_0_50M_peripheral_aresetn;
   wire sys_clock_1;
+  wire [31:0]test_ram_2_0_BRAM_CTRL_ADDR;
+  wire test_ram_2_0_BRAM_CTRL_CLK;
+  wire [31:0]test_ram_2_0_BRAM_CTRL_DIN;
+  wire [31:0]test_ram_2_0_BRAM_CTRL_DOUT;
+  wire test_ram_2_0_BRAM_CTRL_EN;
+  wire test_ram_2_0_BRAM_CTRL_RST;
+  wire [3:0]test_ram_2_0_BRAM_CTRL_WE;
+  wire [4:0]test_ram_2_0_t;
 
+  assign clk_20M = clk_wiz_0_clk_out1;
   assign reset_rtl_1 = reset_rtl;
   assign sys_clock_1 = sys_clock;
+  assign t[4:0] = test_ram_2_0_t;
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x40000000 32 > design_1 axi_bram_ctrl_0_bram" *) 
   (* KEEP_HIERARCHY = "yes" *) 
   design_1_axi_bram_ctrl_0_0 axi_bram_ctrl_0
@@ -185,12 +218,40 @@ module design_1
         .s_axi_wvalid(axi_smc_M00_AXI_WVALID));
   design_1_axi_bram_ctrl_0_bram_0 axi_bram_ctrl_0_bram
        (.addra({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,axi_bram_ctrl_0_BRAM_PORTA_ADDR}),
+        .addrb(test_ram_2_0_BRAM_CTRL_ADDR),
         .clka(axi_bram_ctrl_0_BRAM_PORTA_CLK),
+        .clkb(test_ram_2_0_BRAM_CTRL_CLK),
         .dina(axi_bram_ctrl_0_BRAM_PORTA_DIN),
+        .dinb(test_ram_2_0_BRAM_CTRL_DIN),
         .douta(axi_bram_ctrl_0_BRAM_PORTA_DOUT),
+        .doutb(test_ram_2_0_BRAM_CTRL_DOUT),
         .ena(axi_bram_ctrl_0_BRAM_PORTA_EN),
+        .enb(test_ram_2_0_BRAM_CTRL_EN),
         .rsta(axi_bram_ctrl_0_BRAM_PORTA_RST),
-        .wea(axi_bram_ctrl_0_BRAM_PORTA_WE));
+        .rstb(test_ram_2_0_BRAM_CTRL_RST),
+        .wea(axi_bram_ctrl_0_BRAM_PORTA_WE),
+        .web(test_ram_2_0_BRAM_CTRL_WE));
+  design_1_axi_gpio_0_0 axi_gpio_0
+       (.gpio_io_o(axi_gpio_0_gpio_io_o),
+        .s_axi_aclk(processing_system7_0_FCLK_CLK0),
+        .s_axi_araddr(axi_smc_M01_AXI_ARADDR),
+        .s_axi_aresetn(rst_ps7_0_50M_peripheral_aresetn),
+        .s_axi_arready(axi_smc_M01_AXI_ARREADY),
+        .s_axi_arvalid(axi_smc_M01_AXI_ARVALID),
+        .s_axi_awaddr(axi_smc_M01_AXI_AWADDR),
+        .s_axi_awready(axi_smc_M01_AXI_AWREADY),
+        .s_axi_awvalid(axi_smc_M01_AXI_AWVALID),
+        .s_axi_bready(axi_smc_M01_AXI_BREADY),
+        .s_axi_bresp(axi_smc_M01_AXI_BRESP),
+        .s_axi_bvalid(axi_smc_M01_AXI_BVALID),
+        .s_axi_rdata(axi_smc_M01_AXI_RDATA),
+        .s_axi_rready(axi_smc_M01_AXI_RREADY),
+        .s_axi_rresp(axi_smc_M01_AXI_RRESP),
+        .s_axi_rvalid(axi_smc_M01_AXI_RVALID),
+        .s_axi_wdata(axi_smc_M01_AXI_WDATA),
+        .s_axi_wready(axi_smc_M01_AXI_WREADY),
+        .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
+        .s_axi_wvalid(axi_smc_M01_AXI_WVALID));
   design_1_axi_smc_0 axi_smc
        (.M00_AXI_araddr(axi_smc_M00_AXI_ARADDR),
         .M00_AXI_arprot(axi_smc_M00_AXI_ARPROT),
@@ -211,14 +272,23 @@ module design_1
         .M00_AXI_wready(axi_smc_M00_AXI_WREADY),
         .M00_AXI_wstrb(axi_smc_M00_AXI_WSTRB),
         .M00_AXI_wvalid(axi_smc_M00_AXI_WVALID),
-        .M01_AXI_arready(1'b0),
-        .M01_AXI_awready(1'b0),
-        .M01_AXI_bresp({1'b0,1'b0}),
-        .M01_AXI_bvalid(1'b0),
-        .M01_AXI_rdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .M01_AXI_rresp({1'b0,1'b0}),
-        .M01_AXI_rvalid(1'b0),
-        .M01_AXI_wready(1'b0),
+        .M01_AXI_araddr(axi_smc_M01_AXI_ARADDR),
+        .M01_AXI_arready(axi_smc_M01_AXI_ARREADY),
+        .M01_AXI_arvalid(axi_smc_M01_AXI_ARVALID),
+        .M01_AXI_awaddr(axi_smc_M01_AXI_AWADDR),
+        .M01_AXI_awready(axi_smc_M01_AXI_AWREADY),
+        .M01_AXI_awvalid(axi_smc_M01_AXI_AWVALID),
+        .M01_AXI_bready(axi_smc_M01_AXI_BREADY),
+        .M01_AXI_bresp(axi_smc_M01_AXI_BRESP),
+        .M01_AXI_bvalid(axi_smc_M01_AXI_BVALID),
+        .M01_AXI_rdata(axi_smc_M01_AXI_RDATA),
+        .M01_AXI_rready(axi_smc_M01_AXI_RREADY),
+        .M01_AXI_rresp(axi_smc_M01_AXI_RRESP),
+        .M01_AXI_rvalid(axi_smc_M01_AXI_RVALID),
+        .M01_AXI_wdata(axi_smc_M01_AXI_WDATA),
+        .M01_AXI_wready(axi_smc_M01_AXI_WREADY),
+        .M01_AXI_wstrb(axi_smc_M01_AXI_WSTRB),
+        .M01_AXI_wvalid(axi_smc_M01_AXI_WVALID),
         .S00_AXI_araddr(processing_system7_0_M_AXI_GP0_ARADDR),
         .S00_AXI_arburst(processing_system7_0_M_AXI_GP0_ARBURST),
         .S00_AXI_arcache(processing_system7_0_M_AXI_GP0_ARCACHE),
@@ -261,6 +331,7 @@ module design_1
         .aresetn(rst_ps7_0_50M_peripheral_aresetn));
   design_1_clk_wiz_0_0 clk_wiz_0
        (.clk_in1(sys_clock_1),
+        .clk_out1(clk_wiz_0_clk_out1),
         .reset(reset_rtl_1));
   (* BMM_INFO_PROCESSOR = "arm > design_1 axi_bram_ctrl_0" *) 
   (* KEEP_HIERARCHY = "yes" *) 
@@ -335,4 +406,15 @@ module design_1
         .mb_debug_sys_rst(1'b0),
         .peripheral_aresetn(rst_ps7_0_50M_peripheral_aresetn),
         .slowest_sync_clk(processing_system7_0_FCLK_CLK0));
+  design_1_test_ram_2_0_0 test_ram_2_0
+       (.addr(test_ram_2_0_BRAM_CTRL_ADDR),
+        .clk(sys_clock_1),
+        .data_out(test_ram_2_0_BRAM_CTRL_DIN),
+        .data_read(test_ram_2_0_BRAM_CTRL_DOUT),
+        .en(test_ram_2_0_BRAM_CTRL_EN),
+        .ram_clk(test_ram_2_0_BRAM_CTRL_CLK),
+        .ram_rst(test_ram_2_0_BRAM_CTRL_RST),
+        .ready(axi_gpio_0_gpio_io_o),
+        .t(test_ram_2_0_t),
+        .wen(test_ram_2_0_BRAM_CTRL_WE));
 endmodule

@@ -1,3 +1,0 @@
-/home/yihongliu/workspace/fydp/project_2/project_2.sw/platform/zynq_fsbl/build/CMakeFiles/fsbl.elf.dir
-/home/yihongliu/workspace/fydp/project_2/project_2.sw/platform/zynq_fsbl/build/CMakeFiles/edit_cache.dir
-/home/yihongliu/workspace/fydp/project_2/project_2.sw/platform/zynq_fsbl/build/CMakeFiles/rebuild_cache.dir

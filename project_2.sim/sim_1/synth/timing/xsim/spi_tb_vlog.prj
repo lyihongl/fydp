@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../project_2.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../../project_2.gen/sources_1/bd/design_1/ipshared/6b2b/hdl" --include "../../../../../project_2.gen/sources_1/bd/design_1/ipshared/f0b6/hdl/verilog" --include "../../../../../project_2.gen/sources_1/bd/design_1/ipshared/35de/hdl/verilog" --include "../../../../../project_2.gen/sources_1/bd/design_1/ipshared/c2c6" --include "/tools/Xilinx/Vivado/2023.2/data/xilinx_vip/include" \
+"spi_tb_time_synth.v" \
+"../../../../../project_2.srcs/sim_1/new/spi_tb.v" \
+
+# Do not sort compile order
+nosort

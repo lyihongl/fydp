@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 10ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -38,7 +38,7 @@ wire spi_clk;
 wire sdi;
 wire LD;
 spi_module dut(
-    .rst(rst),
+//    .rst(rst),
     .clk(clk),
     .start_tx(start_tx),
     .data(data),

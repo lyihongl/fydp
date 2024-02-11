@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Tue Dec  5 15:37:15 2023
+// Date        : Thu Jan 25 00:23:41 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 // Command     : write_verilog -force -mode synth_stub
 //               /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_bram_ctrl_0_bram_0/design_1_axi_bram_ctrl_0_bram_0_stub.v
@@ -15,9 +15,11 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "blk_mem_gen_v8_4_7,Vivado 2023.2" *)
-module design_1_axi_bram_ctrl_0_bram_0(clka, rsta, ena, wea, addra, dina, douta, rsta_busy)
-/* synthesis syn_black_box black_box_pad_pin="rsta,ena,wea[3:0],addra[31:0],dina[31:0],douta[31:0],rsta_busy" */
-/* synthesis syn_force_seq_prim="clka" */;
+module design_1_axi_bram_ctrl_0_bram_0(clka, rsta, ena, wea, addra, dina, douta, clkb, rstb, enb, 
+  web, addrb, dinb, doutb, rsta_busy, rstb_busy)
+/* synthesis syn_black_box black_box_pad_pin="rsta,ena,wea[3:0],addra[31:0],dina[31:0],douta[31:0],rstb,enb,web[3:0],addrb[31:0],dinb[31:0],doutb[31:0],rsta_busy,rstb_busy" */
+/* synthesis syn_force_seq_prim="clka" */
+/* synthesis syn_force_seq_prim="clkb" */;
   input clka /* synthesis syn_isclock = 1 */;
   input rsta;
   input ena;
@@ -25,5 +27,13 @@ module design_1_axi_bram_ctrl_0_bram_0(clka, rsta, ena, wea, addra, dina, douta,
   input [31:0]addra;
   input [31:0]dina;
   output [31:0]douta;
+  input clkb /* synthesis syn_isclock = 1 */;
+  input rstb;
+  input enb;
+  input [3:0]web;
+  input [31:0]addrb;
+  input [31:0]dinb;
+  output [31:0]doutb;
   output rsta_busy;
+  output rstb_busy;
 endmodule

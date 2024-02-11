@@ -42,10 +42,20 @@ module top
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
-    reset_rtl,
-    sys_clock,
-    ja,
-    btn);
+//    reset_rtl,
+//    sys_clock,
+//    ja,
+    clk,
+    start_tx,
+    spi_clk,
+    sdi,
+    LD,
+//    spi_data,
+    t);
+    
+//    set_property -dict { PACKAGE_PIN Y18   IOSTANDARD LVCMOS33 } [get_ports { spi_clk }]; #IO_L17P_T2_34 Sch=ja_p[1]
+//set_property -dict { PACKAGE_PIN Y19   IOSTANDARD LVCMOS33 } [get_ports { sdi }]; #IO_L17N_T2_34 Sch=ja_n[1]
+//set_property -dict { PACKAGE_PIN Y16   IOSTANDARD LVCMOS33 } [get_ports { LD }]; #IO_L7P_T1_34 Sch=ja_p[2]
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -67,10 +77,21 @@ module top
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  input reset_rtl;
-  input sys_clock;
-  output [7:0] ja;
-  input [1:0] btn;
+//  input reset_rtl;
+//  input sys_clock;
+//  output [7:0] ja;
+//  input [1:0] btn;
+  input clk;
+  input start_tx;
+  output LD;
+  output spi_clk;
+//  input spi_data;
+  output sdi;
+  output [4:0] t;
+  wire clk_20M;
+//  input [11:0] spi_data;
+    
+//  output test_output;
     
   design_1_wrapper d1(
     .DDR_addr(DDR_addr),
@@ -95,12 +116,73 @@ module top
     .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
     .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
     .reset_rtl(reset_rtl),
-    .sys_clock(sys_clock)
+    .sys_clock(clk),
+//    .clk_20M(clk_20M),
+    .t(t)
   );
-  
-  
-  test_module tm(
-    .clk(btn[0] | btn[1]),
-    .test(ja)
+  reg reset_rtl = 1'b0;
+  /*
+  module spi_module#(
+    DAC_BITS = 12,
+    SHIFT_SIZE = 23
+)(
+    input rst,
+    input start_tx,
+    input clk,
+    input [DAC_BITS-1:0] data,
+    //input cook,
+    output spi_clk,
+    output reg sdi,
+    output reg LD
+    );
+  */
+//  output spi_clk;
+//  output sdi;
+//  output LD;
+    reg [11:0] data = 12'hfff;
+//    reg rst = 1'b0;
+//    reg start_tx = 1'b0;
+    wire SCK /*synthesis keep*/;
+    wire SDI /*synthesis keep*/;
+    wire LD /*synthesis keep*/;
+//    assign ja[0] = SCK;
+//    assign ja[1] = SDI;
+//    assign ja[2] = LD;
+wire locked;
+  clk_wiz_0 instance_name
+   (
+    // Clock out ports
+    .clk_out1(clk_20M),     // output clk_out1
+    // Status and control signals
+    .reset(reset_rtl), // input reset
+    .locked(locked),       // output locked
+   // Clock in ports
+    .clk_in1(clk)      // input clk_in1
+);
+  spi_module spi(
+//    .rst(rst),
+    .start_tx(start_tx),
+    .clk(clk_20M),
+    .data(data),
+    .spi_clk(spi_clk),
+    .sdi(sdi),
+    .LD(LD)
   );
+//  assign ja[7:3] = data[4:0];
+   
+//  always @(posedge clk_20M) begin
+//    data <= data + 1;
+//    test_output <= 1;
+//    rst <= ~rst;
+//    start_tx <= ~start_tx;
+//    ja[3] <= data[0];
+//    ja[4] <= data[1];
+//    ja[5] <= data[2];
+//    ja[6] <= data[3];
+//    ja[7] <= data[4];
+//  end
+//  test_module tm(
+//    .clk(btn[0] | btn[1]),
+//    .test(ja)
+//  );
 endmodule

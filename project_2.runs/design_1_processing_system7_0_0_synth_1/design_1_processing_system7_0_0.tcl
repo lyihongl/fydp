@@ -70,9 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "design_1_processing_system7_0_0_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache ./.Xil/Vivado-2433-yihongliu-SER/incrSyn
-set_msg_config -id {HDL-1065} -limit 10000
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 set_param project.vivado.isBlockSynthRun true
@@ -91,6 +91,8 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part_repo_paths {/home/yihongliu/.Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:cora-z7-07s:part0:1.1 [current_project]
+set_property ip_repo_paths /media/yihongliu/linux_data/Downloads/vivado-library-master [current_project]
+update_ip_catalog
 set_property ip_output_repo /home/yihongliu/workspace/fydp/project_2/project_2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }

@@ -21,9 +21,10 @@
 
 
 module test_module(
-    input clk,
-    output [7:0] test
+//    input clk,
+    input btn,
+    output [11:0] user_dio
     );
     
-    assign test = {8{clk}};
+    assign user_dio = {12{btn}};
 endmodule

@@ -115,9 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {HDL-1065} -limit 10000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -126,8 +123,6 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 4
-  set_param checkpoint.writeSynthRtdsInDcp 1
-  set_param synth.incrementalSynthesisCache ./.Xil/Vivado-2433-yihongliu-SER/incrSyn
   set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7z007sclg400-1
@@ -150,6 +145,7 @@ OPTRACE "add files" START { }
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
   add_files /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/bd/design_1/design_1.bd
+  read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
   read_xdc /home/yihongliu/workspace/fydp/project_2/project_2.srcs/constrs_1/new/master.xdc

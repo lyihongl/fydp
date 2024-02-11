@@ -1,3 +1,0 @@
-add_subdirectory(zynqmp_amp_demo)
-add_subdirectory(ocm_demo)
-add_subdirectory(zynqmp_vfio_demo)
