@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sun Jan 28 23:48:43 2024
+// Date        : Sun Jan 28 23:48:42 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
-// Command     : write_verilog -force -mode funcsim
-//               /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_test_ram_2_0_0/design_1_test_ram_2_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top design_1_test_ram_2_0_0 -prefix
+//               design_1_test_ram_2_0_0_ design_1_test_ram_2_0_0_sim_netlist.v
 // Design      : design_1_test_ram_2_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -127,7 +127,6 @@ module design_1_test_ram_2_0_0
         .t(t));
 endmodule
 
-(* ORIG_REF_NAME = "test_ram_2" *) 
 module design_1_test_ram_2_0_0_test_ram_2
    (t,
     data_read,

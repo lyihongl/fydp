@@ -50,8 +50,11 @@ module top
     spi_clk,
     sdi,
     LD,
+    t_pin,
+    dac_addr,
 //    spi_data,
-    t);
+//    t
+    );
     
 //    set_property -dict { PACKAGE_PIN Y18   IOSTANDARD LVCMOS33 } [get_ports { spi_clk }]; #IO_L17P_T2_34 Sch=ja_p[1]
 //set_property -dict { PACKAGE_PIN Y19   IOSTANDARD LVCMOS33 } [get_ports { sdi }]; #IO_L17N_T2_34 Sch=ja_n[1]
@@ -85,9 +88,11 @@ module top
   input start_tx;
   output LD;
   output spi_clk;
+  output t_pin;
 //  input spi_data;
   output sdi;
-  output [4:0] t;
+//  output [4:0] t;
+  output [3:0] dac_addr;
   wire clk_20M;
 //  input [11:0] spi_data;
     
@@ -121,6 +126,8 @@ module top
     .t(t)
   );
   reg reset_rtl = 1'b0;
+  reg t_pin_reg = 1'b0;
+  assign t_pin = t_pin_reg;
   /*
   module spi_module#(
     DAC_BITS = 12,
@@ -149,15 +156,20 @@ module top
 //    assign ja[1] = SDI;
 //    assign ja[2] = LD;
 wire locked;
+wire intermediate_clock;
   clk_wiz_0 instance_name
    (
     // Clock out ports
-    .clk_out1(clk_20M),     // output clk_out1
+    .clk_out1(intermediate_clock),     // output clk_out1
     // Status and control signals
     .reset(reset_rtl), // input reset
     .locked(locked),       // output locked
    // Clock in ports
     .clk_in1(clk)      // input clk_in1
+);
+clock_divider clk_div_1 (
+    .in_clk(intermediate_clock),
+    .out_clk(clk_20M)
 );
   spi_module spi(
 //    .rst(rst),
@@ -170,7 +182,7 @@ wire locked;
   );
 //  assign ja[7:3] = data[4:0];
    
-//  always @(posedge clk_20M) begin
+  always @(posedge clk_20M) begin
 //    data <= data + 1;
 //    test_output <= 1;
 //    rst <= ~rst;
@@ -180,7 +192,7 @@ wire locked;
 //    ja[5] <= data[2];
 //    ja[6] <= data[3];
 //    ja[7] <= data[4];
-//  end
+  end
 //  test_module tm(
 //    .clk(btn[0] | btn[1]),
 //    .test(ja)
