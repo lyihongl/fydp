@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sat Feb 10 16:59:57 2024
+// Date        : Wed Feb 14 15:55:15 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 // Command     : write_verilog -force -mode synth_stub
 //               /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_stub.v

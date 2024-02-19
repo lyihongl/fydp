@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Feb 11 15:23:57 2024
-# Process ID: 65194
+# Start of session at: Sat Feb 17 21:29:46 2024
+# Process ID: 168604
 # Current directory: /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_processing_system7_0_0_synth_1
 # Command line: vivado -log design_1_processing_system7_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_processing_system7_0_0.tcl
 # Log file: /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_processing_system7_0_0_synth_1/design_1_processing_system7_0_0.vds
 # Journal file: /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_processing_system7_0_0_synth_1/vivado.jou
-# Running On: yihongliu-SER, OS: Linux, CPU Frequency: 4017.428 MHz, CPU Physical cores: 16, Host memory: 64168 MB
+# Running On: yihongliu-SER, OS: Linux, CPU Frequency: 3523.040 MHz, CPU Physical cores: 16, Host memory: 64168 MB
 #-----------------------------------------------------------
 source design_1_processing_system7_0_0.tcl -notrace

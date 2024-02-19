@@ -55,7 +55,8 @@ initial begin
     //cook = 0;
     #20 rst = 0;
     start_tx = 1;
-    #20 start_tx = 0;
+    #70 start_tx = 0;
+    #5 start_tx = 1;
 end
 
 always begin

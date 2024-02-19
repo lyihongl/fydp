@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Sun Feb 11 15:35:00 2024
+//Date        : Mon Feb 19 00:32:00 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -32,7 +32,9 @@ module design_1_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    data_ready,
     reset_rtl,
+    result_ready,
     sys_clock,
     t);
   inout [14:0]DDR_addr;
@@ -56,7 +58,9 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output [0:0]data_ready;
   input reset_rtl;
+  input result_ready;
   input sys_clock;
   output [4:0]t;
 
@@ -81,7 +85,9 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [0:0]data_ready;
   wire reset_rtl;
+  wire result_ready;
   wire sys_clock;
   wire [4:0]t;
 
@@ -107,7 +113,9 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .data_ready(data_ready),
         .reset_rtl(reset_rtl),
+        .result_ready(result_ready),
         .sys_clock(sys_clock),
         .t(t));
 endmodule
