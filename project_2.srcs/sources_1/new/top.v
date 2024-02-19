@@ -50,10 +50,12 @@ module top
     spi_clk,
     sdi,
     LD,
-    t_pin,
+//    t_pin,
     dac_addr,
 //    spi_data,
 //    t
+    jb,
+    ck_io0
     );
     
 //    set_property -dict { PACKAGE_PIN Y18   IOSTANDARD LVCMOS33 } [get_ports { spi_clk }]; #IO_L17P_T2_34 Sch=ja_p[1]
@@ -88,11 +90,15 @@ module top
   input start_tx;
   output LD;
   output spi_clk;
-  output t_pin;
+//  output t_pin;
 //  input spi_data;
   output sdi;
+  output [3:0] jb;
 //  output [4:0] t;
   output [3:0] dac_addr;
+  output ck_io0;
+  reg one = 1'b1;
+  assign ck_io0 = one;
   wire clk_20M;
 //  input [11:0] spi_data;
     
@@ -123,11 +129,11 @@ module top
     .reset_rtl(reset_rtl),
     .sys_clock(clk),
 //    .clk_20M(clk_20M),
-    .t(t)
+    .t(jb)
   );
   reg reset_rtl = 1'b0;
-  reg t_pin_reg = 1'b0;
-  assign t_pin = t_pin_reg;
+//  reg t_pin_reg = 1'b0;
+//  assign t_pin = t_pin_reg;
   /*
   module spi_module#(
     DAC_BITS = 12,
@@ -146,7 +152,7 @@ module top
 //  output spi_clk;
 //  output sdi;
 //  output LD;
-    reg [11:0] data = 12'hfff;
+    reg [11:0] data = 12'h7ff;
 //    reg rst = 1'b0;
 //    reg start_tx = 1'b0;
     wire SCK /*synthesis keep*/;
@@ -157,7 +163,7 @@ module top
 //    assign ja[2] = LD;
 wire locked;
 wire intermediate_clock;
-  clk_wiz_0 instance_name
+  clk_wiz_0 clk_wiz_div
    (
     // Clock out ports
     .clk_out1(intermediate_clock),     // output clk_out1

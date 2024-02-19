@@ -38,7 +38,7 @@ module spi_module#(
     reg [SHIFT_SIZE-1:0] internal_shift = {SHIFT_SIZE{1'b0}};
 
     assign sdi = begin_out ? internal_shift[SHIFT_SIZE-1] : 1'b0;
-    assign spi_clk = (begin_out && internal_shift != 0'h00) ? clk : 1'b0;
+    assign spi_clk = (begin_out && internal_shift != 0) ? clk : 1'b0;
 
     localparam [3:0] write_to_input = 4'h0;
     localparam [3:0] update_dac_reg = 4'h1;
@@ -48,21 +48,30 @@ module spi_module#(
     localparam [3:0] select_supply_as_ref = 4'h7;
     reg tx = 1'b0;
 //    reg LD_i = 1'b1;
-    assign LD = ~tx;
+    assign LD = ~tx & ~run;
+    reg tx_prev = 1'b0;
+    reg run = 1'b0;
     always @(negedge clk) begin
 //        LD_i <= 1;    
         begin_out <= 0;
-        if(start_tx) begin
+        if(run == 0) begin
+            tx_prev <= tx;
             tx <= start_tx;
-            internal_shift <= {1'b0, 1'b0, write_and_update_dac_reg, 4'b0, data, 4'hf};
         end
-        if(tx == 1'b1) begin
+
+        if(tx == 1'b1 && tx_prev == 1'b0) begin
+            run <= 1'b1;
+            internal_shift <= {1'b0, 1'b0, write_and_update_dac_reg, 4'b0, data, 4'h5};
+        end
+        if(run == 1'b1) begin
 //            if(LD == 0) begin
+            run <= 1'b1;
             internal_shift <= {internal_shift[SHIFT_SIZE-2:0], 1'b0};
             begin_out <= 1;
 //            LD_i <= 0;
-            if(internal_shift == 0'h00) begin
+            if(internal_shift == 0) begin
 //                LD_i <= 1;
+                run <= 0;
                 tx <= 0;
             end
 //            end 
