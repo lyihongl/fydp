@@ -128,8 +128,10 @@ module top
     .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
     .reset_rtl(reset_rtl),
     .sys_clock(clk),
+    .clk_khz(clk_20M),
+    .btn(start_tx)
 //    .clk_20M(clk_20M),
-    .t(jb)
+//    .t(jb)
   );
   reg reset_rtl = 1'b0;
 //  reg t_pin_reg = 1'b0;
@@ -188,7 +190,7 @@ clock_divider clk_div_1 (
   );
 //  assign ja[7:3] = data[4:0];
    
-  always @(posedge clk_20M) begin
+//  always @(posedge clk_20M) begin
 //    data <= data + 1;
 //    test_output <= 1;
 //    rst <= ~rst;
@@ -198,7 +200,7 @@ clock_divider clk_div_1 (
 //    ja[5] <= data[2];
 //    ja[6] <= data[3];
 //    ja[7] <= data[4];
-  end
+//  end
 //  test_module tm(
 //    .clk(btn[0] | btn[1]),
 //    .test(ja)
