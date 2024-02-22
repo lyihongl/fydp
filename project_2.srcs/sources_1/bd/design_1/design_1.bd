@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF2C01759564CCAC8",
+      "boundary_crc": "0x4C3F4837C6C58429",
       "device": "xc7z007sclg400-1",
       "gen_directory": "../../../../project_2.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -18,7 +18,6 @@
       "rst_ps7_0_50M": "",
       "axi_gpio_0": "",
       "output_manager_0": "",
-      "ila_0": "",
       "dac_addr_translator_0": ""
     },
     "interface_ports": {
@@ -237,6 +236,39 @@
       },
       "btn": {
         "direction": "I"
+      },
+      "dac_a_addr": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "dac_b_addr": {
+        "direction": "O",
+        "left": "1",
+        "right": "0"
+      },
+      "dac_a_en": {
+        "direction": "O"
+      },
+      "dac_b_en": {
+        "direction": "O"
+      },
+      "SDI_a": {
+        "direction": "O"
+      },
+      "SDI_b": {
+        "direction": "O"
+      },
+      "SCK_a": {
+        "direction": "O"
+      },
+      "SCK_b": {
+        "direction": "O"
+      },
+      "negative": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
       }
     },
     "components": {
@@ -1721,54 +1753,6 @@
           }
         }
       },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "ip_revision": "14",
-        "xci_name": "design_1_ila_0_0",
-        "xci_path": "ip/design_1_ila_0_0/design_1_ila_0_0.xci",
-        "inst_hier_path": "ila_0",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "16384"
-          },
-          "C_EN_STRG_QUAL": {
-            "value": "0"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "10"
-          },
-          "C_PROBE0_WIDTH": {
-            "value": "4"
-          },
-          "C_PROBE10_WIDTH": {
-            "value": "1"
-          },
-          "C_PROBE1_WIDTH": {
-            "value": "2"
-          },
-          "C_PROBE2_WIDTH": {
-            "value": "1"
-          },
-          "C_PROBE3_WIDTH": {
-            "value": "4"
-          },
-          "C_PROBE4_WIDTH": {
-            "value": "32"
-          },
-          "C_PROBE5_WIDTH": {
-            "value": "1"
-          },
-          "C_PROBE6_WIDTH": {
-            "value": "1"
-          },
-          "C_PROBE9_WIDTH": {
-            "value": "8"
-          }
-        }
-      },
       "dac_addr_translator_0": {
         "vlnv": "xilinx.com:module_ref:dac_addr_translator:1.0",
         "ip_revision": "1",
@@ -1786,18 +1770,11 @@
             "left": "3",
             "right": "0"
           },
-          "LD": {
+          "SDI": {
             "direction": "I"
           },
-          "dac_a": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "dac_b": {
-            "direction": "O",
-            "left": "1",
-            "right": "0",
+          "SCK": {
+            "direction": "I",
             "parameters": {
               "FREQ_HZ": {
                 "value": "100000000",
@@ -1813,10 +1790,35 @@
               }
             }
           },
+          "LD": {
+            "direction": "I"
+          },
+          "dac_a": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "dac_b": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
           "en_a": {
             "direction": "O"
           },
           "en_b": {
+            "direction": "O"
+          },
+          "SCK_a": {
+            "direction": "O"
+          },
+          "SDI_a": {
+            "direction": "O"
+          },
+          "SCK_b": {
+            "direction": "O"
+          },
+          "SDI_b": {
             "direction": "O"
           }
         }
@@ -1879,42 +1881,64 @@
           "output_manager_0/clk"
         ]
       },
+      "dac_addr_translator_0_SCK_a": {
+        "ports": [
+          "dac_addr_translator_0/SCK_a",
+          "SCK_a"
+        ]
+      },
+      "dac_addr_translator_0_SCK_b": {
+        "ports": [
+          "dac_addr_translator_0/SCK_b",
+          "SCK_b"
+        ]
+      },
+      "dac_addr_translator_0_SDI_a": {
+        "ports": [
+          "dac_addr_translator_0/SDI_a",
+          "SDI_a"
+        ]
+      },
+      "dac_addr_translator_0_SDI_b": {
+        "ports": [
+          "dac_addr_translator_0/SDI_b",
+          "SDI_b"
+        ]
+      },
       "dac_addr_translator_0_dac_a": {
         "ports": [
           "dac_addr_translator_0/dac_a",
-          "ila_0/probe0"
+          "dac_a_addr"
         ]
       },
       "dac_addr_translator_0_dac_b": {
         "ports": [
           "dac_addr_translator_0/dac_b",
-          "ila_0/probe1"
+          "dac_b_addr"
         ]
       },
       "dac_addr_translator_0_en_a": {
         "ports": [
           "dac_addr_translator_0/en_a",
-          "ila_0/probe2"
+          "dac_a_en"
         ]
       },
       "dac_addr_translator_0_en_b": {
         "ports": [
           "dac_addr_translator_0/en_b",
-          "ila_0/probe5"
+          "dac_b_en"
         ]
       },
       "output_manager_0_LD": {
         "ports": [
           "output_manager_0/LD",
-          "dac_addr_translator_0/LD",
-          "ila_0/probe8"
+          "dac_addr_translator_0/LD"
         ]
       },
       "output_manager_0_axi_addr": {
         "ports": [
           "output_manager_0/axi_addr",
-          "axi_bram_ctrl_0_bram/addrb",
-          "ila_0/probe4"
+          "axi_bram_ctrl_0_bram/addrb"
         ]
       },
       "output_manager_0_data_out": {
@@ -1932,14 +1956,13 @@
       "output_manager_0_negative": {
         "ports": [
           "output_manager_0/negative",
-          "ila_0/probe9"
+          "negative"
         ]
       },
       "output_manager_0_output_addr": {
         "ports": [
           "output_manager_0/output_addr",
-          "dac_addr_translator_0/in_addr",
-          "ila_0/probe3"
+          "dac_addr_translator_0/in_addr"
         ]
       },
       "output_manager_0_ram_clk": {
@@ -1957,13 +1980,13 @@
       "output_manager_0_sdi": {
         "ports": [
           "output_manager_0/sdi",
-          "ila_0/probe7"
+          "dac_addr_translator_0/SDI"
         ]
       },
       "output_manager_0_spi_clk": {
         "ports": [
           "output_manager_0/spi_clk",
-          "ila_0/probe6"
+          "dac_addr_translator_0/SCK"
         ]
       },
       "output_manager_0_tx_done": {
@@ -2000,12 +2023,6 @@
           "axi_bram_ctrl_0/s_axi_aresetn",
           "axi_smc/aresetn",
           "axi_gpio_0/s_axi_aresetn"
-        ]
-      },
-      "sys_clock_1": {
-        "ports": [
-          "sys_clock",
-          "ila_0/clk"
         ]
       }
     },

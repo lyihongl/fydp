@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Tue Feb 20 22:07:13 2024
+//Date        : Thu Feb 22 16:26:15 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=1,da_axi4_cnt=3,da_board_cnt=6,da_bram_cntlr_cnt=3,da_clkrst_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=1,da_axi4_cnt=3,da_board_cnt=6,da_bram_cntlr_cnt=3,da_clkrst_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -33,8 +33,17 @@ module design_1
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    SCK_a,
+    SCK_b,
+    SDI_a,
+    SDI_b,
     btn,
     clk_khz,
+    dac_a_addr,
+    dac_a_en,
+    dac_b_addr,
+    dac_b_en,
+    negative,
     reset_rtl,
     result_ready,
     sys_clock);
@@ -59,8 +68,17 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
+  output SCK_a;
+  output SCK_b;
+  output SDI_a;
+  output SDI_b;
   input btn;
   input clk_khz;
+  output [3:0]dac_a_addr;
+  output dac_a_en;
+  output [1:0]dac_b_addr;
+  output dac_b_en;
+  output [7:0]negative;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET_RTL RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET_RTL, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset_rtl;
   input result_ready;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN design_1_sys_clock, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input sys_clock;
@@ -111,6 +129,10 @@ module design_1
   wire [3:0]axi_smc_M01_AXI_WSTRB;
   wire axi_smc_M01_AXI_WVALID;
   wire clk_khz_1;
+  wire dac_addr_translator_0_SCK_a;
+  wire dac_addr_translator_0_SCK_b;
+  wire dac_addr_translator_0_SDI_a;
+  wire dac_addr_translator_0_SDI_b;
   wire [3:0]dac_addr_translator_0_dac_a;
   wire [1:0]dac_addr_translator_0_dac_b;
   wire dac_addr_translator_0_en_a;
@@ -189,10 +211,17 @@ module design_1
   wire [3:0]processing_system7_0_M_AXI_GP0_WSTRB;
   wire processing_system7_0_M_AXI_GP0_WVALID;
   wire [0:0]rst_ps7_0_50M_peripheral_aresetn;
-  wire sys_clock_1;
 
+  assign SCK_a = dac_addr_translator_0_SCK_a;
+  assign SCK_b = dac_addr_translator_0_SCK_b;
+  assign SDI_a = dac_addr_translator_0_SDI_a;
+  assign SDI_b = dac_addr_translator_0_SDI_b;
   assign clk_khz_1 = clk_khz;
-  assign sys_clock_1 = sys_clock;
+  assign dac_a_addr[3:0] = dac_addr_translator_0_dac_a;
+  assign dac_a_en = dac_addr_translator_0_en_a;
+  assign dac_b_addr[1:0] = dac_addr_translator_0_dac_b;
+  assign dac_b_en = dac_addr_translator_0_en_b;
+  assign negative[7:0] = output_manager_0_negative;
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x40000000 32 > design_1 axi_bram_ctrl_0_bram" *) 
   (* KEEP_HIERARCHY = "yes" *) 
   design_1_axi_bram_ctrl_0_0 axi_bram_ctrl_0
@@ -340,23 +369,17 @@ module design_1
         .aresetn(rst_ps7_0_50M_peripheral_aresetn));
   design_1_dac_addr_translator_0_0 dac_addr_translator_0
        (.LD(output_manager_0_LD),
+        .SCK(output_manager_0_spi_clk),
+        .SCK_a(dac_addr_translator_0_SCK_a),
+        .SCK_b(dac_addr_translator_0_SCK_b),
+        .SDI(output_manager_0_sdi),
+        .SDI_a(dac_addr_translator_0_SDI_a),
+        .SDI_b(dac_addr_translator_0_SDI_b),
         .dac_a(dac_addr_translator_0_dac_a),
         .dac_b(dac_addr_translator_0_dac_b),
         .en_a(dac_addr_translator_0_en_a),
         .en_b(dac_addr_translator_0_en_b),
         .in_addr(output_manager_0_output_addr));
-  design_1_ila_0_0 ila_0
-       (.clk(sys_clock_1),
-        .probe0(dac_addr_translator_0_dac_a),
-        .probe1(dac_addr_translator_0_dac_b),
-        .probe2(dac_addr_translator_0_en_a),
-        .probe3(output_manager_0_output_addr),
-        .probe4(output_manager_0_axi_addr),
-        .probe5(dac_addr_translator_0_en_b),
-        .probe6(output_manager_0_spi_clk),
-        .probe7(output_manager_0_sdi),
-        .probe8(output_manager_0_LD),
-        .probe9(output_manager_0_negative));
   design_1_output_manager_0_0 output_manager_0
        (.LD(output_manager_0_LD),
         .axi_addr(output_manager_0_axi_addr),
