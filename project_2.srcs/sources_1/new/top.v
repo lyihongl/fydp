@@ -46,16 +46,26 @@ module top
 //    sys_clock,
 //    ja,
     clk,
-    start_tx,
-    spi_clk,
-    sdi,
-    LD,
+    ck_io,
+    ck_io6,
+    ck_io7,
+    ck_io8,
+    ck_io9,
+    SCK_a,
+    SCK_b,
+    SDI_a,
+    SDI_b,
+    jb
+//    start_tx,
+//    spi_clk,
+//    sdi,
+//    LD,
 //    t_pin,
-    dac_addr,
+//    dac_addr,
 //    spi_data,
 //    t
-    jb,
-    ck_io0
+//    jb,
+//    ck_io0
     );
     
 //    set_property -dict { PACKAGE_PIN Y18   IOSTANDARD LVCMOS33 } [get_ports { spi_clk }]; #IO_L17P_T2_34 Sch=ja_p[1]
@@ -87,18 +97,28 @@ module top
 //  output [7:0] ja;
 //  input [1:0] btn;
   input clk;
-  input start_tx;
-  output LD;
-  output spi_clk;
-//  output t_pin;
-//  input spi_data;
-  output sdi;
-  output [3:0] jb;
-//  output [4:0] t;
-  output [3:0] dac_addr;
-  output ck_io0;
-  reg one = 1'b1;
-  assign ck_io0 = one;
+  output [5:0] ck_io;
+  output ck_io6;
+  output ck_io7;
+  output ck_io8;
+  output ck_io9;
+  output SDI_a;
+  output SCK_a;
+  output SDI_b;
+  output SCK_b;
+  output [7:0] jb;
+//  input start_tx;
+//  output LD;
+//  output spi_clk;
+////  output t_pin;
+////  input spi_data;
+//  output sdi;
+//  output [3:0] jb;
+////  output [4:0] t;
+//  output [3:0] dac_addr;
+//  output ck_io0;
+//  reg one = 1'b1;
+//  assign ck_io0 = one;
   wire clk_20M;
 //  input [11:0] spi_data;
     
@@ -129,10 +149,21 @@ module top
     .reset_rtl(reset_rtl),
     .sys_clock(clk),
     .clk_khz(clk_20M),
-    .btn(start_tx)
+    .btn(start_tx),
+    .dac_a_addr(ck_io[3:0]),
+    .dac_a_en(dac_a_en),
+    .dac_b_addr(ck_io[5:4]),
+    .dac_b_en(dac_b_en),
+    .SCK_a(SCK_a),
+    .SCK_b(SCK_b),
+    .SDI_a(SDI_a),
+    .SDI_b(SDI_b),
+    .negative(jb[7:0])
 //    .clk_20M(clk_20M),
 //    .t(jb)
   );
+  wire dac_a_en;
+  wire dac_b_en;
   reg reset_rtl = 1'b0;
 //  reg t_pin_reg = 1'b0;
 //  assign t_pin = t_pin_reg;
@@ -179,15 +210,15 @@ clock_divider clk_div_1 (
     .in_clk(intermediate_clock),
     .out_clk(clk_20M)
 );
-  spi_module spi(
-//    .rst(rst),
-    .start_tx(start_tx),
-    .clk(clk_20M),
-    .data(data),
-    .spi_clk(spi_clk),
-    .sdi(sdi),
-    .LD(LD)
-  );
+//  spi_module spi(
+////    .rst(rst),
+//    .start_tx(start_tx),
+//    .clk(clk_20M),
+//    .data(data),
+//    .spi_clk(spi_clk),
+//    .sdi(sdi),
+//    .LD(LD)
+//  );
 //  assign ja[7:3] = data[4:0];
    
 //  always @(posedge clk_20M) begin
