@@ -10,24 +10,16 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="8,193"></ZoomEndTime>
+      <ZoomEndTime time="16,385"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="362"></NameColumnWidth>
-      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="9" />
    <wave_markers>
    </wave_markers>
-   <wvobject type="array" fp_name="d1/design_1_i/output_manager_0_axi_addr">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_axi_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">output_manager_0_axi_addr[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="d1/design_1_i/dac_addr_translator_0_dac_a">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">d1/design_1_i/dac_addr_translator_0_dac_a[3:0]</obj_property>
@@ -58,32 +50,31 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="d1/design_1_i/output_manager_0_LD">
+   <wvobject type="logic" fp_name="d1/design_1_i/dac_addr_translator_0_SCK_a">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_LD</obj_property>
-      <obj_property name="ObjectShortName">output_manager_0_LD</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/dac_addr_translator_0_SCK_a</obj_property>
+      <obj_property name="ObjectShortName">dac_addr_translator_0_SCK_a</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="d1/design_1_i/output_manager_0_sdi">
+   <wvobject type="logic" fp_name="d1/design_1_i/dac_addr_translator_0_SCK_b">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_sdi</obj_property>
-      <obj_property name="ObjectShortName">output_manager_0_sdi</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/dac_addr_translator_0_SCK_b</obj_property>
+      <obj_property name="ObjectShortName">dac_addr_translator_0_SCK_b</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="d1/design_1_i/output_manager_0_spi_clk">
+   <wvobject type="logic" fp_name="d1/design_1_i/dac_addr_translator_0_SDI_a">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_spi_clk</obj_property>
-      <obj_property name="ObjectShortName">output_manager_0_spi_clk</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/dac_addr_translator_0_SDI_a</obj_property>
+      <obj_property name="ObjectShortName">dac_addr_translator_0_SDI_a</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="d1/design_1_i/output_manager_0_output_addr">
+   <wvobject type="logic" fp_name="d1/design_1_i/dac_addr_translator_0_SDI_b">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_output_addr[3:0]</obj_property>
-      <obj_property name="ObjectShortName">output_manager_0_output_addr[3:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/dac_addr_translator_0_SDI_b</obj_property>
+      <obj_property name="ObjectShortName">dac_addr_translator_0_SDI_b</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -91,14 +82,6 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_negative[7:0]</obj_property>
       <obj_property name="ObjectShortName">output_manager_0_negative[7:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="d1/design_1_i/output_manager_0_output_polarity">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/output_manager_0_output_polarity[11:0]</obj_property>
-      <obj_property name="ObjectShortName">output_manager_0_output_polarity[11:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>

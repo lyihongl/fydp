@@ -82,3 +82,24 @@ platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_
 platform generate -domains 
 platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
 platform generate -domains 
+platform active {platform}
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 
+platform generate
+platform generate
+platform generate
+platform active {platform}
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 
+platform active {platform}
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 
+platform active {platform}
+platform config -updatehw {/home/yihongliu/workspace/fydp/project_2/with_output_manager.xsa}
+platform generate -domains 

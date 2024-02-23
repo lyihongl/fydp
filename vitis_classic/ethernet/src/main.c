@@ -154,59 +154,60 @@ int main(void)
 #endif
 
 	init_platform();
-	int data1[36];
-	int data2[48];
-
-	for(int i = 0; i<36; i++){
-		data1[i] = i;
-	}
-	for(int i = 0; i<48; i++){
-		data2[i] = i;
-	}
-
-	int m1_rows = 6;
-	int m1_cols = 6;
-	int m1_col_cursor = 0;
-	int m2_rows = 8;
-	int m2_cols = 6;
-	int m2_col_cursor = 0;
-	unsigned int adc_ready = 0;
-	for(int r1 = 0; r1<m1_rows; r1 += 2){
-		for(;m1_col_cursor < m1_cols; m1_col_cursor+=4){
-			for(int c = 0; c<4; c++){
-				if(c+m1_col_cursor < m1_cols){
-
-					Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, data1[r1*m1_cols+m1_col_cursor+c]);
-					if(r1+1 < m1_rows){
-						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, data1[(r1+1)*m1_cols+m1_col_cursor+c]);
-					} else {
-						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
-					}
-
-				} else {
-					Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, 0);
-					Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
-				}
-			}
-
-			for(int r2 = 0; r2 < m2_rows; r2++){
-				for(int c = 0; c<4; c++){
-					if(m1_col_cursor+c < m2_cols){
-						Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, data2[r2*m2_cols+m1_col_cursor+c]);
-					} else {
-						Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, 0);
-					}
-
-				}
-				XGpio_DiscreteWrite(&gpio, 1, 1);
-				while(adc_ready == 0){
-					adc_ready = XGpio_DiscreteRead(&gpio, 2);
-				}
-				XGpio_DiscreteWrite(&gpio, 1, 0);
-			}
-		}
-
-	}
+//	int data1[36];
+//	int data2[48];
+//
+//	for(int i = 0; i<36; i++){
+//		data1[i] = i;
+//	}
+//	for(int i = 0; i<48; i++){
+//		data2[i] = i;
+//	}
+//	data1[0] = -1;
+//
+//	int m1_rows = 6;
+//	int m1_cols = 6;
+//	int m1_col_cursor = 0;
+//	int m2_rows = 8;
+//	int m2_cols = 6;
+//	int m2_col_cursor = 0;
+//	unsigned int adc_ready = 0;
+//	for(int r1 = 0; r1<m1_rows; r1 += 2){
+//		for(;m1_col_cursor < m1_cols; m1_col_cursor+=4){
+//			for(int c = 0; c<4; c++){
+//				if(c+m1_col_cursor < m1_cols){
+//
+//					Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, data1[r1*m1_cols+m1_col_cursor+c]);
+//					if(r1+1 < m1_rows){
+//						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, data1[(r1+1)*m1_cols+m1_col_cursor+c]);
+//					} else {
+//						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
+//					}
+//
+//				} else {
+//					Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, 0);
+//					Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
+//				}
+//			}
+//
+//			for(int r2 = 0; r2 < m2_rows; r2++){
+//				for(int c = 0; c<4; c++){
+//					if(m1_col_cursor+c < m2_cols){
+//						Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, data2[r2*m2_cols+m1_col_cursor+c]);
+//					} else {
+//						Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, 0);
+//					}
+//
+//				}
+//				XGpio_DiscreteWrite(&gpio, 1, 1);
+//				while(adc_ready == 0){
+//					adc_ready = XGpio_DiscreteRead(&gpio, 2);
+//				}
+//				XGpio_DiscreteWrite(&gpio, 1, 0);
+//			}
+//		}
+//
+//	}
 //	for(int i = 0; i<rows1; i++){
 //		adc_ready = 0;
 //

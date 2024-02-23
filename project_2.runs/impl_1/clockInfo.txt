@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Thu Feb 22 16:29:36 2024
+| Date         : Fri Feb 23 18:30:22 2024
 | Host         : yihongliu-SER
 | Design       : design_1
 | Device       : xc7z007s-clg400-1--

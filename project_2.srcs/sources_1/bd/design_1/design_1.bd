@@ -18,7 +18,8 @@
       "rst_ps7_0_50M": "",
       "axi_gpio_0": "",
       "output_manager_0": "",
-      "dac_addr_translator_0": ""
+      "dac_addr_translator_0": "",
+      "ila_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1822,6 +1823,21 @@
             "direction": "O"
           }
         }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "design_1_ila_0_0",
+        "xci_path": "ip/design_1_ila_0_0/design_1_ila_0_0.xci",
+        "inst_hier_path": "ila_0",
+        "parameters": {
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "3"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1884,7 +1900,8 @@
       "dac_addr_translator_0_SCK_a": {
         "ports": [
           "dac_addr_translator_0/SCK_a",
-          "SCK_a"
+          "SCK_a",
+          "ila_0/probe0"
         ]
       },
       "dac_addr_translator_0_SCK_b": {
@@ -1896,7 +1913,8 @@
       "dac_addr_translator_0_SDI_a": {
         "ports": [
           "dac_addr_translator_0/SDI_a",
-          "SDI_a"
+          "SDI_a",
+          "ila_0/probe1"
         ]
       },
       "dac_addr_translator_0_SDI_b": {
@@ -1920,7 +1938,8 @@
       "dac_addr_translator_0_en_a": {
         "ports": [
           "dac_addr_translator_0/en_a",
-          "dac_a_en"
+          "dac_a_en",
+          "ila_0/probe2"
         ]
       },
       "dac_addr_translator_0_en_b": {
@@ -2008,7 +2027,8 @@
           "axi_smc/aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "rst_ps7_0_50M/slowest_sync_clk",
-          "axi_gpio_0/s_axi_aclk"
+          "axi_gpio_0/s_axi_aclk",
+          "ila_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

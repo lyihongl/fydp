@@ -29,10 +29,100 @@
 /** Connection handle for a TCP Server session */
 
 #include "tcp_perf_server.h"
+#include "xgpio.h"
+#include "xil_io.h"
+#include "xparameters.h"
 
 extern struct netif server_netif;
 static struct tcp_pcb *c_pcb;
 static struct perf_stats server;
+
+static int data_pool[1000] = {0};
+extern XGpio gpio;
+void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* data1, int* data2){
+//	int m1_rows = 6;
+	//	int m1_cols = 6;
+		int m1_col_cursor = 0;
+	//	int m2_rows = 8;
+	//	int m2_cols = 6;
+//		int m2_col_cursor = 0;
+		unsigned int adc_ready = 0;
+		for(int r1 = 0; r1<m1_rows; r1 += 2){
+			for(;m1_col_cursor < m1_cols; m1_col_cursor+=4){
+				for(int c = 0; c<4; c++){
+					if(c+m1_col_cursor < m1_cols){
+
+						Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, data1[r1*m1_cols+m1_col_cursor+c]);
+						if(r1+1 < m1_rows){
+							Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, data1[(r1+1)*m1_cols+m1_col_cursor+c]);
+						} else {
+							Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
+						}
+
+					} else {
+						Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, 0);
+						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
+					}
+				}
+
+				for(int r2 = 0; r2 < m2_rows; r2++){
+					for(int c = 0; c<4; c++){
+						if(m1_col_cursor+c < m2_cols){
+							Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, data2[r2*m2_cols+m1_col_cursor+c]);
+						} else {
+							Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, 0);
+						}
+
+					}
+					XGpio_DiscreteWrite(&gpio, 1, 1);
+					xil_printf("data ready sent to fpga\r\n");
+					while(adc_ready == 0){
+						adc_ready = XGpio_DiscreteRead(&gpio, 2);
+					}
+					XGpio_DiscreteWrite(&gpio, 1, 0);
+				}
+			}
+
+		}
+}
+
+err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+                               struct pbuf *p, err_t err)
+{
+	/* do not read the packet if we are not in ESTABLISHED state */
+	if (!p) {
+		tcp_close(tpcb);
+		tcp_recv(tpcb, NULL);
+		return ERR_OK;
+	}
+
+	/* indicate that the packet has been received */
+	tcp_recved(tpcb, p->len);
+    memcpy(data_pool, p->payload, p->len);
+    int m1_rows = data_pool[0];
+    int m1_cols = data_pool[1];
+    int offset = m1_rows*m1_cols+2;
+    int m2_rows = *(data_pool+offset);
+    int m2_cols = *(data_pool+offset+1);
+//    int m2_rows = 4;
+//    int m2_cols = 4;
+    int* data1 = data_pool+2;
+    int* data2 = data_pool+m1_rows*m1_cols+4;
+    ps_pl_data_load(m1_rows, m1_cols, m2_rows, m2_cols, data1, data2);
+    int dummy[6] = {1,4,1,2,3,4};
+//    tcp_write(tpcb, dummy, 6*4, 1);
+	/* echo back the payload */
+	/* in this case, we assume that the payload is < TCP_SND_BUF */
+	if (tcp_sndbuf(tpcb) > p->len) {
+		err = tcp_write(tpcb, p->payload, p->len, 1);
+	} else
+		xil_printf("no space in tcp_sndbuf\n\r");
+
+	/* free the received pbuf */
+	pbuf_free(p);
+
+	return ERR_OK;
+}
 
 void print_app_header(void)
 {
@@ -229,7 +319,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 
 	/* setup callbacks for tcp rx connection */
 	tcp_arg(c_pcb, NULL);
-	tcp_recv(c_pcb, tcp_recv_perf_traffic);
+	tcp_recv(c_pcb, recv_callback);
 	tcp_err(c_pcb, tcp_server_err);
 
 	return ERR_OK;
