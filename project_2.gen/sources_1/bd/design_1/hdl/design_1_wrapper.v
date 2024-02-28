@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Fri Feb 23 18:28:07 2024
+//Date        : Wed Feb 28 02:24:57 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -32,10 +32,15 @@ module design_1_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    SCK0,
     SCK_a,
     SCK_b,
     SDI_a,
     SDI_b,
+    SDO0,
+    SDO1,
+    adc_SCKI,
+    adc_cs,
     btn,
     clk_khz,
     dac_a_addr,
@@ -67,10 +72,15 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  input SCK0;
   output SCK_a;
   output SCK_b;
   output SDI_a;
   output SDI_b;
+  input SDO0;
+  input SDO1;
+  output adc_SCKI;
+  output adc_cs;
   input btn;
   input clk_khz;
   output [3:0]dac_a_addr;
@@ -103,10 +113,15 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire SCK0;
   wire SCK_a;
   wire SCK_b;
   wire SDI_a;
   wire SDI_b;
+  wire SDO0;
+  wire SDO1;
+  wire adc_SCKI;
+  wire adc_cs;
   wire btn;
   wire clk_khz;
   wire [3:0]dac_a_addr;
@@ -140,10 +155,15 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .SCK0(SCK0),
         .SCK_a(SCK_a),
         .SCK_b(SCK_b),
         .SDI_a(SDI_a),
         .SDI_b(SDI_b),
+        .SDO0(SDO0),
+        .SDO1(SDO1),
+        .adc_SCKI(adc_SCKI),
+        .adc_cs(adc_cs),
         .btn(btn),
         .clk_khz(clk_khz),
         .dac_a_addr(dac_a_addr),

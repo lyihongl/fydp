@@ -62,6 +62,7 @@ module design_1_output_manager_0_0 (
   sdi,
   LD,
   tx_done,
+  negative,
   data_read,
   axi_addr,
   ram_clk,
@@ -75,13 +76,14 @@ module design_1_output_manager_0_0 (
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 input wire data_ready;
-output wire [5 : 0] output_addr;
+output wire [3 : 0] output_addr;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME spi_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN design_1_output_manager_0_0_spi_clk, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 spi_clk CLK" *)
 output wire spi_clk;
 output wire sdi;
 output wire LD;
 output wire tx_done;
+output wire [7 : 0] negative;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL DOUT" *)
 input wire [31 : 0] data_read;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL ADDR" *)
@@ -106,6 +108,7 @@ output wire [3 : 0] wen;
     .sdi(sdi),
     .LD(LD),
     .tx_done(tx_done),
+    .negative(negative),
     .data_read(data_read),
     .axi_addr(axi_addr),
     .ram_clk(ram_clk),

@@ -93,16 +93,19 @@ always @(posedge clk) begin
     dr <= data_ready;
     dr_prev <= dr;
     en <= 1;
+    if(state == 2'b00) begin
+        tx_done_r <= 0;
+    end
     if(state == 2'b00 && (dr == 1 && dr_prev == 0)) begin
         addr <= 4'b0;
         start_tx <= 0;
         state <= 2'b1;
         polarity <= 12'h000;
     end else if(state == 2'b01) begin
-        polarity[addr] <= data_read[11];
+        polarity[addr] <= data_read[12];
         if(data_read[11] == 0) begin
             data <= data_read[11:0];
-        end else if(data_read[11] == 1) begin
+        end else if(data_read[12] == 1) begin
             data <= ~data_read[11:0] + 1'b1;
         end
         if(ram_delay == 1) begin
@@ -127,6 +130,7 @@ always @(posedge clk) begin
         end
     end else if(state == 2'b11) begin
         state <= 2'b01;
+
         // read from ram here
     end
 end

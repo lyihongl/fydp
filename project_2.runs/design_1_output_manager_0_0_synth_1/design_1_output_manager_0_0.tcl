@@ -70,11 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "design_1_output_manager_0_0_synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
-set_param xicom.use_bs_reader 1
-set_param chipscope.maxJobs 4
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/mref
@@ -102,14 +97,7 @@ read_verilog -library xil_defaultlib {
   /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/new/spi_module.v
   /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/new/output_manager.v
 }
-read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/ip/ila_0_2/ila_0.xci
-set_property used_in_synthesis false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/ila_0_2/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/ila_0_2/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/ila_0_2/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/ila_0_2/ila_0_ooc.xdc]
-
 read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0.xci
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -120,14 +108,48 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
+OPTRACE "Configure IP Cache" START { }
+
+set cacheID [config_ip_cache -export -no_bom  -dir /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_output_manager_0_0_synth_1 -new_name design_1_output_manager_0_0 -ip [get_ips design_1_output_manager_0_0]]
+
+OPTRACE "Configure IP Cache" END { }
+if { $cacheID == "" } {
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
 synth_design -top design_1_output_manager_0_0 -part xc7z007sclg400-1 -incremental_mode off -mode out_of_context
 OPTRACE "synth_design" END { }
+OPTRACE "Write IP Cache" START { }
+
+#---------------------------------------------------------
+# Generate Checkpoint/Stub/Simulation Files For IP Cache
+#---------------------------------------------------------
+# disable binary constraint mode for IPCache checkpoints
+set_param constraints.enableBinaryConstraints false
+
+catch {
+ write_checkpoint -force -noxdef -rename_prefix design_1_output_manager_0_0_ design_1_output_manager_0_0.dcp
+
+ set ipCachedFiles {}
+ write_verilog -force -mode synth_stub -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ design_1_output_manager_0_0_stub.v
+ lappend ipCachedFiles design_1_output_manager_0_0_stub.v
+
+ write_vhdl -force -mode synth_stub -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ design_1_output_manager_0_0_stub.vhdl
+ lappend ipCachedFiles design_1_output_manager_0_0_stub.vhdl
+
+ write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ design_1_output_manager_0_0_sim_netlist.v
+ lappend ipCachedFiles design_1_output_manager_0_0_sim_netlist.v
+
+ write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ design_1_output_manager_0_0_sim_netlist.vhdl
+ lappend ipCachedFiles design_1_output_manager_0_0_sim_netlist.vhdl
+ set TIME_taken [expr [clock seconds] - $TIME_start]
+
+ if { [get_msg_config -count -severity {CRITICAL WARNING}] == 0 } {
+  config_ip_cache -add -dcp design_1_output_manager_0_0.dcp -move_files $ipCachedFiles   -synth_runtime $TIME_taken  -ip [get_ips design_1_output_manager_0_0]
+ }
+OPTRACE "Write IP Cache" END { }
+}
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
 }
@@ -173,6 +195,44 @@ if { [catch {
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
+
+
+} else {
+
+
+if { [catch {
+  file copy -force /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_output_manager_0_0_synth_1/design_1_output_manager_0_0.dcp /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0.dcp
+} _RESULT ] } { 
+  send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
+  error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
+}
+
+if { [catch {
+  file rename -force /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_output_manager_0_0_synth_1/design_1_output_manager_0_0_stub.v /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0_stub.v
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
+}
+
+if { [catch {
+  file rename -force /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_output_manager_0_0_synth_1/design_1_output_manager_0_0_stub.vhdl /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0_stub.vhdl
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
+}
+
+if { [catch {
+  file rename -force /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_output_manager_0_0_synth_1/design_1_output_manager_0_0_sim_netlist.v /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0_sim_netlist.v
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
+}
+
+if { [catch {
+  file rename -force /home/yihongliu/workspace/fydp/project_2/project_2.runs/design_1_output_manager_0_0_synth_1/design_1_output_manager_0_0_sim_netlist.vhdl /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_output_manager_0_0/design_1_output_manager_0_0_sim_netlist.vhdl
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
+}
+
+close [open .end.used_ip_cache.rst w]
+}; # end if cacheID 
 
 if {[file isdir /home/yihongliu/workspace/fydp/project_2/project_2.ip_user_files/ip/design_1_output_manager_0_0]} {
   catch { 

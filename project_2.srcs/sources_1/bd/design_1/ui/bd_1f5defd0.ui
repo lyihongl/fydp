@@ -1,78 +1,97 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.31896",
-   "Default View_TopLeft":"1601,414",
+   "Default View_ScaleFactor":"0.62366",
+   "Default View_TopLeft":"-412,99",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"",
    "commentid":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 7 -x 2170 -y 350 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 7 -x 2170 -y 370 -defaultsOSRD
-preplace port port-id_sys_clock -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1970 -y 1150 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1970 -y 1170 -defaultsOSRD
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
 preplace port port-id_reset_rtl -pg 1 -lvl 0 -x 0 -y 40 -defaultsOSRD
 preplace port port-id_result_ready -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
-preplace port port-id_clk_khz -pg 1 -lvl 0 -x 0 -y 530 -defaultsOSRD
+preplace port port-id_clk_khz -pg 1 -lvl 0 -x 0 -y 370 -defaultsOSRD
 preplace port port-id_btn -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
-preplace port port-id_dac_a_en -pg 1 -lvl 7 -x 2170 -y 690 -defaultsOSRD
-preplace port port-id_dac_b_en -pg 1 -lvl 7 -x 2170 -y 710 -defaultsOSRD
-preplace port port-id_SDI_a -pg 1 -lvl 7 -x 2170 -y 750 -defaultsOSRD
-preplace port port-id_SDI_b -pg 1 -lvl 7 -x 2170 -y 790 -defaultsOSRD
-preplace port port-id_SCK_a -pg 1 -lvl 7 -x 2170 -y 730 -defaultsOSRD
-preplace port port-id_SCK_b -pg 1 -lvl 7 -x 2170 -y 770 -defaultsOSRD
-preplace portBus dac_a_addr -pg 1 -lvl 7 -x 2170 -y 650 -defaultsOSRD
-preplace portBus dac_b_addr -pg 1 -lvl 7 -x 2170 -y 670 -defaultsOSRD
-preplace portBus negative -pg 1 -lvl 7 -x 2170 -y 810 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 1 -x 230 -y 400 -defaultsOSRD
-preplace inst axi_bram_ctrl_0 -pg 1 -lvl 3 -x 910 -y 470 -defaultsOSRD
-preplace inst axi_bram_ctrl_0_bram -pg 1 -lvl 4 -x 1300 -y 140 -defaultsOSRD
-preplace inst axi_smc -pg 1 -lvl 2 -x 600 -y 470 -defaultsOSRD
-preplace inst rst_ps7_0_50M -pg 1 -lvl 1 -x 230 -y 630 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 910 -y 620 -defaultsOSRD
-preplace inst output_manager_0 -pg 1 -lvl 4 -x 1300 -y 600 -defaultsOSRD
-preplace inst dac_addr_translator_0 -pg 1 -lvl 5 -x 1660 -y 660 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 6 -x 2000 -y 450 -defaultsOSRD
-preplace netloc axi_bram_ctrl_0_bram_doutb 1 3 2 1120 380 1460
-preplace netloc axi_gpio_0_gpio_io_o 1 3 1 N 610
-preplace netloc clk_khz_1 1 0 4 NJ 530 430J 710 NJ 710 1070J
-preplace netloc dac_addr_translator_0_SCK_a 1 5 2 1830 730 N
-preplace netloc dac_addr_translator_0_SCK_b 1 5 2 1810 770 N
-preplace netloc dac_addr_translator_0_SDI_a 1 5 2 1820 750 N
-preplace netloc dac_addr_translator_0_SDI_b 1 5 2 1800 790 N
-preplace netloc dac_addr_translator_0_dac_a 1 5 2 N 590 2100
-preplace netloc dac_addr_translator_0_dac_b 1 5 2 1860 670 N
-preplace netloc dac_addr_translator_0_en_a 1 5 2 1850 690 N
-preplace netloc dac_addr_translator_0_en_b 1 5 2 1840 710 N
-preplace netloc output_manager_0_LD 1 4 1 N 690
-preplace netloc output_manager_0_axi_addr 1 3 2 1110 790 1460
-preplace netloc output_manager_0_data_out 1 3 2 1100 800 1480
-preplace netloc output_manager_0_en 1 3 2 1130 -10 1480
-preplace netloc output_manager_0_negative 1 4 3 1500J 810 NJ 810 N
-preplace netloc output_manager_0_output_addr 1 4 1 N 630
-preplace netloc output_manager_0_ram_clk 1 3 2 1140 0 1470
-preplace netloc output_manager_0_ram_rst 1 3 2 1140 280 1500
-preplace netloc output_manager_0_sdi 1 4 1 1500 650n
-preplace netloc output_manager_0_spi_clk 1 4 1 1490 650n
-preplace netloc output_manager_0_tx_done 1 3 2 1060J 810 1470
-preplace netloc output_manager_0_wen 1 3 2 1130 290 1490
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 510 440 550 750
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 30 520 430
-preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 1 2 460 720 760
-preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 3 1 1070 60n
-preplace netloc axi_smc_M00_AXI 1 2 1 750 450n
-preplace netloc axi_smc_M01_AXI 1 2 1 740 480n
-preplace netloc processing_system7_0_DDR 1 1 6 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 N
-preplace netloc processing_system7_0_FIXED_IO 1 1 6 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 450 410n
-levelinfo -pg 1 0 230 600 910 1300 1660 2000 2170
-pagesize -pg 1 -db -bbox -sgen -140 -20 2340 830
+preplace port port-id_dac_a_en -pg 1 -lvl 6 -x 1970 -y 600 -defaultsOSRD
+preplace port port-id_dac_b_en -pg 1 -lvl 6 -x 1970 -y 620 -defaultsOSRD
+preplace port port-id_SDI_a -pg 1 -lvl 6 -x 1970 -y 380 -defaultsOSRD
+preplace port port-id_SDI_b -pg 1 -lvl 6 -x 1970 -y 420 -defaultsOSRD
+preplace port port-id_SCK_a -pg 1 -lvl 6 -x 1970 -y 360 -defaultsOSRD
+preplace port port-id_SCK_b -pg 1 -lvl 6 -x 1970 -y 400 -defaultsOSRD
+preplace port port-id_SDO0 -pg 1 -lvl 0 -x 0 -y 310 -defaultsOSRD
+preplace port port-id_SDO1 -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace port port-id_SCK0 -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port port-id_adc_SCKI -pg 1 -lvl 6 -x 1970 -y 270 -defaultsOSRD
+preplace port port-id_adc_cs -pg 1 -lvl 6 -x 1970 -y 440 -defaultsOSRD
+preplace portBus dac_a_addr -pg 1 -lvl 6 -x 1970 -y 290 -defaultsOSRD
+preplace portBus dac_b_addr -pg 1 -lvl 6 -x 1970 -y 310 -defaultsOSRD
+preplace portBus negative -pg 1 -lvl 6 -x 1970 -y 760 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 680 -y 1200 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 4 -x 1440 -y 610 -defaultsOSRD
+preplace inst axi_bram_ctrl_0_bram -pg 1 -lvl 5 -x 1820 -y 140 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 3 -x 1050 -y 840 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 2 -x 680 -y 990 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 4 -x 1440 -y 1060 -defaultsOSRD
+preplace inst output_manager_0 -pg 1 -lvl 1 -x 200 -y 530 -defaultsOSRD
+preplace inst dac_addr_translator_0 -pg 1 -lvl 4 -x 1440 -y 350 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 5 -x 1820 -y 520 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 5 -x 1820 -y 690 -defaultsOSRD
+preplace inst axi_bram_ctrl_1 -pg 1 -lvl 4 -x 1440 -y 750 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 4 -x 1440 -y 890 -defaultsOSRD
+preplace inst adc_spi_wrapper_0 -pg 1 -lvl 2 -x 680 -y 460 -defaultsOSRD
+preplace netloc SDO0_1 1 0 2 20J 320 450J
+preplace netloc SDO1_1 1 0 2 NJ 330 430J
+preplace netloc axi_bram_ctrl_0_bram_doutb 1 1 4 380 160 NJ 160 NJ 160 NJ
+preplace netloc axi_gpio_0_gpio_io_o 1 0 5 40 890 NJ 890 880J 950 1190J 970 1600
+preplace netloc axi_gpio_1_gpio_io_o 1 1 4 480 630 NJ 630 1250J 530 1590
+preplace netloc clk_khz_1 1 0 2 30 310 480J
+preplace netloc dac_addr_translator_0_SCK_a 1 4 2 1690 360 NJ
+preplace netloc dac_addr_translator_0_SCK_b 1 4 2 NJ 400 NJ
+preplace netloc dac_addr_translator_0_SDI_a 1 4 2 1680 380 NJ
+preplace netloc dac_addr_translator_0_SDI_b 1 4 2 NJ 420 NJ
+preplace netloc dac_addr_translator_0_dac_a 1 4 2 1640J 290 NJ
+preplace netloc dac_addr_translator_0_dac_b 1 4 2 NJ 300 1950J
+preplace netloc dac_addr_translator_0_en_a 1 4 2 1650 610 1950J
+preplace netloc dac_addr_translator_0_en_b 1 4 2 1640J 620 NJ
+preplace netloc output_manager_0_LD 1 1 3 460J 600 NJ 600 1220
+preplace netloc output_manager_0_axi_addr 1 1 4 360 100 NJ 100 NJ 100 NJ
+preplace netloc output_manager_0_data_out 1 1 4 370 140 NJ 140 NJ 140 NJ
+preplace netloc output_manager_0_en 1 1 4 390 180 NJ 180 NJ 180 NJ
+preplace netloc output_manager_0_negative 1 1 5 470J 620 NJ 620 1240J 510 1620J 760 NJ
+preplace netloc output_manager_0_output_addr 1 1 3 360J 570 NJ 570 1190
+preplace netloc output_manager_0_ram_clk 1 1 4 400 120 NJ 120 NJ 120 NJ
+preplace netloc output_manager_0_ram_rst 1 1 4 440 200 NJ 200 NJ 200 NJ
+preplace netloc output_manager_0_sdi 1 1 3 360J 590 NJ 590 1200
+preplace netloc output_manager_0_spi_clk 1 1 3 NJ 580 NJ 580 1210
+preplace netloc output_manager_0_tx_done 1 1 4 450 610 NJ 610 1230J 500 1610
+preplace netloc output_manager_0_wen 1 1 4 420 210 NJ 210 NJ 210 1690J
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 4 400 880 910 930 1270 520 1670
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 480 1090 880
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 2 2 900 940 1280
+preplace netloc SCK0_1 1 0 2 40J 340 410J
+preplace netloc adc_spi_wrapper_0_cs 1 2 4 NJ 490 NJ 490 1660J 430 1950J
+preplace netloc adc_spi_wrapper_0_SCKI 1 2 4 890J 220 NJ 220 1650J 280 1950J
+preplace netloc adc_spi_wrapper_0_BRAM_CTRL 1 2 3 910J 480 NJ 480 1630
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 4 1 1600 60n
+preplace netloc axi_bram_ctrl_1_BRAM_PORTA 1 4 1 1690 680n
+preplace netloc axi_smc_M00_AXI 1 3 1 1260 590n
+preplace netloc axi_smc_M01_AXI 1 3 1 1240 830n
+preplace netloc axi_smc_M02_AXI 1 3 1 1290 730n
+preplace netloc axi_smc_M03_AXI 1 3 1 N 870
+preplace netloc processing_system7_0_DDR 1 2 4 NJ 1150 NJ 1150 NJ 1150 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 2 4 NJ 1170 NJ 1170 NJ 1170 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 890 820n
+levelinfo -pg 1 0 200 680 1050 1440 1820 1970
+pagesize -pg 1 -db -bbox -sgen -140 0 2140 1310
 "
 }
 {
    "da_aeth_cnt":"1",
-   "da_axi4_cnt":"3",
+   "da_axi4_cnt":"5",
    "da_board_cnt":"6",
-   "da_bram_cntlr_cnt":"3",
+   "da_bram_cntlr_cnt":"4",
    "da_clkrst_cnt":"3",
    "da_ps7_cnt":"1"
 }

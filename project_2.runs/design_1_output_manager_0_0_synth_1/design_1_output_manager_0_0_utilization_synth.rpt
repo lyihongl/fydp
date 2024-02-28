@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Tue Feb 20 22:36:47 2024
+| Date         : Wed Feb 28 00:22:36 2024
 | Host         : yihongliu-SER running 64-bit Linux Mint 21.2
 | Command      : report_utilization -file design_1_output_manager_0_0_utilization_synth.rpt -pb design_1_output_manager_0_0_utilization_synth.pb
 | Design       : design_1_output_manager_0_0
@@ -150,10 +150,10 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | FDRE     |   67 |        Flop & Latch |
 | LUT2     |   24 |                 LUT |
-| LUT3     |   21 |                 LUT |
-| LUT5     |   15 |                 LUT |
-| LUT4     |   11 |                 LUT |
+| LUT3     |   22 |                 LUT |
+| LUT5     |   17 |                 LUT |
 | LUT6     |   10 |                 LUT |
+| LUT4     |   10 |                 LUT |
 | LUT1     |    3 |                 LUT |
 | CARRY4   |    3 |          CarryLogic |
 | FDSE     |    1 |        Flop & Latch |

@@ -3,93 +3,53 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="output_manager_tb_behav.wdb" id="1">
+      <db_ref path="adc_spi_tb_behav.wdb" id="1">
          <top_modules>
+            <top_module name="adc_spi_tb" />
             <top_module name="glbl" />
-            <top_module name="output_manager_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="138.401 ns"></ZoomEndTime>
-      <Cursor1Time time="27.000 ns"></Cursor1Time>
+      <ZoomStartTime time="62.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="69.001 ns"></ZoomEndTime>
+      <Cursor1Time time="64.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="241"></NameColumnWidth>
+      <NameColumnWidth column_width="233"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/clk">
+   <WVObjectSize size="8" />
+   <wvobject type="logic" fp_name="/adc_spi_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/data_ready">
-      <obj_property name="ElementShortName">data_ready</obj_property>
-      <obj_property name="ObjectShortName">data_ready</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/output_manager_tb/dut/output_addr">
-      <obj_property name="ElementShortName">output_addr[5:0]</obj_property>
-      <obj_property name="ObjectShortName">output_addr[5:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/spi_clk">
-      <obj_property name="ElementShortName">spi_clk</obj_property>
-      <obj_property name="ObjectShortName">spi_clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/sdi">
-      <obj_property name="ElementShortName">sdi</obj_property>
-      <obj_property name="ObjectShortName">sdi</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/LD">
-      <obj_property name="ElementShortName">LD</obj_property>
-      <obj_property name="ObjectShortName">LD</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/tx_done">
+   <wvobject type="logic" fp_name="/adc_spi_tb/tx_done">
       <obj_property name="ElementShortName">tx_done</obj_property>
       <obj_property name="ObjectShortName">tx_done</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/start_tx">
-      <obj_property name="ElementShortName">start_tx</obj_property>
-      <obj_property name="ObjectShortName">start_tx</obj_property>
+   <wvobject type="logic" fp_name="/adc_spi_tb/dut/SCKI">
+      <obj_property name="ElementShortName">SCKI</obj_property>
+      <obj_property name="ObjectShortName">SCKI</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/output_manager_tb/dut/addr">
-      <obj_property name="ElementShortName">addr[5:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[5:0]</obj_property>
+   <wvobject type="logic" fp_name="/adc_spi_tb/dut/cs">
+      <obj_property name="ElementShortName">cs</obj_property>
+      <obj_property name="ObjectShortName">cs</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/output_manager_tb/dut/data">
-      <obj_property name="ElementShortName">data[11:0]</obj_property>
-      <obj_property name="ObjectShortName">data[11:0]</obj_property>
+   <wvobject type="array" fp_name="/adc_spi_tb/dut/tx_delay">
+      <obj_property name="ElementShortName">tx_delay[2:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_delay[2:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/tx_done_r">
-      <obj_property name="ElementShortName">tx_done_r</obj_property>
-      <obj_property name="ObjectShortName">tx_done_r</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/ld_prev">
-      <obj_property name="ElementShortName">ld_prev</obj_property>
-      <obj_property name="ObjectShortName">ld_prev</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/ld">
-      <obj_property name="ElementShortName">ld</obj_property>
-      <obj_property name="ObjectShortName">ld</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/output_manager_tb/dut/state">
-      <obj_property name="ElementShortName">state[1:0]</obj_property>
-      <obj_property name="ObjectShortName">state[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/dr">
-      <obj_property name="ElementShortName">dr</obj_property>
-      <obj_property name="ObjectShortName">dr</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/dr_prev">
-      <obj_property name="ElementShortName">dr_prev</obj_property>
-      <obj_property name="ObjectShortName">dr_prev</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/output_manager_tb/axi_addr">
+   <wvobject type="array" fp_name="/adc_spi_tb/dut/axi_addr">
       <obj_property name="ElementShortName">axi_addr[31:0]</obj_property>
       <obj_property name="ObjectShortName">axi_addr[31:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/output_manager_tb/dut/en">
-      <obj_property name="ElementShortName">en</obj_property>
-      <obj_property name="ObjectShortName">en</obj_property>
+   <wvobject type="array" fp_name="/adc_spi_tb/dut/row_col">
+      <obj_property name="ElementShortName">row_col[31:0]</obj_property>
+      <obj_property name="ObjectShortName">row_col[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/adc_spi_tb/row_col">
+      <obj_property name="ElementShortName">row_col[31:0]</obj_property>
+      <obj_property name="ObjectShortName">row_col[31:0]</obj_property>
    </wvobject>
 </wave_config>
