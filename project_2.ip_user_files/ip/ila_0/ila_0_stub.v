@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Mon Feb 19 18:45:39 2024
+// Date        : Thu Feb 29 23:04:55 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 // Command     : write_verilog -force -mode synth_stub
 //               /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/ila_0_2/ila_0_stub.v
@@ -15,11 +15,13 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "ila,Vivado 2023.2" *)
-module ila_0(clk, probe0, probe1, probe2)
-/* synthesis syn_black_box black_box_pad_pin="probe0[11:0],probe1[11:0],probe2[0:0]" */
+module ila_0(clk, probe0, probe1, probe2, probe3, probe4)
+/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[3:0],probe3[3:0],probe4[0:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
-  input [11:0]probe0;
-  input [11:0]probe1;
-  input [0:0]probe2;
+  input [0:0]probe0;
+  input [0:0]probe1;
+  input [3:0]probe2;
+  input [3:0]probe3;
+  input [0:0]probe4;
 endmodule

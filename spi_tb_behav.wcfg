@@ -3,53 +3,37 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="adc_spi_tb_behav.wdb" id="1">
+      <db_ref path="output_manager_tb_behav.wdb" id="1">
          <top_modules>
-            <top_module name="adc_spi_tb" />
             <top_module name="glbl" />
+            <top_module name="output_manager_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="62.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="69.001 ns"></ZoomEndTime>
-      <Cursor1Time time="64.000 ns"></Cursor1Time>
+      <ZoomStartTime time="70.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="140.801 ns"></ZoomEndTime>
+      <Cursor1Time time="50.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="233"></NameColumnWidth>
+      <NameColumnWidth column_width="225"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
-   <wvobject type="logic" fp_name="/adc_spi_tb/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
+   <WVObjectSize size="4" />
+   <wvobject type="array" fp_name="/output_manager_tb/dut/output_addr">
+      <obj_property name="ElementShortName">output_addr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">output_addr[3:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/adc_spi_tb/tx_done">
-      <obj_property name="ElementShortName">tx_done</obj_property>
-      <obj_property name="ObjectShortName">tx_done</obj_property>
+   <wvobject type="logic" fp_name="/output_manager_tb/LD">
+      <obj_property name="ElementShortName">LD</obj_property>
+      <obj_property name="ObjectShortName">LD</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/adc_spi_tb/dut/SCKI">
-      <obj_property name="ElementShortName">SCKI</obj_property>
-      <obj_property name="ObjectShortName">SCKI</obj_property>
+   <wvobject type="logic" fp_name="/output_manager_tb/sdi">
+      <obj_property name="ElementShortName">sdi</obj_property>
+      <obj_property name="ObjectShortName">sdi</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/adc_spi_tb/dut/cs">
-      <obj_property name="ElementShortName">cs</obj_property>
-      <obj_property name="ObjectShortName">cs</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/adc_spi_tb/dut/tx_delay">
-      <obj_property name="ElementShortName">tx_delay[2:0]</obj_property>
-      <obj_property name="ObjectShortName">tx_delay[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/adc_spi_tb/dut/axi_addr">
-      <obj_property name="ElementShortName">axi_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">axi_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/adc_spi_tb/dut/row_col">
-      <obj_property name="ElementShortName">row_col[31:0]</obj_property>
-      <obj_property name="ObjectShortName">row_col[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/adc_spi_tb/row_col">
-      <obj_property name="ElementShortName">row_col[31:0]</obj_property>
-      <obj_property name="ObjectShortName">row_col[31:0]</obj_property>
+   <wvobject type="logic" fp_name="/output_manager_tb/spi_clk">
+      <obj_property name="ElementShortName">spi_clk</obj_property>
+      <obj_property name="ObjectShortName">spi_clk</obj_property>
    </wvobject>
 </wave_config>

@@ -55,7 +55,13 @@ module top
     SCK_b,
     SDI_a,
     SDI_b,
-    jb
+    jb,
+    ck_io26,
+    ck_io27,
+    ck_io28,
+    ck_io29,
+    ck_io30,
+    led0_r
 //    start_tx,
 //    spi_clk,
 //    sdi,
@@ -107,6 +113,12 @@ module top
   output SDI_b;
   output SCK_b;
   output [7:0] jb;
+  input ck_io26;
+  input ck_io27;
+  output ck_io28;
+  input ck_io29;
+  output ck_io30;
+  output led0_r;
 //  input start_tx;
 //  output LD;
 //  output spi_clk;
@@ -150,20 +162,60 @@ module top
     .sys_clock(clk),
     .clk_khz(clk_20M),
     .btn(start_tx),
-    .dac_a_addr(ck_io[3:0]),
-    .dac_a_en(dac_a_en),
-    .dac_b_addr(ck_io[5:4]),
-    .dac_b_en(dac_b_en),
-    .SCK_a(SCK_a),
-    .SCK_b(SCK_b),
-    .SDI_a(SDI_a),
-    .SDI_b(SDI_b),
-    .negative(jb[7:0])
+//    .dac_a_addr(ck_io[3:0]),
+//    .dac_a_en(dac_a_en),
+//    .dac_b_addr(ck_io[5:4]),
+//    .dac_b_en(dac_b_en),
+//    .SCK_a(SCK_a),
+//    .SCK_b(SCK_b),
+//    .SDI_a(SDI_a),
+//    .SDI_b(SDI_b),
+    .negative(jb[7:0]),
+    .SCK0(cs_io29),
+    .SDO0(cs_io26),
+    .SDO1(cs_io27),
+    .adc_SCKI(cs_io28),
+    .adc_cs(cs_io30),
+    .output_addr(output_addr),
+    .sdi(sdi),
+    .spi_clk(spi_clk),
+    .LD(LD),
+    .led(led0_r)
 //    .clk_20M(clk_20M),
 //    .t(jb)
   );
+  wire LD;
+  wire sdi;
+  wire spi_clk;
+  wire [3:0] output_addr;
+  dac_addr_translator tl(
+    .in_addr(output_addr),
+    .SDI(sdi),
+    .SCK(spi_clk),
+    .LD(LD),
+    .dac_a(ck_io[3:0]),
+    .dac_b(ck_io[5:4]),
+    .en_a(dac_a_en),
+    .en_b(dac_b_en),
+    .SCK_a(SCK_a),
+    .SDI_a(SDI_a),
+    .SCK_b(SCK_b),
+    .SDI_b(SDI_b)
+);
+//ila_0 ila (
+//	.clk(clk), // input wire clk
+
+
+//	.probe0(LD), // input wire [0:0]  probe0  
+//	.probe1(sdi), // input wire [0:0]  probe1 
+//	.probe2(ck_io[3:0]), // input wire [3:0]  probe2 
+//	.probe3(output_addr), // input wire [3:0]  probe3
+//	.probe4(spi_clk)
+//);
   wire dac_a_en;
   wire dac_b_en;
+  assign ck_io6 = ~dac_a_en;
+  assign ck_io7 = ~dac_a_en;
   reg reset_rtl = 1'b0;
 //  reg t_pin_reg = 1'b0;
 //  assign t_pin = t_pin_reg;
@@ -188,9 +240,9 @@ module top
     reg [11:0] data = 12'h7ff;
 //    reg rst = 1'b0;
 //    reg start_tx = 1'b0;
-    wire SCK /*synthesis keep*/;
-    wire SDI /*synthesis keep*/;
-    wire LD /*synthesis keep*/;
+//    wire SCK /*synthesis keep*/;
+//    wire SDI /*synthesis keep*/;
+//    wire LD /*synthesis keep*/;
 //    assign ja[0] = SCK;
 //    assign ja[1] = SDI;
 //    assign ja[2] = LD;

@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Wed Feb 28 02:24:57 2024
+//Date        : Fri Mar  1 01:58:52 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -32,24 +32,21 @@ module design_1_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    LD,
     SCK0,
-    SCK_a,
-    SCK_b,
-    SDI_a,
-    SDI_b,
     SDO0,
     SDO1,
     adc_SCKI,
     adc_cs,
     btn,
     clk_khz,
-    dac_a_addr,
-    dac_a_en,
-    dac_b_addr,
-    dac_b_en,
+    led,
     negative,
+    output_addr,
     reset_rtl,
     result_ready,
+    sdi,
+    spi_clk,
     sys_clock);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
@@ -72,24 +69,21 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output LD;
   input SCK0;
-  output SCK_a;
-  output SCK_b;
-  output SDI_a;
-  output SDI_b;
   input SDO0;
   input SDO1;
   output adc_SCKI;
   output adc_cs;
   input btn;
   input clk_khz;
-  output [3:0]dac_a_addr;
-  output dac_a_en;
-  output [1:0]dac_b_addr;
-  output dac_b_en;
+  output led;
   output [7:0]negative;
+  output [3:0]output_addr;
   input reset_rtl;
   input result_ready;
+  output sdi;
+  output spi_clk;
   input sys_clock;
 
   wire [14:0]DDR_addr;
@@ -113,24 +107,21 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire LD;
   wire SCK0;
-  wire SCK_a;
-  wire SCK_b;
-  wire SDI_a;
-  wire SDI_b;
   wire SDO0;
   wire SDO1;
   wire adc_SCKI;
   wire adc_cs;
   wire btn;
   wire clk_khz;
-  wire [3:0]dac_a_addr;
-  wire dac_a_en;
-  wire [1:0]dac_b_addr;
-  wire dac_b_en;
+  wire led;
   wire [7:0]negative;
+  wire [3:0]output_addr;
   wire reset_rtl;
   wire result_ready;
+  wire sdi;
+  wire spi_clk;
   wire sys_clock;
 
   design_1 design_1_i
@@ -155,23 +146,20 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .LD(LD),
         .SCK0(SCK0),
-        .SCK_a(SCK_a),
-        .SCK_b(SCK_b),
-        .SDI_a(SDI_a),
-        .SDI_b(SDI_b),
         .SDO0(SDO0),
         .SDO1(SDO1),
         .adc_SCKI(adc_SCKI),
         .adc_cs(adc_cs),
         .btn(btn),
         .clk_khz(clk_khz),
-        .dac_a_addr(dac_a_addr),
-        .dac_a_en(dac_a_en),
-        .dac_b_addr(dac_b_addr),
-        .dac_b_en(dac_b_en),
+        .led(led),
         .negative(negative),
+        .output_addr(output_addr),
         .reset_rtl(reset_rtl),
         .result_ready(result_ready),
+        .sdi(sdi),
+        .spi_clk(spi_clk),
         .sys_clock(sys_clock));
 endmodule

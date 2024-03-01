@@ -69,6 +69,7 @@ module output_manager(
   //assign output_polarity = polarity;
 
     wire [31:0] ram_result;
+    reg [1:0] delay_counter = 2'b00;
   //sim_ram sram(
   //  .clk(clk),
   //  .addr(addr),
@@ -95,6 +96,7 @@ always @(posedge clk) begin
     en <= 1;
     if(state == 2'b00) begin
         tx_done_r <= 0;
+        addr <= 4'hf;
     end
     if(state == 2'b00 && (dr == 1 && dr_prev == 0)) begin
         addr <= 4'b0;
@@ -126,10 +128,14 @@ always @(posedge clk) begin
             end else begin
                 state <= 2'b11;
                 addr <= addr + 1;
+                delay_counter <= 2'b00;
             end
         end
     end else if(state == 2'b11) begin
-        state <= 2'b01;
+        if(delay_counter == 2'b11) begin
+            state <= 2'b01;
+        end
+        delay_counter <= delay_counter + 2'b01;
 
         // read from ram here
     end

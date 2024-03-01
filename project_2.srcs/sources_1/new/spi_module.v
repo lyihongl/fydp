@@ -47,6 +47,7 @@ module spi_module#(
     localparam [3:0] select_iref = 4'h6;
     localparam [3:0] select_supply_as_ref = 4'h7;
     reg tx = 1'b0;
+    reg [3:0] delay = 4'h0;
 //    reg LD_i = 1'b1;
     assign LD = ~tx & ~run;
     reg tx_prev = 1'b0;
@@ -62,17 +63,29 @@ module spi_module#(
         if(tx == 1'b1 && tx_prev == 1'b0) begin
             run <= 1'b1;
             internal_shift <= {1'b0, 1'b0, write_and_update_dac_reg, 4'b0, data, 4'h5};
+            delay <= 4'h0;
         end
         if(run == 1'b1) begin
 //            if(LD == 0) begin
+            if(delay <= 4'h4) begin
+                delay <= delay+ 4'h1;
+            end else begin
+                internal_shift <= {internal_shift[SHIFT_SIZE-2:0], 1'b0};
+                begin_out <= 1;
+            end
             run <= 1'b1;
-            internal_shift <= {internal_shift[SHIFT_SIZE-2:0], 1'b0};
-            begin_out <= 1;
+            
+            
 //            LD_i <= 0;
             if(internal_shift == 0) begin
 //                LD_i <= 1;
-                run <= 0;
-                tx <= 0;
+                if(delay <= 4'h7) begin
+                    delay <= delay + 4'h1;
+                end else begin
+                    run <= 0;
+                    tx <= 0;
+                end
+                
             end
 //            end 
 //            else begin

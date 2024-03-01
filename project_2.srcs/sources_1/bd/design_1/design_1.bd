@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xEDBD18B302D9CE0D",
+      "boundary_crc": "0xA89470C424BF937D",
       "device": "xc7z007sclg400-1",
       "gen_directory": "../../../../project_2.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -18,8 +18,6 @@
       "rst_ps7_0_50M": "",
       "axi_gpio_0": "",
       "output_manager_0": "",
-      "dac_addr_translator_0": "",
-      "ila_0": "",
       "blk_mem_gen_0": "",
       "axi_bram_ctrl_1": "",
       "axi_gpio_1": "",
@@ -242,34 +240,6 @@
       "btn": {
         "direction": "I"
       },
-      "dac_a_addr": {
-        "direction": "O",
-        "left": "3",
-        "right": "0"
-      },
-      "dac_b_addr": {
-        "direction": "O",
-        "left": "1",
-        "right": "0"
-      },
-      "dac_a_en": {
-        "direction": "O"
-      },
-      "dac_b_en": {
-        "direction": "O"
-      },
-      "SDI_a": {
-        "direction": "O"
-      },
-      "SDI_b": {
-        "direction": "O"
-      },
-      "SCK_a": {
-        "direction": "O"
-      },
-      "SCK_b": {
-        "direction": "O"
-      },
       "negative": {
         "direction": "O",
         "left": "7",
@@ -288,6 +258,37 @@
         "direction": "O"
       },
       "adc_cs": {
+        "direction": "O"
+      },
+      "output_addr": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "spi_clk": {
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_1_output_manager_0_0_spi_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default_prop"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default_prop"
+          }
+        }
+      },
+      "sdi": {
+        "direction": "O"
+      },
+      "LD": {
+        "direction": "O"
+      },
+      "led": {
         "direction": "O"
       }
     },
@@ -1837,91 +1838,6 @@
           }
         }
       },
-      "dac_addr_translator_0": {
-        "vlnv": "xilinx.com:module_ref:dac_addr_translator:1.0",
-        "ip_revision": "1",
-        "xci_name": "design_1_dac_addr_translator_0_0",
-        "xci_path": "ip/design_1_dac_addr_translator_0_0/design_1_dac_addr_translator_0_0.xci",
-        "inst_hier_path": "dac_addr_translator_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "dac_addr_translator",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "in_addr": {
-            "direction": "I",
-            "left": "3",
-            "right": "0"
-          },
-          "SDI": {
-            "direction": "I"
-          },
-          "SCK": {
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "default_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "design_1_output_manager_0_0_spi_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "LD": {
-            "direction": "I"
-          },
-          "dac_a": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "dac_b": {
-            "direction": "O",
-            "left": "1",
-            "right": "0"
-          },
-          "en_a": {
-            "direction": "O"
-          },
-          "en_b": {
-            "direction": "O"
-          },
-          "SCK_a": {
-            "direction": "O"
-          },
-          "SDI_a": {
-            "direction": "O"
-          },
-          "SCK_b": {
-            "direction": "O"
-          },
-          "SDI_b": {
-            "direction": "O"
-          }
-        }
-      },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "ip_revision": "14",
-        "xci_name": "design_1_ila_0_0",
-        "xci_path": "ip/design_1_ila_0_0/design_1_ila_0_0.xci",
-        "inst_hier_path": "ila_0",
-        "parameters": {
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "3"
-          }
-        }
-      },
       "blk_mem_gen_0": {
         "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
         "ip_revision": "7",
@@ -2082,6 +1998,30 @@
             "left": "31",
             "right": "0"
           },
+          "ila_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_sys_clock",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "data_ready": {
+            "direction": "I"
+          },
+          "recv_done": {
+            "direction": "O"
+          },
           "SCKI": {
             "direction": "O"
           },
@@ -2187,6 +2127,13 @@
           "adc_cs"
         ]
       },
+      "adc_spi_wrapper_0_recv_done": {
+        "ports": [
+          "adc_spi_wrapper_0/recv_done",
+          "axi_gpio_0/gpio2_io_i",
+          "led"
+        ]
+      },
       "axi_bram_ctrl_0_bram_doutb": {
         "ports": [
           "axi_bram_ctrl_0_bram/doutb",
@@ -2196,6 +2143,7 @@
       "axi_gpio_0_gpio_io_o": {
         "ports": [
           "axi_gpio_0/gpio_io_o",
+          "adc_spi_wrapper_0/data_ready",
           "output_manager_0/data_ready"
         ]
       },
@@ -2208,65 +2156,14 @@
       "clk_khz_1": {
         "ports": [
           "clk_khz",
-          "output_manager_0/clk",
-          "adc_spi_wrapper_0/clk"
-        ]
-      },
-      "dac_addr_translator_0_SCK_a": {
-        "ports": [
-          "dac_addr_translator_0/SCK_a",
-          "SCK_a",
-          "ila_0/probe0"
-        ]
-      },
-      "dac_addr_translator_0_SCK_b": {
-        "ports": [
-          "dac_addr_translator_0/SCK_b",
-          "SCK_b"
-        ]
-      },
-      "dac_addr_translator_0_SDI_a": {
-        "ports": [
-          "dac_addr_translator_0/SDI_a",
-          "SDI_a",
-          "ila_0/probe1"
-        ]
-      },
-      "dac_addr_translator_0_SDI_b": {
-        "ports": [
-          "dac_addr_translator_0/SDI_b",
-          "SDI_b"
-        ]
-      },
-      "dac_addr_translator_0_dac_a": {
-        "ports": [
-          "dac_addr_translator_0/dac_a",
-          "dac_a_addr"
-        ]
-      },
-      "dac_addr_translator_0_dac_b": {
-        "ports": [
-          "dac_addr_translator_0/dac_b",
-          "dac_b_addr"
-        ]
-      },
-      "dac_addr_translator_0_en_a": {
-        "ports": [
-          "dac_addr_translator_0/en_a",
-          "dac_a_en",
-          "ila_0/probe2"
-        ]
-      },
-      "dac_addr_translator_0_en_b": {
-        "ports": [
-          "dac_addr_translator_0/en_b",
-          "dac_b_en"
+          "adc_spi_wrapper_0/clk",
+          "output_manager_0/clk"
         ]
       },
       "output_manager_0_LD": {
         "ports": [
           "output_manager_0/LD",
-          "dac_addr_translator_0/LD"
+          "LD"
         ]
       },
       "output_manager_0_axi_addr": {
@@ -2296,7 +2193,7 @@
       "output_manager_0_output_addr": {
         "ports": [
           "output_manager_0/output_addr",
-          "dac_addr_translator_0/in_addr"
+          "output_addr"
         ]
       },
       "output_manager_0_ram_clk": {
@@ -2314,19 +2211,18 @@
       "output_manager_0_sdi": {
         "ports": [
           "output_manager_0/sdi",
-          "dac_addr_translator_0/SDI"
+          "sdi"
         ]
       },
       "output_manager_0_spi_clk": {
         "ports": [
           "output_manager_0/spi_clk",
-          "dac_addr_translator_0/SCK"
+          "spi_clk"
         ]
       },
       "output_manager_0_tx_done": {
         "ports": [
           "output_manager_0/tx_done",
-          "axi_gpio_0/gpio2_io_i",
           "adc_spi_wrapper_0/tx_done"
         ]
       },
@@ -2344,7 +2240,6 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "rst_ps7_0_50M/slowest_sync_clk",
           "axi_gpio_0/s_axi_aclk",
-          "ila_0/clk",
           "axi_bram_ctrl_1/s_axi_aclk",
           "axi_gpio_1/s_axi_aclk"
         ]
@@ -2363,6 +2258,12 @@
           "axi_gpio_0/s_axi_aresetn",
           "axi_bram_ctrl_1/s_axi_aresetn",
           "axi_gpio_1/s_axi_aresetn"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "adc_spi_wrapper_0/ila_clk"
         ]
       }
     },
@@ -2384,7 +2285,7 @@
               "SEG_axi_gpio_0_Reg": {
                 "address_block": "/axi_gpio_0/S_AXI/Reg",
                 "offset": "0x41200000",
-                "range": "1K"
+                "range": "64K"
               },
               "SEG_axi_gpio_1_Reg": {
                 "address_block": "/axi_gpio_1/S_AXI/Reg",

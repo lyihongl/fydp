@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="sdx.custom.platform.repository.locations" value="/home/yihongliu/workspace/fydp/project_2/vitis_classic/platform/export/platform"/>
-	<item key="sdx.custom.platform.repository.last.directory.dialog.location" value="/home/yihongliu/workspace/fydp/project_2/vitis_classic/platform/export/platform"/>
+	<item key="sdx.custom.platform.repository.locations" value="/home/yihongliu/workspace/fydp/project_2/vitis_classic/platform/export/platform;/home/yihongliu/workspace/fydp/project_2/vitis_classic/platform2/export/platform2"/>
+	<item key="sdx.custom.platform.repository.last.directory.dialog.location" value="/home/yihongliu/workspace/fydp/project_2/vitis_classic/platform2/export/platform2"/>
 </section>

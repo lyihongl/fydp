@@ -24,13 +24,14 @@ module clock_divider(
     input in_clk,
     output out_clk
     );
-    reg [3:0] counter = 4'b0000;
+    reg [8:0] counter = 8'h00;
     reg internal_clk = 1'b0;
     assign out_clk = internal_clk;
     always @(posedge in_clk) begin
-        counter = counter + 4'b0001;
-        if(counter == 4'hf) begin
-            internal_clk = ~internal_clk;
+        counter = counter + 8'h1;
+        if(counter == 8'h20) begin
+            counter <= 8'h0;
+            internal_clk <= ~internal_clk;
         end
     end
 endmodule

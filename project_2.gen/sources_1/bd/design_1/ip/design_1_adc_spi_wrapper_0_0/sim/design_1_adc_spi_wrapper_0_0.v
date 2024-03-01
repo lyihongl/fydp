@@ -61,6 +61,9 @@ module design_1_adc_spi_wrapper_0_0 (
   SCK0,
   tx_done,
   row_col,
+  ila_clk,
+  data_ready,
+  recv_done,
   SCKI,
   sdi,
   cs,
@@ -81,6 +84,11 @@ input wire SDO1;
 input wire SCK0;
 input wire tx_done;
 input wire [31 : 0] row_col;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ila_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN design_1_sys_clock, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ila_clk CLK" *)
+input wire ila_clk;
+input wire data_ready;
+output wire recv_done;
 output wire SCKI;
 output wire sdi;
 output wire cs;
@@ -107,6 +115,9 @@ output wire [3 : 0] wen;
     .SCK0(SCK0),
     .tx_done(tx_done),
     .row_col(row_col),
+    .ila_clk(ila_clk),
+    .data_ready(data_ready),
+    .recv_done(recv_done),
     .SCKI(SCKI),
     .sdi(sdi),
     .cs(cs),

@@ -7,6 +7,9 @@ module adc_spi_wrapper(
     input SCK0,
     input tx_done,
     input [31:0] row_col,
+    input ila_clk,
+    input data_ready,
+    output recv_done,
     output SCKI,
     output sdi,
     output cs,
@@ -22,7 +25,10 @@ module adc_spi_wrapper(
 //    output cnv
 );
 
+
+
 adc_spi adc(
+    .ila_clk(ila_clk),
     .clk(clk),
     .SDO0(SDO0),
     .SDO1(SDO1),
@@ -31,6 +37,8 @@ adc_spi adc(
     .row_col(row_col),
     .SCKI(SCKI),
     .sdi(sdi),
+    .data_ready(data_ready),
+    .recv_done(recv_done),
     .cs(cs),
     .data_read(data_read),
     .axi_addr(axi_addr),
