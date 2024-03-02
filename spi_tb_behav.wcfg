@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="70.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="140.801 ns"></ZoomEndTime>
-      <Cursor1Time time="50.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,424.001 ns"></ZoomEndTime>
+      <Cursor1Time time="0.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="225"></NameColumnWidth>
+      <NameColumnWidth column_width="221"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="4" />
+   <WVObjectSize size="10" />
    <wvobject type="array" fp_name="/output_manager_tb/dut/output_addr">
       <obj_property name="ElementShortName">output_addr[3:0]</obj_property>
       <obj_property name="ObjectShortName">output_addr[3:0]</obj_property>
@@ -35,5 +35,29 @@
    <wvobject type="logic" fp_name="/output_manager_tb/spi_clk">
       <obj_property name="ElementShortName">spi_clk</obj_property>
       <obj_property name="ObjectShortName">spi_clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/output_manager_tb/t/dac_a">
+      <obj_property name="ElementShortName">dac_a[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dac_a[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/output_manager_tb/t/dac_b">
+      <obj_property name="ElementShortName">dac_b[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dac_b[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/output_manager_tb/t/tl_impl/SCK_a">
+      <obj_property name="ElementShortName">SCK_a</obj_property>
+      <obj_property name="ObjectShortName">SCK_a</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/output_manager_tb/t/tl_impl/SDI_a">
+      <obj_property name="ElementShortName">SDI_a</obj_property>
+      <obj_property name="ObjectShortName">SDI_a</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/output_manager_tb/t/tl_impl/SCK_b">
+      <obj_property name="ElementShortName">SCK_b</obj_property>
+      <obj_property name="ObjectShortName">SCK_b</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/output_manager_tb/t/tl_impl/SDI_b">
+      <obj_property name="ElementShortName">SDI_b</obj_property>
+      <obj_property name="ObjectShortName">SDI_b</obj_property>
    </wvobject>
 </wave_config>

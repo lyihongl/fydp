@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {HDL-1065} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -123,8 +122,6 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
-  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 4
   set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
@@ -192,7 +189,7 @@ OPTRACE "read constraints: opt_design_post" START { }
 OPTRACE "read constraints: opt_design_post" END { }
 OPTRACE "opt_design reports" START { REPORT }
   create_report "impl_1_opt_report_drc_0" "report_drc -file top_drc_opted.rpt -pb top_drc_opted.pb -rpx top_drc_opted.rpx"
-  create_report "impl_1_opt_report_timing_summary_1" "report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_opted_1.rpt -pb top_timing_summary_opted_1.pb -rpx top_timing_summary_opted_1.rpx"
+  create_report "impl_1_opt_report_timing_summary_1" "report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_opted.rpt -pb top_timing_summary_opted_1.pb -rpx top_timing_summary_opted_1.rpx"
 OPTRACE "opt_design reports" END { }
 OPTRACE "Opt Design: write_checkpoint" START { CHECKPOINT }
   write_checkpoint -force top_opt.dcp
@@ -229,7 +226,7 @@ OPTRACE "place_design reports" START { REPORT }
   create_report "impl_1_place_report_io_0" "report_io -file top_io_placed.rpt"
   create_report "impl_1_place_report_utilization_0" "report_utilization -file top_utilization_placed.rpt -pb top_utilization_placed.pb"
   create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file top_control_sets_placed.rpt"
-  create_report "impl_1_place_report_timing_summary_1" "report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_placed_1.rpt -pb top_timing_summary_placed_1.pb -rpx top_timing_summary_placed_1.rpx"
+  create_report "impl_1_place_report_timing_summary_1" "report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_placed.rpt -pb top_timing_summary_placed_1.pb -rpx top_timing_summary_placed_1.rpx"
 OPTRACE "place_design reports" END { }
 OPTRACE "Place Design: write_checkpoint" START { CHECKPOINT }
   write_checkpoint -force top_placed.dcp

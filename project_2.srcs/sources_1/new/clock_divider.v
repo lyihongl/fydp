@@ -29,7 +29,7 @@ module clock_divider(
     assign out_clk = internal_clk;
     always @(posedge in_clk) begin
         counter = counter + 8'h1;
-        if(counter == 8'h20) begin
+        if(counter == 8'h07) begin
             counter <= 8'h0;
             internal_clk <= ~internal_clk;
         end

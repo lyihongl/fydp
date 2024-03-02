@@ -44,6 +44,7 @@ static int data_pool[1000] = {0};
 static int result_pool[300] = {0};
 extern XGpio gpio;
 extern XGpio row_col_info;
+//#define Xil_Out32(X, Y) Xil_Out32(X, Y); xil_printf("%d ", Y);
 void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* data1, int* data2){
 //	int m1_rows = 6;
 	//	int m1_cols = 6;
@@ -52,6 +53,7 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 	//	int m2_cols = 6;
 //		int m2_col_cursor = 0;
 		unsigned int adc_ready = 0;
+		xil_printf("starting output:\r\n");
 		for(int r1 = 0; r1<m1_rows; r1 += 2){
 			for(;m1_col_cursor < m1_cols; m1_col_cursor+=4){
 
@@ -59,24 +61,34 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 					if(c+m1_col_cursor < m1_cols){
 
 						Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, data1[r1*m1_cols+m1_col_cursor+c]);
+						xil_printf("(r1 %d)", data1[r1*m1_cols+m1_col_cursor+c]);
 						if(r1+1 < m1_rows){
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, data1[(r1+1)*m1_cols+m1_col_cursor+c]);
+							xil_printf("(r2 %d)", data1[(r1+1)*m1_cols+m1_col_cursor+c]);
+
 						} else {
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
+							xil_printf("(r2 %d)", 0);
 						}
 
 					} else {
 						Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, 0);
+
 						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
+						xil_printf("(r1 %d)", 0);
+						xil_printf("(r2 %d)", 0);
 					}
 				}
+				xil_printf("\r\n");
 
 				for(int r2 = 0; r2 < m2_rows; r2++){
 					for(int c = 0; c<4; c++){
 						if(m1_col_cursor+c < m2_cols){
+							xil_printf("c1 %d", data2[r2*m2_cols+m1_col_cursor+c]);
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, data2[r2*m2_cols+m1_col_cursor+c]);
 						} else {
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, 0);
+							xil_printf("c1 %d", 0);
 						}
 
 					}
