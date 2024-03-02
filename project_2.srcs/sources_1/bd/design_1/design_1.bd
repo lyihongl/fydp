@@ -21,7 +21,8 @@
       "blk_mem_gen_0": "",
       "axi_bram_ctrl_1": "",
       "axi_gpio_1": "",
-      "adc_spi_wrapper_0": ""
+      "adc_spi_wrapper_0": "",
+      "ila_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -2030,17 +2031,49 @@
           },
           "cs": {
             "direction": "O"
+          },
+          "tx_delay_o": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          }
+        }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "design_1_ila_0_0",
+        "xci_path": "ip/design_1_ila_0_0/design_1_ila_0_0.xci",
+        "inst_hier_path": "ila_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "32768"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "4"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "1"
           }
         }
       }
     },
     "interface_nets": {
-      "adc_spi_wrapper_0_BRAM_CTRL": {
-        "interface_ports": [
-          "adc_spi_wrapper_0/BRAM_CTRL",
-          "blk_mem_gen_0/BRAM_PORTB"
-        ]
-      },
       "axi_bram_ctrl_0_BRAM_PORTA": {
         "interface_ports": [
           "axi_bram_ctrl_0_bram/BRAM_PORTA",
@@ -2106,25 +2139,59 @@
       "SDO0_1": {
         "ports": [
           "SDO0",
-          "adc_spi_wrapper_0/SDO0"
+          "adc_spi_wrapper_0/SDO0",
+          "ila_0/probe3"
         ]
       },
       "SDO1_1": {
         "ports": [
           "SDO1",
-          "adc_spi_wrapper_0/SDO1"
+          "adc_spi_wrapper_0/SDO1",
+          "ila_0/probe2"
         ]
       },
       "adc_spi_wrapper_0_SCKI": {
         "ports": [
           "adc_spi_wrapper_0/SCKI",
-          "adc_SCKI"
+          "adc_SCKI",
+          "ila_0/probe0"
+        ]
+      },
+      "adc_spi_wrapper_0_axi_addr": {
+        "ports": [
+          "adc_spi_wrapper_0/axi_addr",
+          "blk_mem_gen_0/addrb"
         ]
       },
       "adc_spi_wrapper_0_cs": {
         "ports": [
           "adc_spi_wrapper_0/cs",
-          "adc_cs"
+          "adc_cs",
+          "ila_0/probe1"
+        ]
+      },
+      "adc_spi_wrapper_0_data_out": {
+        "ports": [
+          "adc_spi_wrapper_0/data_out",
+          "blk_mem_gen_0/dinb"
+        ]
+      },
+      "adc_spi_wrapper_0_en": {
+        "ports": [
+          "adc_spi_wrapper_0/en",
+          "blk_mem_gen_0/enb"
+        ]
+      },
+      "adc_spi_wrapper_0_ram_clk": {
+        "ports": [
+          "adc_spi_wrapper_0/ram_clk",
+          "blk_mem_gen_0/clkb"
+        ]
+      },
+      "adc_spi_wrapper_0_ram_rst": {
+        "ports": [
+          "adc_spi_wrapper_0/ram_rst",
+          "blk_mem_gen_0/rstb"
         ]
       },
       "adc_spi_wrapper_0_recv_done": {
@@ -2132,6 +2199,12 @@
           "adc_spi_wrapper_0/recv_done",
           "axi_gpio_0/gpio2_io_i",
           "led"
+        ]
+      },
+      "adc_spi_wrapper_0_wen": {
+        "ports": [
+          "adc_spi_wrapper_0/wen",
+          "blk_mem_gen_0/web"
         ]
       },
       "axi_bram_ctrl_0_bram_doutb": {
@@ -2143,8 +2216,8 @@
       "axi_gpio_0_gpio_io_o": {
         "ports": [
           "axi_gpio_0/gpio_io_o",
-          "adc_spi_wrapper_0/data_ready",
-          "output_manager_0/data_ready"
+          "output_manager_0/data_ready",
+          "adc_spi_wrapper_0/data_ready"
         ]
       },
       "axi_gpio_1_gpio_io_o": {
@@ -2153,11 +2226,17 @@
           "adc_spi_wrapper_0/row_col"
         ]
       },
+      "blk_mem_gen_0_doutb": {
+        "ports": [
+          "blk_mem_gen_0/doutb",
+          "adc_spi_wrapper_0/data_read"
+        ]
+      },
       "clk_khz_1": {
         "ports": [
           "clk_khz",
-          "adc_spi_wrapper_0/clk",
-          "output_manager_0/clk"
+          "output_manager_0/clk",
+          "adc_spi_wrapper_0/clk"
         ]
       },
       "output_manager_0_LD": {
@@ -2241,7 +2320,8 @@
           "rst_ps7_0_50M/slowest_sync_clk",
           "axi_gpio_0/s_axi_aclk",
           "axi_bram_ctrl_1/s_axi_aclk",
-          "axi_gpio_1/s_axi_aclk"
+          "axi_gpio_1/s_axi_aclk",
+          "ila_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

@@ -10,51 +10,41 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="32,769"></ZoomEndTime>
-      <Cursor1Time time="3,820"></Cursor1Time>
+      <ZoomEndTime time="8,193"></ZoomEndTime>
+      <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="332"></NameColumnWidth>
+      <NameColumnWidth column_width="304"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="4" />
    <wave_markers>
    </wave_markers>
-   <wvobject type="array" fp_name="ck_io_OBUF">
+   <wvobject type="logic" fp_name="d1/design_1_i/adc_spi_wrapper_0_cs">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ck_io_OBUF[3:0]</obj_property>
-      <obj_property name="ObjectShortName">ck_io_OBUF[3:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_cs</obj_property>
+      <obj_property name="ObjectShortName">adc_spi_wrapper_0_cs</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="LD">
+   <wvobject type="logic" fp_name="d1/design_1_i/adc_spi_wrapper_0_SCKI">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">LD</obj_property>
-      <obj_property name="ObjectShortName">LD</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_SCKI</obj_property>
+      <obj_property name="ObjectShortName">adc_spi_wrapper_0_SCKI</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="output_addr">
+   <wvobject type="logic" fp_name="d1/design_1_i/SDO0_1">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">output_addr[3:0]</obj_property>
-      <obj_property name="ObjectShortName">output_addr[3:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="sdi">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">sdi</obj_property>
-      <obj_property name="ObjectShortName">sdi</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/SDO0_1</obj_property>
+      <obj_property name="ObjectShortName">SDO0_1</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="spi_clk">
+   <wvobject type="logic" fp_name="d1/design_1_i/SDO1_1">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">spi_clk</obj_property>
-      <obj_property name="ObjectShortName">spi_clk</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/SDO1_1</obj_property>
+      <obj_property name="ObjectShortName">SDO1_1</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

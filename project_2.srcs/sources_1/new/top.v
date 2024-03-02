@@ -135,7 +135,8 @@ module top
 //  input [11:0] spi_data;
     
 //  output test_output;
-    
+   wire [7:0] negative;
+   assign jb = ~negative;
   design_1_wrapper d1(
     .DDR_addr(DDR_addr),
     .DDR_ba(DDR_ba),
@@ -170,12 +171,12 @@ module top
 //    .SCK_b(SCK_b),
 //    .SDI_a(SDI_a),
 //    .SDI_b(SDI_b),
-    .negative(jb[7:0]),
-    .SCK0(cs_io29),
-    .SDO0(cs_io26),
-    .SDO1(cs_io27),
-    .adc_SCKI(cs_io28),
-    .adc_cs(cs_io30),
+    .negative(negative),
+    .SCK0(ck_io29),
+    .SDO0(ck_io26),
+    .SDO1(ck_io27),
+    .adc_SCKI(ck_io28),
+    .adc_cs(ck_io30),
     .output_addr(output_addr),
     .sdi(sdi),
     .spi_clk(spi_clk),

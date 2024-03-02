@@ -74,7 +74,8 @@ module design_1_adc_spi_wrapper_0_0 (
   data_out,
   en,
   ram_rst,
-  wen
+  wen,
+  tx_delay_o
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
@@ -108,6 +109,7 @@ output wire ram_rst;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME BRAM_CTRL, MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL WE" *)
 output wire [3 : 0] wen;
+output wire [2 : 0] tx_delay_o;
 
   adc_spi_wrapper inst (
     .clk(clk),
@@ -128,6 +130,7 @@ output wire [3 : 0] wen;
     .data_out(data_out),
     .en(en),
     .ram_rst(ram_rst),
-    .wen(wen)
+    .wen(wen),
+    .tx_delay_o(tx_delay_o)
   );
 endmodule

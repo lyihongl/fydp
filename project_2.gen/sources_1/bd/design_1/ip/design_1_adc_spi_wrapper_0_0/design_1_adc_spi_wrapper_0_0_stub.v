@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Wed Feb 28 15:15:31 2024
+// Date        : Sat Mar  2 17:12:47 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
-// Command     : write_verilog -force -mode synth_stub -rename_top design_1_adc_spi_wrapper_0_0 -prefix
-//               design_1_adc_spi_wrapper_0_0_ design_1_adc_spi_wrapper_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_adc_spi_wrapper_0_0/design_1_adc_spi_wrapper_0_0_stub.v
 // Design      : design_1_adc_spi_wrapper_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z007sclg400-1
@@ -16,8 +16,9 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "adc_spi_wrapper,Vivado 2023.2" *)
 module design_1_adc_spi_wrapper_0_0(clk, SDO0, SDO1, SCK0, tx_done, row_col, ila_clk, 
-  data_ready, recv_done, SCKI, sdi, cs, data_read, axi_addr, ram_clk, data_out, en, ram_rst, wen)
-/* synthesis syn_black_box black_box_pad_pin="SDO0,SDO1,SCK0,tx_done,row_col[31:0],ila_clk,data_ready,recv_done,SCKI,sdi,cs,data_read[31:0],axi_addr[31:0],data_out[31:0],en,ram_rst,wen[3:0]" */
+  data_ready, recv_done, SCKI, sdi, cs, data_read, axi_addr, ram_clk, data_out, en, ram_rst, wen, 
+  tx_delay_o)
+/* synthesis syn_black_box black_box_pad_pin="SDO0,SDO1,SCK0,tx_done,row_col[31:0],ila_clk,data_ready,recv_done,SCKI,sdi,cs,data_read[31:0],axi_addr[31:0],data_out[31:0],en,ram_rst,wen[3:0],tx_delay_o[2:0]" */
 /* synthesis syn_force_seq_prim="clk" */
 /* synthesis syn_force_seq_prim="ram_clk" */;
   input clk /* synthesis syn_isclock = 1 */;
@@ -39,4 +40,5 @@ module design_1_adc_spi_wrapper_0_0(clk, SDO0, SDO1, SCK0, tx_done, row_col, ila
   output en;
   output ram_rst;
   output [3:0]wen;
+  output [2:0]tx_delay_o;
 endmodule

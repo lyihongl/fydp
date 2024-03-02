@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Fri Mar  1 01:58:52 2024
+//Date        : Sat Mar  2 17:45:02 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=1,da_axi4_cnt=5,da_board_cnt=6,da_bram_cntlr_cnt=4,da_clkrst_cnt=3,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=1,da_axi4_cnt=5,da_board_cnt=6,da_bram_cntlr_cnt=4,da_clkrst_cnt=4,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -90,16 +90,15 @@ module design_1
   wire SCK0_1;
   wire SDO0_1;
   wire SDO1_1;
-  wire [31:0]adc_spi_wrapper_0_BRAM_CTRL_ADDR;
-  wire adc_spi_wrapper_0_BRAM_CTRL_CLK;
-  wire [31:0]adc_spi_wrapper_0_BRAM_CTRL_DIN;
-  wire [31:0]adc_spi_wrapper_0_BRAM_CTRL_DOUT;
-  wire adc_spi_wrapper_0_BRAM_CTRL_EN;
-  wire adc_spi_wrapper_0_BRAM_CTRL_RST;
-  wire [3:0]adc_spi_wrapper_0_BRAM_CTRL_WE;
   wire adc_spi_wrapper_0_SCKI;
+  wire [31:0]adc_spi_wrapper_0_axi_addr;
   wire adc_spi_wrapper_0_cs;
+  wire [31:0]adc_spi_wrapper_0_data_out;
+  wire adc_spi_wrapper_0_en;
+  wire adc_spi_wrapper_0_ram_clk;
+  wire adc_spi_wrapper_0_ram_rst;
   wire adc_spi_wrapper_0_recv_done;
+  wire [3:0]adc_spi_wrapper_0_wen;
   wire [12:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DIN;
@@ -189,6 +188,7 @@ module design_1
   wire axi_smc_M03_AXI_WREADY;
   wire [3:0]axi_smc_M03_AXI_WSTRB;
   wire axi_smc_M03_AXI_WVALID;
+  wire [31:0]blk_mem_gen_0_doutb;
   wire clk_khz_1;
   wire output_manager_0_LD;
   wire [31:0]output_manager_0_axi_addr;
@@ -284,20 +284,20 @@ module design_1
         .SCKI(adc_spi_wrapper_0_SCKI),
         .SDO0(SDO0_1),
         .SDO1(SDO1_1),
-        .axi_addr(adc_spi_wrapper_0_BRAM_CTRL_ADDR),
+        .axi_addr(adc_spi_wrapper_0_axi_addr),
         .clk(clk_khz_1),
         .cs(adc_spi_wrapper_0_cs),
-        .data_out(adc_spi_wrapper_0_BRAM_CTRL_DIN),
-        .data_read(adc_spi_wrapper_0_BRAM_CTRL_DOUT),
+        .data_out(adc_spi_wrapper_0_data_out),
+        .data_read(blk_mem_gen_0_doutb),
         .data_ready(axi_gpio_0_gpio_io_o),
-        .en(adc_spi_wrapper_0_BRAM_CTRL_EN),
+        .en(adc_spi_wrapper_0_en),
         .ila_clk(sys_clock_1),
-        .ram_clk(adc_spi_wrapper_0_BRAM_CTRL_CLK),
-        .ram_rst(adc_spi_wrapper_0_BRAM_CTRL_RST),
+        .ram_clk(adc_spi_wrapper_0_ram_clk),
+        .ram_rst(adc_spi_wrapper_0_ram_rst),
         .recv_done(adc_spi_wrapper_0_recv_done),
         .row_col(axi_gpio_1_gpio_io_o),
         .tx_done(output_manager_0_tx_done),
-        .wen(adc_spi_wrapper_0_BRAM_CTRL_WE));
+        .wen(adc_spi_wrapper_0_wen));
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x40000000 32 > design_1 axi_bram_ctrl_0_bram" *) 
   (* KEEP_HIERARCHY = "yes" *) 
   design_1_axi_bram_ctrl_0_0 axi_bram_ctrl_0
@@ -533,19 +533,25 @@ module design_1
         .aresetn(rst_ps7_0_50M_peripheral_aresetn));
   design_1_blk_mem_gen_0_0 blk_mem_gen_0
        (.addra({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,axi_bram_ctrl_1_BRAM_PORTA_ADDR}),
-        .addrb(adc_spi_wrapper_0_BRAM_CTRL_ADDR),
+        .addrb(adc_spi_wrapper_0_axi_addr),
         .clka(axi_bram_ctrl_1_BRAM_PORTA_CLK),
-        .clkb(adc_spi_wrapper_0_BRAM_CTRL_CLK),
+        .clkb(adc_spi_wrapper_0_ram_clk),
         .dina(axi_bram_ctrl_1_BRAM_PORTA_DIN),
-        .dinb(adc_spi_wrapper_0_BRAM_CTRL_DIN),
+        .dinb(adc_spi_wrapper_0_data_out),
         .douta(axi_bram_ctrl_1_BRAM_PORTA_DOUT),
-        .doutb(adc_spi_wrapper_0_BRAM_CTRL_DOUT),
+        .doutb(blk_mem_gen_0_doutb),
         .ena(axi_bram_ctrl_1_BRAM_PORTA_EN),
-        .enb(adc_spi_wrapper_0_BRAM_CTRL_EN),
+        .enb(adc_spi_wrapper_0_en),
         .rsta(axi_bram_ctrl_1_BRAM_PORTA_RST),
-        .rstb(adc_spi_wrapper_0_BRAM_CTRL_RST),
+        .rstb(adc_spi_wrapper_0_ram_rst),
         .wea(axi_bram_ctrl_1_BRAM_PORTA_WE),
-        .web(adc_spi_wrapper_0_BRAM_CTRL_WE));
+        .web(adc_spi_wrapper_0_wen));
+  design_1_ila_0_0 ila_0
+       (.clk(processing_system7_0_FCLK_CLK0),
+        .probe0(adc_spi_wrapper_0_SCKI),
+        .probe1(adc_spi_wrapper_0_cs),
+        .probe2(SDO1_1),
+        .probe3(SDO0_1));
   design_1_output_manager_0_0 output_manager_0
        (.LD(output_manager_0_LD),
         .axi_addr(output_manager_0_axi_addr),

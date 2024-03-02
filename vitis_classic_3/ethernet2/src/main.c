@@ -40,6 +40,7 @@
 #include "lwip/priv/tcp_priv.h"
 #include "lwip/init.h"
 #include "lwip/inet.h"
+#include "xbram.h"
 
 #if LWIP_IPV6==1
 #include "lwip/ip6_addr.h"
@@ -132,7 +133,11 @@ int main(void)
 	}
 	XGpio_SetDataDirection(&gpio, 1, 1);
 	XGpio_SetDataDirection(&gpio, 2, 0);
-	status = XGpio_Initialize(&row_col_info, XPAR_GPIO_1_BASEADDR);
+	status = XGpio_Initialize(&row_col_info, XPAR_BRAM_1_DEVICE_ID);
+	if(status != XST_SUCCESS){
+			xil_printf("gpio 2 init failed\r\n");
+			return XST_FAILURE;
+	}
 	XGpio_SetDataDirection(&row_col_info, 1, 0xFFFFFFFF);
 	/* the mac address of the board. this should be unique per board */
 	unsigned char mac_ethernet_address[] = {
@@ -157,6 +162,11 @@ int main(void)
 #endif
 
 	init_platform();
+//	Xil_Out32(XPAR_BRAM_1_BASEADDR, 3);
+//	XGpio_DiscreteWrite(&gpio, 1, 1);
+//	int test = Xil_In32(XPAR_BRAM_1_BASEADDR);
+//	int a = test+1;
+//	int test =
 //	int data1[36];
 //	int data2[48];
 //

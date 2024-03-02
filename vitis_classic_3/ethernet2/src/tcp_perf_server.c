@@ -55,7 +55,7 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 		unsigned int adc_ready = 0;
 		xil_printf("starting output:\r\n");
 		for(int r1 = 0; r1<m1_rows; r1 += 2){
-			for(;m1_col_cursor < m1_cols; m1_col_cursor+=4){
+			for(m1_col_cursor = 0;m1_col_cursor < m1_cols; m1_col_cursor+=4){
 
 				for(int c = 0; c<4; c++){
 					if(c+m1_col_cursor < m1_cols){
