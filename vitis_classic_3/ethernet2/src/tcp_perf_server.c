@@ -54,7 +54,7 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 	//	int m2_cols = 6;
 //		int m2_col_cursor = 0;
 		unsigned int adc_ready = 0;
-		xil_printf("starting output:\r\n");
+//		xil_printf("starting output:\r\n");
 		for(int r1 = 0; r1<m1_rows; r1 += 2){
 			for(m1_col_cursor = 0;m1_col_cursor < m1_cols; m1_col_cursor+=4){
 
@@ -62,34 +62,34 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 					if(c+m1_col_cursor < m1_cols){
 
 						Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, data1[r1*m1_cols+m1_col_cursor+c]);
-						xil_printf("(r1 %d)", data1[r1*m1_cols+m1_col_cursor+c]);
+//						xil_printf("(r1 %d)", data1[r1*m1_cols+m1_col_cursor+c]);
 						if(r1+1 < m1_rows){
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, data1[(r1+1)*m1_cols+m1_col_cursor+c]);
-							xil_printf("(r2 %d)", data1[(r1+1)*m1_cols+m1_col_cursor+c]);
+//							xil_printf("(r2 %d)", data1[(r1+1)*m1_cols+m1_col_cursor+c]);
 
 						} else {
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
-							xil_printf("(r2 %d)", 0);
+//							xil_printf("(r2 %d)", 0);
 						}
 
 					} else {
 						Xil_Out32(XPAR_BRAM_0_BASEADDR+c*4, 0);
 
 						Xil_Out32(XPAR_BRAM_0_BASEADDR+16+c*4, 0);
-						xil_printf("(r1 %d)", 0);
-						xil_printf("(r2 %d)", 0);
+//						xil_printf("(r1 %d)", 0);
+//						xil_printf("(r2 %d)", 0);
 					}
 				}
-				xil_printf("\r\n");
+//				xil_printf("\r\n");
 
 				for(int r2 = 0; r2 < m2_rows; r2++){
 					for(int c = 0; c<4; c++){
 						if(m1_col_cursor+c < m2_cols){
-							xil_printf("c1 %d", data2[r2*m2_cols+m1_col_cursor+c]);
+//							xil_printf("c1 %d", data2[r2*m2_cols+m1_col_cursor+c]);
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, data2[r2*m2_cols+m1_col_cursor+c]);
 						} else {
 							Xil_Out32(XPAR_BRAM_0_BASEADDR+32+c*4, 0);
-							xil_printf("c1 %d", 0);
+//							xil_printf("c1 %d", 0);
 						}
 
 					}
@@ -97,7 +97,7 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 					XGpio_DiscreteWrite(&row_col_info, 1, rc_info);
 
 					XGpio_DiscreteWrite(&gpio, DATA_READY, 1);
-					xil_printf("data ready sent to fpga\r\n");
+//					xil_printf("data ready sent to fpga\r\n");
 					while(adc_ready == 0){
 						adc_ready = XGpio_DiscreteRead(&gpio, ADC_RECV);
 					}
