@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Sat Mar  2 17:45:03 2024
+//Date        : Sun Mar  3 00:34:13 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -34,11 +34,14 @@ module design_1_wrapper
     FIXED_IO_ps_srstb,
     LD,
     SCK0,
+    SCKO,
     SDO0,
     SDO1,
     adc_SCKI,
     adc_cs,
+    adc_sdi,
     btn,
+    busy,
     clk_khz,
     led,
     negative,
@@ -71,11 +74,14 @@ module design_1_wrapper
   inout FIXED_IO_ps_srstb;
   output LD;
   input SCK0;
+  input SCKO;
   input SDO0;
   input SDO1;
   output adc_SCKI;
   output adc_cs;
+  output adc_sdi;
   input btn;
+  input busy;
   input clk_khz;
   output led;
   output [7:0]negative;
@@ -109,11 +115,14 @@ module design_1_wrapper
   wire FIXED_IO_ps_srstb;
   wire LD;
   wire SCK0;
+  wire SCKO;
   wire SDO0;
   wire SDO1;
   wire adc_SCKI;
   wire adc_cs;
+  wire adc_sdi;
   wire btn;
+  wire busy;
   wire clk_khz;
   wire led;
   wire [7:0]negative;
@@ -148,11 +157,14 @@ module design_1_wrapper
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
         .LD(LD),
         .SCK0(SCK0),
+        .SCKO(SCKO),
         .SDO0(SDO0),
         .SDO1(SDO1),
         .adc_SCKI(adc_SCKI),
         .adc_cs(adc_cs),
+        .adc_sdi(adc_sdi),
         .btn(btn),
+        .busy(busy),
         .clk_khz(clk_khz),
         .led(led),
         .negative(negative),

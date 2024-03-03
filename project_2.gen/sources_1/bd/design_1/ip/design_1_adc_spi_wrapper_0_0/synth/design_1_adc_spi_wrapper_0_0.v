@@ -75,7 +75,9 @@ module design_1_adc_spi_wrapper_0_0 (
   en,
   ram_rst,
   wen,
-  tx_delay_o
+  tx_delay_o,
+  sdo0_debug,
+  sdo1_debug
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
@@ -110,6 +112,8 @@ output wire ram_rst;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL WE" *)
 output wire [3 : 0] wen;
 output wire [2 : 0] tx_delay_o;
+output wire [23 : 0] sdo0_debug;
+output wire [23 : 0] sdo1_debug;
 
   adc_spi_wrapper inst (
     .clk(clk),
@@ -131,6 +135,8 @@ output wire [2 : 0] tx_delay_o;
     .en(en),
     .ram_rst(ram_rst),
     .wen(wen),
-    .tx_delay_o(tx_delay_o)
+    .tx_delay_o(tx_delay_o),
+    .sdo0_debug(sdo0_debug),
+    .sdo1_debug(sdo1_debug)
   );
 endmodule

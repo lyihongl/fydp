@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sat Mar  2 17:12:47 2024
+// Date        : Sun Mar  3 00:34:48 2024
 // Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 // Command     : write_verilog -force -mode synth_stub
 //               /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_adc_spi_wrapper_0_0/design_1_adc_spi_wrapper_0_0_stub.v
@@ -17,14 +17,15 @@
 (* X_CORE_INFO = "adc_spi_wrapper,Vivado 2023.2" *)
 module design_1_adc_spi_wrapper_0_0(clk, SDO0, SDO1, SCK0, tx_done, row_col, ila_clk, 
   data_ready, recv_done, SCKI, sdi, cs, data_read, axi_addr, ram_clk, data_out, en, ram_rst, wen, 
-  tx_delay_o)
-/* synthesis syn_black_box black_box_pad_pin="SDO0,SDO1,SCK0,tx_done,row_col[31:0],ila_clk,data_ready,recv_done,SCKI,sdi,cs,data_read[31:0],axi_addr[31:0],data_out[31:0],en,ram_rst,wen[3:0],tx_delay_o[2:0]" */
+  tx_delay_o, sdo0_debug, sdo1_debug)
+/* synthesis syn_black_box black_box_pad_pin="SDO0,SDO1,tx_done,row_col[31:0],ila_clk,data_ready,recv_done,SCKI,sdi,cs,data_read[31:0],axi_addr[31:0],data_out[31:0],en,ram_rst,wen[3:0],tx_delay_o[2:0],sdo0_debug[23:0],sdo1_debug[23:0]" */
 /* synthesis syn_force_seq_prim="clk" */
+/* synthesis syn_force_seq_prim="SCK0" */
 /* synthesis syn_force_seq_prim="ram_clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input SDO0;
   input SDO1;
-  input SCK0;
+  input SCK0 /* synthesis syn_isclock = 1 */;
   input tx_done;
   input [31:0]row_col;
   input ila_clk;
@@ -41,4 +42,6 @@ module design_1_adc_spi_wrapper_0_0(clk, SDO0, SDO1, SCK0, tx_done, row_col, ila
   output ram_rst;
   output [3:0]wen;
   output [2:0]tx_delay_o;
+  output [23:0]sdo0_debug;
+  output [23:0]sdo1_debug;
 endmodule

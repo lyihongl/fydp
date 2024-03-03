@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA89470C424BF937D",
+      "boundary_crc": "0x2817D2A7FD2DCD4",
       "device": "xc7z007sclg400-1",
       "gen_directory": "../../../../project_2.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -291,6 +291,15 @@
       },
       "led": {
         "direction": "O"
+      },
+      "adc_sdi": {
+        "direction": "O"
+      },
+      "SCKO": {
+        "direction": "I"
+      },
+      "busy": {
+        "direction": "I"
       }
     },
     "components": {
@@ -2036,6 +2045,16 @@
             "direction": "O",
             "left": "2",
             "right": "0"
+          },
+          "sdo0_debug": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "sdo1_debug": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
           }
         }
       },
@@ -2047,13 +2066,13 @@
         "inst_hier_path": "ila_0",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "32768"
+            "value": "16384"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "4"
+            "value": "9"
           },
           "C_PROBE1_WIDTH": {
             "value": "1"
@@ -2069,6 +2088,12 @@
           },
           "C_PROBE5_WIDTH": {
             "value": "1"
+          },
+          "C_PROBE6_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE7_WIDTH": {
+            "value": "24"
           }
         }
       }
@@ -2130,24 +2155,25 @@
       }
     },
     "nets": {
-      "SCK0_1": {
+      "SCKO_1": {
         "ports": [
-          "SCK0",
+          "SCKO",
+          "ila_0/probe5",
           "adc_spi_wrapper_0/SCK0"
         ]
       },
       "SDO0_1": {
         "ports": [
           "SDO0",
-          "adc_spi_wrapper_0/SDO0",
-          "ila_0/probe3"
+          "ila_0/probe3",
+          "adc_spi_wrapper_0/SDO0"
         ]
       },
       "SDO1_1": {
         "ports": [
           "SDO1",
-          "adc_spi_wrapper_0/SDO1",
-          "ila_0/probe2"
+          "ila_0/probe2",
+          "adc_spi_wrapper_0/SDO1"
         ]
       },
       "adc_spi_wrapper_0_SCKI": {
@@ -2201,6 +2227,25 @@
           "led"
         ]
       },
+      "adc_spi_wrapper_0_sdi": {
+        "ports": [
+          "adc_spi_wrapper_0/sdi",
+          "adc_sdi",
+          "ila_0/probe4"
+        ]
+      },
+      "adc_spi_wrapper_0_sdo0_debug": {
+        "ports": [
+          "adc_spi_wrapper_0/sdo0_debug",
+          "ila_0/probe7"
+        ]
+      },
+      "adc_spi_wrapper_0_sdo1_debug": {
+        "ports": [
+          "adc_spi_wrapper_0/sdo1_debug",
+          "ila_0/probe8"
+        ]
+      },
       "adc_spi_wrapper_0_wen": {
         "ports": [
           "adc_spi_wrapper_0/wen",
@@ -2230,6 +2275,12 @@
         "ports": [
           "blk_mem_gen_0/doutb",
           "adc_spi_wrapper_0/data_read"
+        ]
+      },
+      "busy_1": {
+        "ports": [
+          "busy",
+          "ila_0/probe6"
         ]
       },
       "clk_khz_1": {

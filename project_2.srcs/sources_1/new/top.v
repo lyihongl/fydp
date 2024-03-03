@@ -61,7 +61,9 @@ module top
     ck_io28,
     ck_io29,
     ck_io30,
-    led0_r
+    led0_r,
+    ck_io31,
+    ck_io32
 //    start_tx,
 //    spi_clk,
 //    sdi,
@@ -116,9 +118,11 @@ module top
   input ck_io26;
   input ck_io27;
   output ck_io28;
-  input ck_io29;
+  output ck_io29;
   output ck_io30;
   output led0_r;
+  input ck_io31;
+  input ck_io32;
 //  input start_tx;
 //  output LD;
 //  output spi_clk;
@@ -172,7 +176,9 @@ module top
 //    .SDI_a(SDI_a),
 //    .SDI_b(SDI_b),
     .negative(negative),
-    .SCK0(ck_io29),
+    .SCKO(ck_io31),
+    .busy(ck_io32),
+    .SCK0(),
     .SDO0(ck_io26),
     .SDO1(ck_io27),
     .adc_SCKI(ck_io28),
@@ -181,7 +187,8 @@ module top
     .sdi(sdi),
     .spi_clk(spi_clk),
     .LD(LD),
-    .led(led0_r)
+    .led(led0_r),
+    .adc_sdi(ck_io29)
 //    .clk_20M(clk_20M),
 //    .t(jb)
   );

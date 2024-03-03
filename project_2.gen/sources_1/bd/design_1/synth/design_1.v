@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Sat Mar  2 17:45:02 2024
+//Date        : Sun Mar  3 00:34:13 2024
 //Host        : yihongliu-SER running 64-bit Linux Mint 21.2
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -35,11 +35,14 @@ module design_1
     FIXED_IO_ps_srstb,
     LD,
     SCK0,
+    SCKO,
     SDO0,
     SDO1,
     adc_SCKI,
     adc_cs,
+    adc_sdi,
     btn,
+    busy,
     clk_khz,
     led,
     negative,
@@ -72,11 +75,14 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
   output LD;
   input SCK0;
+  input SCKO;
   input SDO0;
   input SDO1;
   output adc_SCKI;
   output adc_cs;
+  output adc_sdi;
   input btn;
+  input busy;
   input clk_khz;
   output led;
   output [7:0]negative;
@@ -87,7 +93,7 @@ module design_1
   output spi_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN design_1_sys_clock, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input sys_clock;
 
-  wire SCK0_1;
+  wire SCKO_1;
   wire SDO0_1;
   wire SDO1_1;
   wire adc_spi_wrapper_0_SCKI;
@@ -98,6 +104,9 @@ module design_1
   wire adc_spi_wrapper_0_ram_clk;
   wire adc_spi_wrapper_0_ram_rst;
   wire adc_spi_wrapper_0_recv_done;
+  wire adc_spi_wrapper_0_sdi;
+  wire [23:0]adc_spi_wrapper_0_sdo0_debug;
+  wire [23:0]adc_spi_wrapper_0_sdo1_debug;
   wire [3:0]adc_spi_wrapper_0_wen;
   wire [12:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
@@ -189,6 +198,7 @@ module design_1
   wire [3:0]axi_smc_M03_AXI_WSTRB;
   wire axi_smc_M03_AXI_WVALID;
   wire [31:0]blk_mem_gen_0_doutb;
+  wire busy_1;
   wire clk_khz_1;
   wire output_manager_0_LD;
   wire [31:0]output_manager_0_axi_addr;
@@ -267,11 +277,13 @@ module design_1
   wire sys_clock_1;
 
   assign LD = output_manager_0_LD;
-  assign SCK0_1 = SCK0;
+  assign SCKO_1 = SCKO;
   assign SDO0_1 = SDO0;
   assign SDO1_1 = SDO1;
   assign adc_SCKI = adc_spi_wrapper_0_SCKI;
   assign adc_cs = adc_spi_wrapper_0_cs;
+  assign adc_sdi = adc_spi_wrapper_0_sdi;
+  assign busy_1 = busy;
   assign clk_khz_1 = clk_khz;
   assign led = adc_spi_wrapper_0_recv_done;
   assign negative[7:0] = output_manager_0_negative;
@@ -280,7 +292,7 @@ module design_1
   assign spi_clk = output_manager_0_spi_clk;
   assign sys_clock_1 = sys_clock;
   design_1_adc_spi_wrapper_0_0 adc_spi_wrapper_0
-       (.SCK0(SCK0_1),
+       (.SCK0(SCKO_1),
         .SCKI(adc_spi_wrapper_0_SCKI),
         .SDO0(SDO0_1),
         .SDO1(SDO1_1),
@@ -296,6 +308,9 @@ module design_1
         .ram_rst(adc_spi_wrapper_0_ram_rst),
         .recv_done(adc_spi_wrapper_0_recv_done),
         .row_col(axi_gpio_1_gpio_io_o),
+        .sdi(adc_spi_wrapper_0_sdi),
+        .sdo0_debug(adc_spi_wrapper_0_sdo0_debug),
+        .sdo1_debug(adc_spi_wrapper_0_sdo1_debug),
         .tx_done(output_manager_0_tx_done),
         .wen(adc_spi_wrapper_0_wen));
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x40000000 32 > design_1 axi_bram_ctrl_0_bram" *) 
@@ -551,7 +566,12 @@ module design_1
         .probe0(adc_spi_wrapper_0_SCKI),
         .probe1(adc_spi_wrapper_0_cs),
         .probe2(SDO1_1),
-        .probe3(SDO0_1));
+        .probe3(SDO0_1),
+        .probe4(adc_spi_wrapper_0_sdi),
+        .probe5(SCKO_1),
+        .probe6(busy_1),
+        .probe7(adc_spi_wrapper_0_sdo0_debug),
+        .probe8(adc_spi_wrapper_0_sdo1_debug));
   design_1_output_manager_0_0 output_manager_0
        (.LD(output_manager_0_LD),
         .axi_addr(output_manager_0_axi_addr),

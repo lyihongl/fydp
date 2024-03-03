@@ -11,7 +11,7 @@ module adc_spi_wrapper(
     input data_ready,
     output reg recv_done,
     output SCKI,
-    output reg sdi,
+    output sdi,
     output reg cs,
     (* X_INTERFACE_PARAMETER = "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1" *)
     (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL DOUT" *) input [31:0] data_read,
@@ -21,14 +21,17 @@ module adc_spi_wrapper(
     (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL EN" *) output reg en,
     (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL RST" *) output reg ram_rst,
     (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_CTRL WE" *) output reg [3:0] wen,
-    output [2:0] tx_delay_o
+    output [2:0] tx_delay_o,
+    output [23:0] sdo0_debug,
+    output [23:0] sdo1_debug
 //    input busy,
 //    output cnv
 );
 assign tx_delay_o = tx_delay;
-
 assign SCKI = clk & clk_en;
 assign ram_clk = clk;
+assign sdo0_debug = sdo0;
+assign sdo1_debug = sdo1;
 
 reg [2:0] ss_code = 3'b111;
 reg [2:0] tx_delay = 3'h0;
@@ -56,8 +59,17 @@ assign ram_offset_a = current_row*total_cols+{4'h0, current_col, 2'h0};
 
 reg prev_data_ready = 1'b0;
 
+reg [1:0] clk_delay = 2'b00;
+reg sdi_r = 1'b0;
+assign sdi = sdi_r;
 //reg test = 1'b0;
-
+always @(negedge clk) begin
+    if((tx_delay == 3'h3 && clk_delay == 2'b11) || (tx_delay == 3'h4 && clk_count < 5'h6)) begin
+        sdi_r <= 1;
+    end else begin
+        sdi_r <= 0;
+    end
+end
 always @(posedge clk) begin
     
     prev_data_ready <= data_ready;
@@ -82,6 +94,7 @@ always @(posedge clk) begin
         axi_addr <= 32'h42000000 + {20'h0, ram_offset_a};
         data_a <= data_read;
         data_out <= 32'h0;
+        clk_delay <= 2'b00;
     end else if(tx_delay == 3'h1) begin
         en <= 1;
         wen <= 4'h0;
@@ -94,20 +107,55 @@ always @(posedge clk) begin
         tx_delay <= 3'h3;
     end else if(tx_delay == 3'h3) begin
         cs <= 0;
-        tx_delay <= 3'h4;
+        clk_delay <= clk_delay + 2'b01;
+        if(clk_delay == 2'b11) begin 
+            tx_delay <= 3'h4;
+//            sdi_r <= 1;
+        end
     end else if(tx_delay == 3'h4) begin
         cs <= 0;
         clk_en <= 1;
         clk_count <= clk_count + 1;
-        sdo0 <= {sdo0[23:1], SDO0};
-        sdo1 <= {sdo1[23:1], SDO1};
+//        if(clk_count < 5'h6) begin
+//            sdi_r <= 1;
+//        end else begin
+//            sdi_r <= 0;
+//        end
+//        sdo0 <= {sdo0[23:1], SDO0};
+//        sdo1 <= {sdo1[23:1], SDO1};
         if(clk_count == 5'h18) begin
             tx_delay <= 3'h5;
             clk_en <= 0;
+            clk_count <= 5'h0;
+            sdo0 <= {pos_r_0[11], neg_r_0[11],
+            pos_r_0[10], neg_r_0[10],
+            pos_r_0[9], neg_r_0[9],
+            pos_r_0[8], neg_r_0[8],
+            pos_r_0[7], neg_r_0[7],
+            pos_r_0[8], neg_r_0[6],
+            pos_r_0[5], neg_r_0[5],
+            pos_r_0[4], neg_r_0[4],
+            pos_r_0[3], neg_r_0[3],
+            pos_r_0[2], neg_r_0[2],
+            pos_r_0[1], neg_r_0[1],
+            pos_r_0[0], neg_r_0[0]};
+            
+            sdo1 <= {pos_r_1[11], neg_r_1[11],
+            pos_r_1[10], neg_r_1[10],
+            pos_r_1[9], neg_r_1[9],
+            pos_r_1[8], neg_r_1[8],
+            pos_r_1[7], neg_r_1[7],
+            pos_r_1[8], neg_r_1[6],
+            pos_r_1[5], neg_r_1[5],
+            pos_r_1[4], neg_r_1[4],
+            pos_r_1[3], neg_r_1[3],
+            pos_r_1[2], neg_r_1[2],
+            pos_r_1[1], neg_r_1[1],
+            pos_r_1[0], neg_r_1[0]};
         end
     end else if(tx_delay == 3'h5) begin
         // write to bram here
-        cs <= 1;
+        cs <= 0;
         en <= 1;
         wen <= 4'hf;
         axi_addr <= 32'h42000000 + {20'h0, ram_offset_a}; // addr 1
@@ -120,6 +168,55 @@ always @(posedge clk) begin
         tx_delay <= 3'h0;
         en <= 1;
         recv_done <= 1;
+        cs <= 1;
+    end
+end
+
+reg [11:0] pos_r_0;
+reg [11:0] pos_r_1;
+reg [11:0] neg_r_0;
+reg [11:0] neg_r_1;
+
+always @(posedge SCK0) begin
+//    cs <= 0;
+//        clk_en <= 1;
+    if(tx_delay == 3'h4) begin
+        pos_r_0 <= {pos_r_0[11:1], SDO0};
+        pos_r_1 <= {pos_r_1[11:1], SDO1};
+//        clk_count <= clk_count + 1;
+////        if(clk_count < 5'h6) begin
+////            sdi_r <= 1;
+////        end else begin
+////            sdi_r <= 0;
+////        end
+//        sdo0 <= {sdo0[23:1], SDO0};
+//        sdo1 <= {sdo1[23:1], SDO1};
+//        if(clk_count == 5'h18) begin
+//            tx_delay <= 3'h5;
+//            clk_en <= 0;
+//            clk_count <= 5'h0;
+//        end
+    end
+end
+always @(negedge SCK0) begin
+//    cs <= 0;
+//        clk_en <= 1;
+    if(tx_delay == 3'h4) begin
+        neg_r_0 <= {neg_r_0[11:1], SDO0};
+        neg_r_1 <= {neg_r_1[11:1], SDO1};
+//        clk_count <= clk_count + 1;
+////        if(clk_count < 5'h6) begin
+////            sdi_r <= 1;
+////        end else begin
+////            sdi_r <= 0;
+////        end
+//        sdo0 <= {sdo0[23:1], SDO0};
+//        sdo1 <= {sdo1[23:1], SDO1};
+//        if(clk_count == 5'h18) begin
+//            tx_delay <= 3'h5;
+//            clk_en <= 0;
+//            clk_count <= 5'h0;
+//        end
     end
 end
 
