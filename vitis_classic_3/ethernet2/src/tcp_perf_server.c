@@ -44,6 +44,7 @@ static int data_pool[1000] = {0};
 static int result_pool[300] = {0};
 extern XGpio gpio;
 extern XGpio row_col_info;
+extern XGpio res_read;
 //#define Xil_Out32(X, Y) Xil_Out32(X, Y); xil_printf("%d ", Y);
 void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* data1, int* data2){
 //	int m1_rows = 6;
@@ -100,6 +101,23 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 					while(adc_ready == 0){
 						adc_ready = XGpio_DiscreteRead(&gpio, ADC_RECV);
 					}
+					unsigned int r = XGpio_DiscreteRead(&res_read, 1);
+					unsigned int cn_0 = (r&0x0000FFFF);
+					unsigned int cn_1 = (r&0xFFFF0000)>>16;
+					int res_0, res_1;
+					if((cn_0 & (1<<15)) != 0) {
+						res_0 = cn_0 | 0xFFFF0000;
+					} else {
+						res_0 = cn_0;
+					}
+					if((cn_1 & (1<<15)) != 0){
+						res_1 = cn_1 | 0xFFFF0000;
+					} else {
+						res_1 = cn_1;
+					}
+					result_pool[r1*m2_rows+r2] += res_0;
+					result_pool[(r1+1)*m2_rows+r2] += res_1;
+//					xil_printf("read: %d, %d, %x\r\n", (r&0xFFFF0000)>>16, (r&0x0000FFFF), r);
 					adc_ready = 0;
 					XGpio_DiscreteWrite(&gpio, DATA_READY, 0);
 				}
@@ -131,19 +149,24 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
     int* data1 = data_pool+2;
     int* data2 = data_pool+m1_rows*m1_cols+4;
     ps_pl_data_load(m1_rows, m1_cols, m2_rows, m2_cols, data1, data2);
-
     for(int i = 0; i<m1_rows; i++){
     	for(int j = 0; j<m2_rows; j++){
-    		result_pool[i*m2_rows+j] = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR+(i*m2_rows+j)*4);
+    		xil_printf("%d ", result_pool[i*m2_rows+j]);
     	}
+    	xil_printf("\r\n");
     }
+//    for(int i = 0; i<m1_rows; i++){
+//    	for(int j = 0; j<m2_rows; j++){
+//    		result_pool[i*m2_rows+j] = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR+(i*m2_rows+j)*4);
+//    	}
+//    }
 //    int dummy[6] = {1,4,1,2,3,4};
 //    tcp_write(tpcb, dummy, 6*4, 1);
 	/* echo back the payload */
 	/* in this case, we assume that the payload is < TCP_SND_BUF */
 	if (tcp_sndbuf(tpcb) > 4) {
 //		err = tcp_write(tpcb, p->payload, p->len, 1);
-		err = tcp_write(tpcb, result_pool, 4, 1);
+		err = tcp_write(tpcb, result_pool, m1_rows*m2_rows*4, 1);
 	} else
 		xil_printf("no space in tcp_sndbuf\n\r");
 

@@ -73,6 +73,7 @@ OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
 set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 4
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z007sclg400-1
@@ -182,6 +183,17 @@ set_property used_in_implementation false [get_files -all /home/yihongliu/worksp
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_51/bd_afc3_m03wn_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_52/bd_afc3_m03bn_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_52/bd_afc3_m03bn_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_54/bd_afc3_m04s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_55/bd_afc3_m04arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_55/bd_afc3_m04arn_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_56/bd_afc3_m04rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_56/bd_afc3_m04rn_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_57/bd_afc3_m04awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_57/bd_afc3_m04awn_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_58/bd_afc3_m04wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_58/bd_afc3_m04wn_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_59/bd_afc3_m04bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_59/bd_afc3_m04bn_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/smartconnect.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_0/design_1_rst_ps7_0_50M_0_board.xdc]
@@ -199,6 +211,9 @@ set_property used_in_synthesis false [get_files -all /home/yihongliu/workspace/f
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/design_1_ila_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_2_0/design_1_axi_gpio_2_0_board.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_2_0/design_1_axi_gpio_2_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_2_0/design_1_axi_gpio_2_0.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/design_1_ooc.xdc]
 
 read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci

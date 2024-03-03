@@ -77,7 +77,12 @@ module design_1_adc_spi_wrapper_0_0 (
   wen,
   tx_delay_o,
   sdo0_debug,
-  sdo1_debug
+  sdo1_debug,
+  pos_0,
+  neg_0,
+  pos_1,
+  neg_1,
+  gpio_data_out
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
@@ -114,6 +119,11 @@ output wire [3 : 0] wen;
 output wire [2 : 0] tx_delay_o;
 output wire [23 : 0] sdo0_debug;
 output wire [23 : 0] sdo1_debug;
+output wire [11 : 0] pos_0;
+output wire [11 : 0] neg_0;
+output wire [11 : 0] pos_1;
+output wire [11 : 0] neg_1;
+output wire [31 : 0] gpio_data_out;
 
   adc_spi_wrapper inst (
     .clk(clk),
@@ -137,6 +147,11 @@ output wire [23 : 0] sdo1_debug;
     .wen(wen),
     .tx_delay_o(tx_delay_o),
     .sdo0_debug(sdo0_debug),
-    .sdo1_debug(sdo1_debug)
+    .sdo1_debug(sdo1_debug),
+    .pos_0(pos_0),
+    .neg_0(neg_0),
+    .pos_1(pos_1),
+    .neg_1(neg_1),
+    .gpio_data_out(gpio_data_out)
   );
 endmodule

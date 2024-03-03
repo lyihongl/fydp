@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date                      : Sun Mar  3 00:36:43 2024
+| Date                      : Sun Mar  3 17:18:13 2024
 | Host                      : yihongliu-SER running 64-bit Linux Mint 21.2
 | Command                   : report_io -file top_io_placed.rpt
 | Design                    : top
@@ -292,7 +292,7 @@ Table of Contents
 | N15        | led0_r            | High Range | IO_L21P_T3_DQS_AD14P_35 | OUTPUT        | LVCMOS33          |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | N16        |                   | High Range | IO_L21N_T3_DQS_AD14N_35 | User IO       |                   |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | N17        |                   | High Range | IO_L23P_T3_34           | User IO       |                   |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| N18        | ck_io8            | High Range | IO_L13P_T2_MRCC_34      | TRISTATE      | LVCMOS33          |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| N18        | ck_io8            | High Range | IO_L13P_T2_MRCC_34      | INPUT         | LVCMOS33          |      34 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | N19        |                   | High Range | VCCO_34                 | VCCO          |                   |      34 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | N20        |                   | High Range | IO_L14P_T2_SRCC_34      | User IO       |                   |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | P1         | DDR_dq[16]        |            | PS_DDR_DQ16_502         | INOUT         | SSTL15_T_DCI      |         |            | FAST |           DCI SPLIT |            FP_VTT_50 |         | FIXED      | PULLUP    |          |      | SPLIT            |              |                   |              |

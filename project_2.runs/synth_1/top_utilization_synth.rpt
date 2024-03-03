@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Sun Mar  3 00:35:47 2024
+| Date         : Sun Mar  3 17:17:11 2024
 | Host         : yihongliu-SER running 64-bit Linux Mint 21.2
 | Command      : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
 | Design       : top
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   30 |     0 |          0 |       100 | 30.00 |
+| Bonded IOB                  |   28 |     0 |          0 |       100 | 28.00 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |          0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         2 |  0.00 |
@@ -154,10 +154,10 @@ Warning! LUT value is adjusted to account for LUT combining.
 | LUT2     |    8 |                 LUT |
 | LUT3     |    6 |                 LUT |
 | LUT6     |    4 |                 LUT |
-| IBUF     |    4 |                  IO |
-| OBUFT    |    2 |                  IO |
+| IBUF     |    3 |                  IO |
 | LUT5     |    2 |                 LUT |
 | LUT4     |    2 |                 LUT |
+| OBUFT    |    1 |                  IO |
 +----------+------+---------------------+
 
 
@@ -173,6 +173,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | design_1_ila_0_0                |    1 |
 | design_1_blk_mem_gen_0_0        |    1 |
 | design_1_axi_smc_0              |    1 |
+| design_1_axi_gpio_2_0           |    1 |
 | design_1_axi_gpio_1_0           |    1 |
 | design_1_axi_gpio_0_0           |    1 |
 | design_1_axi_bram_ctrl_1_0      |    1 |

@@ -108,7 +108,7 @@ module top
   output [5:0] ck_io;
   output ck_io6;
   output ck_io7;
-  output ck_io8;
+  input ck_io8;
   output ck_io9;
   output SDI_a;
   output SCK_a;
@@ -176,7 +176,7 @@ module top
 //    .SDI_a(SDI_a),
 //    .SDI_b(SDI_b),
     .negative(negative),
-    .SCKO(ck_io31),
+    .SCKO(ck_io8),
     .busy(ck_io32),
     .SCK0(),
     .SDO0(ck_io26),

@@ -10,23 +10,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="8,193"></ZoomEndTime>
+      <ZoomEndTime time="8"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="288"></NameColumnWidth>
-      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+      <NameColumnWidth column_width="314"></NameColumnWidth>
+      <ValueColumnWidth column_width="176"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
-   <wave_markers>
-   </wave_markers>
-   <wvobject type="logic" fp_name="d1/design_1_i/adc_spi_wrapper_0_cs">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_cs</obj_property>
-      <obj_property name="ObjectShortName">adc_spi_wrapper_0_cs</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
+   <WVObjectSize size="10" />
    <wvobject type="logic" fp_name="d1/design_1_i/adc_spi_wrapper_0_SCKI">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_SCKI</obj_property>
@@ -62,18 +53,11 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="d1/design_1_i/busy_1">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">d1/design_1_i/busy_1</obj_property>
-      <obj_property name="ObjectShortName">busy_1</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="d1/design_1_i/adc_spi_wrapper_0_sdo0_debug">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_sdo0_debug[23:0]</obj_property>
       <obj_property name="ObjectShortName">adc_spi_wrapper_0_sdo0_debug[23:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -81,6 +65,29 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_sdo1_debug[23:0]</obj_property>
       <obj_property name="ObjectShortName">adc_spi_wrapper_0_sdo1_debug[23:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="d1/design_1_i/adc_spi_wrapper_0_pos_0">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_pos_0[11:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_spi_wrapper_0_pos_0[11:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="d1/design_1_i/adc_spi_wrapper_0_cs">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_cs</obj_property>
+      <obj_property name="ObjectShortName">adc_spi_wrapper_0_cs</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="d1/design_1_i/adc_spi_wrapper_0_gpio_data_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">d1/design_1_i/adc_spi_wrapper_0_gpio_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_spi_wrapper_0_gpio_data_out[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>

@@ -61,6 +61,7 @@ extern volatile int TcpSlowTmrFlag;
 
 XGpio gpio;
 XGpio row_col_info;
+XGpio res_read;
 
 void platform_enable_interrupts(void);
 void start_application(void);
@@ -133,12 +134,19 @@ int main(void)
 	}
 	XGpio_SetDataDirection(&gpio, 1, 1);
 	XGpio_SetDataDirection(&gpio, 2, 0);
-	status = XGpio_Initialize(&row_col_info, XPAR_BRAM_1_DEVICE_ID);
+	status = XGpio_Initialize(&row_col_info, XPAR_GPIO_1_DEVICE_ID);
 	if(status != XST_SUCCESS){
 			xil_printf("gpio 2 init failed\r\n");
 			return XST_FAILURE;
 	}
 	XGpio_SetDataDirection(&row_col_info, 1, 0xFFFFFFFF);
+
+	status = XGpio_Initialize(&res_read, XPAR_GPIO_2_DEVICE_ID);
+	if(status != XST_SUCCESS){
+			xil_printf("gpio 2 init failed\r\n");
+			return XST_FAILURE;
+	}
+	XGpio_SetDataDirection(&res_read, 1, 0x00000000);
 	/* the mac address of the board. this should be unique per board */
 	unsigned char mac_ethernet_address[] = {
 		0x00, 0x0a, 0x35, 0x00, 0x01, 0x02 };
