@@ -70,10 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
-set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 4
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z007sclg400-1
@@ -102,6 +99,11 @@ read_verilog -library xil_defaultlib {
   /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
   /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/new/top.v
 }
+read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+
 add_files /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/bd/design_1/design_1.bd
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_bram_ctrl_0_0/design_1_axi_bram_ctrl_0_0_ooc.xdc]
@@ -215,11 +217,6 @@ set_property used_in_implementation false [get_files -all /home/yihongliu/worksp
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_2_0/design_1_axi_gpio_2_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_2_0/design_1_axi_gpio_2_0.xdc]
 set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/bd/design_1/design_1_ooc.xdc]
-
-read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all /home/yihongliu/workspace/fydp/project_2/project_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

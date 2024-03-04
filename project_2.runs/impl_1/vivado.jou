@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Mar  3 17:17:15 2024
-# Process ID: 732221
+# Start of session at: Sun Mar  3 23:02:14 2024
+# Process ID: 126554
 # Current directory: /home/yihongliu/workspace/fydp/project_2/project_2.runs/impl_1
 # Command line: vivado -log top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace
 # Log file: /home/yihongliu/workspace/fydp/project_2/project_2.runs/impl_1/top.vdi
 # Journal file: /home/yihongliu/workspace/fydp/project_2/project_2.runs/impl_1/vivado.jou
-# Running On: yihongliu-SER, OS: Linux, CPU Frequency: 3272.060 MHz, CPU Physical cores: 16, Host memory: 64168 MB
+# Running On: yihongliu-SER, OS: Linux, CPU Frequency: 1200.000 MHz, CPU Physical cores: 16, Host memory: 64168 MB
 #-----------------------------------------------------------
 source top.tcl -notrace

@@ -40,8 +40,8 @@ static struct perf_stats server;
 #define DATA_READY 1
 #define ADC_RECV 2
 
-static int data_pool[1000] = {0};
-static int result_pool[300] = {0};
+static int data_pool[65*64*4] = {0};
+static int result_pool[65*64*4] = {0};
 extern XGpio gpio;
 extern XGpio row_col_info;
 extern XGpio res_read;
@@ -93,8 +93,8 @@ void ps_pl_data_load(int m1_rows, int m1_cols, int m2_rows, int m2_cols, int* da
 						}
 
 					}
-					int rc_info = (m1_rows << 18) | (m2_rows<<12) | (r1<<6) | (r2);
-					XGpio_DiscreteWrite(&row_col_info, 1, rc_info);
+//					int rc_info = (m1_rows << 18) | (m2_rows<<12) | (r1<<6) | (r2);
+//					XGpio_DiscreteWrite(&row_col_info, 1, rc_info);
 
 					XGpio_DiscreteWrite(&gpio, DATA_READY, 1);
 //					xil_printf("data ready sent to fpga\r\n");
@@ -149,12 +149,12 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
     int* data1 = data_pool+2;
     int* data2 = data_pool+m1_rows*m1_cols+4;
     ps_pl_data_load(m1_rows, m1_cols, m2_rows, m2_cols, data1, data2);
-    for(int i = 0; i<m1_rows; i++){
-    	for(int j = 0; j<m2_rows; j++){
-    		xil_printf("%d ", result_pool[i*m2_rows+j]);
-    	}
-    	xil_printf("\r\n");
-    }
+//    for(int i = 0; i<m1_rows; i++){
+//    	for(int j = 0; j<m2_rows; j++){
+//    		xil_printf("%d ", result_pool[i*m2_rows+j]);
+//    	}
+//    	xil_printf("\r\n");
+//    }
 //    for(int i = 0; i<m1_rows; i++){
 //    	for(int j = 0; j<m2_rows; j++){
 //    		result_pool[i*m2_rows+j] = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR+(i*m2_rows+j)*4);
@@ -164,15 +164,17 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
 //    tcp_write(tpcb, dummy, 6*4, 1);
 	/* echo back the payload */
 	/* in this case, we assume that the payload is < TCP_SND_BUF */
-	if (tcp_sndbuf(tpcb) > 4) {
-//		err = tcp_write(tpcb, p->payload, p->len, 1);
-		err = tcp_write(tpcb, result_pool, m1_rows*m2_rows*4, 1);
-	} else
-		xil_printf("no space in tcp_sndbuf\n\r");
+	err = tcp_write(tpcb, result_pool, m1_rows*m2_rows*4, 1);
+
+//	if (tcp_sndbuf(tpcb) > 4) {
+////		err = tcp_write(tpcb, p->payload, p->len, 1);
+//		err = tcp_write(tpcb, result_pool, m1_rows*m2_rows*4, 1);
+//	} else
+//		xil_printf("no space in tcp_sndbuf\n\r");
 
 	/* free the received pbuf */
 	pbuf_free(p);
-
+	for(int i = 0; i<65*64; i++) result_pool[i] = 0;
 	return ERR_OK;
 }
 
@@ -200,14 +202,14 @@ static void print_tcp_conn_stats(void)
 	xil_printf("%s port %d\r\n",inet6_ntoa(c_pcb->remote_ip),
 			c_pcb->remote_port);
 #else
-	xil_printf("[%3d] local %s port %d connected with ",
-			server.client_id, inet_ntoa(c_pcb->local_ip),
-			c_pcb->local_port);
-	xil_printf("%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
-			c_pcb->remote_port);
+//	xil_printf("[%3d] local %s port %d connected with ",
+//			server.client_id, inet_ntoa(c_pcb->local_ip),
+//			c_pcb->local_port);
+//	xil_printf("%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
+//			c_pcb->remote_port);
 #endif /* LWIP_IPV6 */
 
-	xil_printf("[ ID] Interval\t\tTransfer   Bandwidth\n\r");
+//	xil_printf("[ ID] Interval\t\tTransfer   Bandwidth\n\r");
 }
 
 static void stats_buffer(char* outString,

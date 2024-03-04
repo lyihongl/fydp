@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.23085",
-   "Default View_TopLeft":"795,975",
+   "Default View_ScaleFactor":"0.757677",
+   "Default View_TopLeft":"243,189",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"",
    "commentid":"",
@@ -46,8 +46,11 @@ preplace netloc SDO0_1 1 0 4 NJ 1330 NJ 1330 830 1640 1220
 preplace netloc SDO1_1 1 0 4 NJ 1350 NJ 1350 810 1650 1340J
 preplace netloc adc_spi_wrapper_0_SCKI 1 3 2 1310 1370 NJ
 preplace netloc adc_spi_wrapper_0_axi_addr 1 3 1 1270 800n
+preplace netloc adc_spi_wrapper_0_cs 1 3 2 1290J 1410 NJ
 preplace netloc adc_spi_wrapper_0_data_out 1 3 1 1280 840n
 preplace netloc adc_spi_wrapper_0_en 1 3 1 1300 880n
+preplace netloc adc_spi_wrapper_0_gpio_data_out 1 3 1 1260 1050n
+preplace netloc adc_spi_wrapper_0_pos_0 1 3 1 1250 1490n
 preplace netloc adc_spi_wrapper_0_ram_clk 1 3 1 1310 820n
 preplace netloc adc_spi_wrapper_0_ram_rst 1 3 1 1330 900n
 preplace netloc adc_spi_wrapper_0_recv_done 1 3 2 1230 700 NJ
@@ -76,19 +79,16 @@ preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 20 820 440 650 850 1670 133
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 30 830 430
 preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 1 2 470 670 870
 preplace netloc sys_clock_1 1 0 3 NJ 1430 NJ 1430 NJ
-preplace netloc adc_spi_wrapper_0_pos_0 1 3 1 1250 1490n
-preplace netloc adc_spi_wrapper_0_cs 1 3 2 1290J 1410 NJ
-preplace netloc adc_spi_wrapper_0_gpio_data_out 1 3 1 1260 1050n
 preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 3 1 1310 60n
 preplace netloc axi_bram_ctrl_1_BRAM_PORTA 1 3 1 N 760
 preplace netloc axi_smc_M00_AXI 1 2 1 830 380n
 preplace netloc axi_smc_M01_AXI 1 2 1 790 550n
 preplace netloc axi_smc_M02_AXI 1 2 1 860 740n
 preplace netloc axi_smc_M03_AXI 1 2 1 830 800n
+preplace netloc axi_smc_M04_AXI 1 2 1 790 820n
 preplace netloc processing_system7_0_DDR 1 1 4 NJ 660 NJ 660 NJ 660 NJ
 preplace netloc processing_system7_0_FIXED_IO 1 1 4 NJ 680 NJ 680 NJ 680 NJ
 preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 450 720n
-preplace netloc axi_smc_M04_AXI 1 2 1 790 820n
 levelinfo -pg 1 0 230 630 1040 1480 1640
 pagesize -pg 1 -db -bbox -sgen -140 0 1820 1760
 "

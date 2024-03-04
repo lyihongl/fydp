@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Sun Mar  3 17:18:32 2024
+| Date             : Sun Mar  3 23:03:29 2024
 | Host             : yihongliu-SER running 64-bit Linux Mint 21.2
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.520        |
+| Total On-Chip Power (W)  | 1.521        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 1.396        |
@@ -53,22 +53,22 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.010 |       10 |       --- |             --- |
-| Slice Logic              |     0.003 |     9112 |       --- |             --- |
-|   LUT as Logic           |     0.003 |     2748 |     14400 |           19.08 |
-|   Register               |    <0.001 |     4360 |     28800 |           15.14 |
+| Slice Logic              |     0.003 |     9129 |       --- |             --- |
+|   LUT as Logic           |     0.003 |     2764 |     14400 |           19.19 |
+|   Register               |    <0.001 |     4364 |     28800 |           15.15 |
 |   CARRY4                 |    <0.001 |       92 |      4400 |            2.09 |
 |   LUT as Shift Register  |    <0.001 |      197 |      6000 |            3.28 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      6000 |            0.40 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   F7/F8 Muxes            |    <0.001 |        4 |     17600 |            0.02 |
 |   Others                 |     0.000 |      920 |       --- |             --- |
-| Signals                  |     0.004 |     6793 |       --- |             --- |
+| Signals                  |     0.004 |     6807 |       --- |             --- |
 | Block RAM                |     0.004 |       48 |        50 |           96.00 |
 | MMCM                     |     0.106 |        1 |         2 |           50.00 |
 | I/O                      |     0.006 |       29 |       100 |           29.00 |
 | PS7                      |     1.263 |        1 |       --- |             --- |
 | Static Power             |     0.125 |          |           |                 |
-| Total                    |     1.520 |          |           |                 |
+| Total                    |     1.521 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 

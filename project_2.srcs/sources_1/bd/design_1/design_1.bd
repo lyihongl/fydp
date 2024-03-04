@@ -2356,8 +2356,8 @@
       "axi_gpio_0_gpio_io_o": {
         "ports": [
           "axi_gpio_0/gpio_io_o",
-          "output_manager_0/data_ready",
-          "adc_spi_wrapper_0/data_ready"
+          "adc_spi_wrapper_0/data_ready",
+          "output_manager_0/data_ready"
         ]
       },
       "axi_gpio_1_gpio_io_o": {
@@ -2375,8 +2375,8 @@
       "clk_khz_1": {
         "ports": [
           "clk_khz",
-          "output_manager_0/clk",
-          "adc_spi_wrapper_0/clk"
+          "adc_spi_wrapper_0/clk",
+          "output_manager_0/clk"
         ]
       },
       "output_manager_0_LD": {

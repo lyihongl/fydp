@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
@@ -124,8 +123,6 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
-  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 4
   set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
@@ -148,8 +145,8 @@ OPTRACE "add files" START { }
   add_files -quiet /home/yihongliu/workspace/fydp/project_2/project_2.runs/synth_1/top.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/bd/design_1/design_1.bd
   read_ip -quiet /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  add_files /home/yihongliu/workspace/fydp/project_2/project_2.srcs/sources_1/bd/design_1/design_1.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
   read_xdc /home/yihongliu/workspace/fydp/project_2/project_2.srcs/constrs_1/new/master.xdc

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Sun Mar  3 17:18:30 2024
+| Date         : Sun Mar  3 23:03:28 2024
 | Host         : yihongliu-SER running 64-bit Linux Mint 21.2
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,13 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 299
+             Violations found: 303
 +-----------+------------------+------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                      | Violations |
 +-----------+------------------+------------------------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 4          |
 | TIMING-7  | Critical Warning | No common node between related clocks                            | 2          |
-| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 284        |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 288        |
 | LUTAR-1   | Warning          | LUT drives async reset alert                                     | 4          |
 | TIMING-18 | Warning          | Missing input or output delay                                    | 3          |
 | TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 2          |
@@ -1339,150 +1339,170 @@ Related violations: <none>
 
 TIMING-17#255 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[0]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/delay_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#256 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[10]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/delay_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#257 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[11]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/delay_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#258 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[12]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/delay_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#259 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[13]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#260 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[14]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#261 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[15]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#262 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[16]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#263 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[13]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#264 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[18]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[14]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#265 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[15]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#266 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[1]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[16]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#267 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[20]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#268 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[21]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[18]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#269 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[22]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#270 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[23]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#271 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[20]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#272 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[2]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[21]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#273 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[3]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[22]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#274 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[4]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[23]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#275 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[5]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#276 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[6]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#277 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[7]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#278 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[8]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#279 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[9]/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#280 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/run_reg/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#281 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/tx_prev_reg/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#282 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/spi/tx_reg/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#283 Critical Warning
 Non-clocked sequential cell  
-The clock pin d1/design_1_i/output_manager_0/inst/start_tx_reg/C is not reached by a timing clock
+The clock pin d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#284 Critical Warning
+Non-clocked sequential cell  
+The clock pin d1/design_1_i/output_manager_0/inst/spi/run_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#285 Critical Warning
+Non-clocked sequential cell  
+The clock pin d1/design_1_i/output_manager_0/inst/spi/tx_prev_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#286 Critical Warning
+Non-clocked sequential cell  
+The clock pin d1/design_1_i/output_manager_0/inst/spi/tx_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#287 Critical Warning
+Non-clocked sequential cell  
+The clock pin d1/design_1_i/output_manager_0/inst/start_tx_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#288 Critical Warning
 Non-clocked sequential cell  
 The clock pin d1/design_1_i/output_manager_0/inst/tx_done_r_reg/C is not reached by a timing clock
 Related violations: <none>

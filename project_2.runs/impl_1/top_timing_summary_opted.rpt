@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Sun Mar  3 17:18:04 2024
+| Date         : Sun Mar  3 23:03:03 2024
 | Host         : yihongliu-SER running 64-bit Linux Mint 21.2
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_opted.rpt -pb top_timing_summary_opted_1.pb -rpx top_timing_summary_opted_1.rpx
 | Design       : top
@@ -49,10 +49,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (284)
+1. checking no_clock (288)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (642)
+4. checking unconstrained_internal_endpoints (649)
 5. checking no_input_delay (3)
 6. checking no_output_delay (23)
 7. checking multiple_clock (10)
@@ -62,9 +62,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (284)
+1. checking no_clock (288)
 --------------------------
- There are 284 register/latch pins with no clock driven by root clock pin: clk_div_1/internal_clk_reg/Q (HIGH)
+ There are 288 register/latch pins with no clock driven by root clock pin: clk_div_1/internal_clk_reg/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -77,9 +77,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (642)
+4. checking unconstrained_internal_endpoints (649)
 --------------------------------------------------
- There are 642 pins that are not constrained for maximum delay. (HIGH)
+ There are 649 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -6551,7 +6551,7 @@ Slack (MET) :             9.723ns  (required time - arrival time)
                          FDRE (Prop_fdre_C_Q)         0.456    49.025 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    49.825    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276    50.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.124    50.809 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.467    51.276    d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/TRIGGER_I[0]
                          LUT3 (Prop_lut3_I1_O)        0.124    51.400 r  d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M_i_1/O
@@ -6614,7 +6614,7 @@ Slack (MET) :             9.890ns  (required time - arrival time)
                          FDRE (Prop_fdre_C_Q)         0.456    49.025 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    49.825    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276    50.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.124    50.809 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.351    51.160    d1/design_1_i/ila_0/inst/ila_core_inst/TRIGGER_I[0]
                          SRL16E                                       r  d1/design_1_i/ila_0/inst/ila_core_inst/shifted_data_in_reg[7][0]_srl8/D
@@ -6682,7 +6682,7 @@ Slack (VIOLATED) :        -2.245ns  (arrival time - required time)
                          FDRE (Prop_fdre_C_Q)         0.367    -1.748 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.760    -0.988    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.232    -0.756 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.100    -0.217 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.333     0.116    d1/design_1_i/ila_0/inst/ila_core_inst/TRIGGER_I[0]
                          SRL16E                                       r  d1/design_1_i/ila_0/inst/ila_core_inst/shifted_data_in_reg[7][0]_srl8/D
@@ -6744,7 +6744,7 @@ Slack (VIOLATED) :        -2.054ns  (arrival time - required time)
                          FDRE (Prop_fdre_C_Q)         0.367    -1.748 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.760    -0.988    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.232    -0.756 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.100    -0.217 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.444     0.226    d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/TRIGGER_I[0]
                          LUT3 (Prop_lut3_I1_O)        0.100     0.326 r  d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M_i_1/O
@@ -7061,7 +7061,7 @@ Slack (MET) :             9.724ns  (required time - arrival time)
                          FDRE (Prop_fdre_C_Q)         0.456    49.025 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    49.825    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276    50.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.124    50.809 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.467    51.276    d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/TRIGGER_I[0]
                          LUT3 (Prop_lut3_I1_O)        0.124    51.400 r  d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M_i_1/O
@@ -7124,7 +7124,7 @@ Slack (MET) :             9.891ns  (required time - arrival time)
                          FDRE (Prop_fdre_C_Q)         0.456    49.025 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    49.825    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276    50.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.584    50.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.124    50.809 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.351    51.160    d1/design_1_i/ila_0/inst/ila_core_inst/TRIGGER_I[0]
                          SRL16E                                       r  d1/design_1_i/ila_0/inst/ila_core_inst/shifted_data_in_reg[7][0]_srl8/D
@@ -7192,7 +7192,7 @@ Slack (VIOLATED) :        -2.244ns  (arrival time - required time)
                          FDRE (Prop_fdre_C_Q)         0.367    -1.748 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.760    -0.988    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.232    -0.756 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.100    -0.217 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.333     0.116    d1/design_1_i/ila_0/inst/ila_core_inst/TRIGGER_I[0]
                          SRL16E                                       r  d1/design_1_i/ila_0/inst/ila_core_inst/shifted_data_in_reg[7][0]_srl8/D
@@ -7254,7 +7254,7 @@ Slack (VIOLATED) :        -2.054ns  (arrival time - required time)
                          FDRE (Prop_fdre_C_Q)         0.367    -1.748 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.760    -0.988    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.232    -0.756 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.439    -0.317    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.100    -0.217 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.444     0.226    d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/TRIGGER_I[0]
                          LUT3 (Prop_lut3_I1_O)        0.100     0.326 r  d1/design_1_i/ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M_i_1/O
@@ -14231,162 +14231,166 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           663 Endpoints
-Min Delay           663 Endpoints
+Max Delay           670 Endpoints
+Min Delay           670 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/C
+  Source:                 d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/C
                             (rising edge-triggered cell FDRE)
   Destination:            SCK_a
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.325ns  (logic 4.735ns (56.878%)  route 3.590ns (43.122%))
-  Logic Levels:           6  (FDRE=1 LUT2=1 LUT3=1 LUT4=1 LUT6=1 OBUF=1)
+  Data Path Delay:        8.460ns  (logic 4.865ns (57.507%)  route 3.595ns (42.493%))
+  Logic Levels:           7  (FDRE=1 LUT2=1 LUT3=1 LUT6=3 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/C
-                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/Q
-                         net (fo=2, unplaced)         0.752     1.211    d1/design_1_i/output_manager_0/inst/spi/p_1_in_0[20]
-                         LUT4 (Prop_lut4_I1_O)        0.295     1.506 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3/O
-                         net (fo=1, unplaced)         1.111     2.617    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3_n_0
-                         LUT6 (Prop_lut6_I1_O)        0.124     2.741 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1/O
-                         net (fo=3, unplaced)         0.467     3.208    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1_n_0
-                         LUT3 (Prop_lut3_I0_O)        0.118     3.326 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.460     3.786    tl/tl_impl/SCK
-                         LUT2 (Prop_lut2_I0_O)        0.124     3.910 r  tl/tl_impl/SCK_a_INST_0/O
-                         net (fo=1, unplaced)         0.800     4.710    SCK_a_OBUF
-    Y17                  OBUF (Prop_obuf_I_O)         3.615     8.325 r  SCK_a_OBUF_inst/O
-                         net (fo=0)                   0.000     8.325    SCK_a
+                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/C
+                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/Q
+                         net (fo=3, unplaced)         0.983     1.442    d1/design_1_i/output_manager_0/inst/spi/p_1_in_0[18]
+                         LUT6 (Prop_lut6_I0_O)        0.295     1.737 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_5/O
+                         net (fo=1, unplaced)         0.419     2.156    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_5_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     2.280 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3/O
+                         net (fo=1, unplaced)         0.449     2.729    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124     2.853 f  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1/O
+                         net (fo=7, unplaced)         0.484     3.337    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1_n_0
+                         LUT3 (Prop_lut3_I2_O)        0.124     3.461 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.460     3.921    tl/tl_impl/SCK
+                         LUT2 (Prop_lut2_I0_O)        0.124     4.045 r  tl/tl_impl/SCK_a_INST_0/O
+                         net (fo=1, unplaced)         0.800     4.845    SCK_a_OBUF
+    Y17                  OBUF (Prop_obuf_I_O)         3.615     8.460 r  SCK_a_OBUF_inst/O
+                         net (fo=0)                   0.000     8.460    SCK_a
     Y17                                                               r  SCK_a (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/C
+  Source:                 d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/C
                             (rising edge-triggered cell FDRE)
   Destination:            SCK_b
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.236ns  (logic 4.646ns (56.414%)  route 3.590ns (43.586%))
-  Logic Levels:           6  (FDRE=1 LUT3=2 LUT4=1 LUT6=1 OBUF=1)
+  Data Path Delay:        8.371ns  (logic 4.776ns (57.057%)  route 3.595ns (42.943%))
+  Logic Levels:           7  (FDRE=1 LUT3=2 LUT6=3 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/C
-                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[19]/Q
-                         net (fo=2, unplaced)         0.752     1.211    d1/design_1_i/output_manager_0/inst/spi/p_1_in_0[20]
-                         LUT4 (Prop_lut4_I1_O)        0.295     1.506 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3/O
-                         net (fo=1, unplaced)         1.111     2.617    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3_n_0
-                         LUT6 (Prop_lut6_I1_O)        0.124     2.741 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1/O
-                         net (fo=3, unplaced)         0.467     3.208    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1_n_0
-                         LUT3 (Prop_lut3_I0_O)        0.118     3.326 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.460     3.786    tl/tl_impl/SCK
-                         LUT3 (Prop_lut3_I2_O)        0.124     3.910 r  tl/tl_impl/SCK_b_INST_0/O
-                         net (fo=1, unplaced)         0.800     4.710    SCK_b_OBUF
-    W19                  OBUF (Prop_obuf_I_O)         3.526     8.236 r  SCK_b_OBUF_inst/O
-                         net (fo=0)                   0.000     8.236    SCK_b
+                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/C
+                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[17]/Q
+                         net (fo=3, unplaced)         0.983     1.442    d1/design_1_i/output_manager_0/inst/spi/p_1_in_0[18]
+                         LUT6 (Prop_lut6_I0_O)        0.295     1.737 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_5/O
+                         net (fo=1, unplaced)         0.419     2.156    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_5_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     2.280 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3/O
+                         net (fo=1, unplaced)         0.449     2.729    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124     2.853 f  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1/O
+                         net (fo=7, unplaced)         0.484     3.337    d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0_i_1_n_0
+                         LUT3 (Prop_lut3_I2_O)        0.124     3.461 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.460     3.921    tl/tl_impl/SCK
+                         LUT3 (Prop_lut3_I2_O)        0.124     4.045 r  tl/tl_impl/SCK_b_INST_0/O
+                         net (fo=1, unplaced)         0.800     4.845    SCK_b_OBUF
+    W19                  OBUF (Prop_obuf_I_O)         3.526     8.371 r  SCK_b_OBUF_inst/O
+                         net (fo=0)                   0.000     8.371    SCK_b
     W19                                                               r  SCK_b (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 d1/design_1_i/output_manager_0/inst/spi/tx_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            ck_io7
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.207ns  (logic 4.445ns (71.617%)  route 1.762ns (28.383%))
-  Logic Levels:           4  (FDRE=1 LUT2=2 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/tx_reg/C
-                         FDRE (Prop_fdre_C_Q)         0.459     0.459 f  d1/design_1_i/output_manager_0/inst/spi/tx_reg/Q
-                         net (fo=10, unplaced)        0.513     0.972    d1/design_1_i/output_manager_0/inst/spi/tx_reg_n_0
-                         LUT2 (Prop_lut2_I0_O)        0.295     1.267 r  d1/design_1_i/output_manager_0/inst/spi/LD_INST_0/O
-                         net (fo=1, unplaced)         0.449     1.716    tl/LD
-                         LUT2 (Prop_lut2_I1_O)        0.124     1.840 r  tl/en_a_INST_0/O
-                         net (fo=2, unplaced)         0.800     2.640    ck_io7_OBUF
-    R14                  OBUF (Prop_obuf_I_O)         3.567     6.207 r  ck_io7_OBUF_inst/O
-                         net (fo=0)                   0.000     6.207    ck_io7
-    R14                                                               r  ck_io7 (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 d1/design_1_i/output_manager_0/inst/spi/begin_out_reg/C
+  Source:                 d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/C
                             (rising edge-triggered cell FDRE)
   Destination:            SDI_b
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.198ns  (logic 4.457ns (71.913%)  route 1.741ns (28.087%))
+  Data Path Delay:        6.231ns  (logic 4.483ns (71.950%)  route 1.748ns (28.050%))
   Logic Levels:           4  (FDRE=1 LUT2=1 LUT3=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/begin_out_reg/C
-                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/begin_out_reg/Q
-                         net (fo=2, unplaced)         0.481     0.940    d1/design_1_i/output_manager_0/inst/spi/begin_out
-                         LUT2 (Prop_lut2_I0_O)        0.295     1.235 r  d1/design_1_i/output_manager_0/inst/spi/sdi_INST_0/O
-                         net (fo=2, unplaced)         0.460     1.695    tl/tl_impl/SDI
-                         LUT3 (Prop_lut3_I2_O)        0.118     1.813 r  tl/tl_impl/SDI_b_INST_0/O
-                         net (fo=1, unplaced)         0.800     2.613    SDI_b_OBUF
-    U18                  OBUF (Prop_obuf_I_O)         3.585     6.198 r  SDI_b_OBUF_inst/O
-                         net (fo=0)                   0.000     6.198    SDI_b
+                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/C
+                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/Q
+                         net (fo=3, unplaced)         0.488     0.947    d1/design_1_i/output_manager_0/inst/spi/p_0_in
+                         LUT2 (Prop_lut2_I0_O)        0.321     1.268 r  d1/design_1_i/output_manager_0/inst/spi/sdi_INST_0/O
+                         net (fo=2, unplaced)         0.460     1.728    tl/tl_impl/SDI
+                         LUT3 (Prop_lut3_I2_O)        0.118     1.846 r  tl/tl_impl/SDI_b_INST_0/O
+                         net (fo=1, unplaced)         0.800     2.646    SDI_b_OBUF
+    U18                  OBUF (Prop_obuf_I_O)         3.585     6.231 r  SDI_b_OBUF_inst/O
+                         net (fo=0)                   0.000     6.231    SDI_b
     U18                                                               r  SDI_b (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 d1/design_1_i/output_manager_0/inst/spi/begin_out_reg/C
+  Source:                 d1/design_1_i/output_manager_0/inst/spi/run_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            ck_io7
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.215ns  (logic 4.445ns (71.525%)  route 1.770ns (28.475%))
+  Logic Levels:           4  (FDRE=1 LUT2=2 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/run_reg/C
+                         FDRE (Prop_fdre_C_Q)         0.459     0.459 f  d1/design_1_i/output_manager_0/inst/spi/run_reg/Q
+                         net (fo=14, unplaced)        0.521     0.980    d1/design_1_i/output_manager_0/inst/spi/run_reg_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.295     1.275 r  d1/design_1_i/output_manager_0/inst/spi/LD_INST_0/O
+                         net (fo=1, unplaced)         0.449     1.724    tl/LD
+                         LUT2 (Prop_lut2_I1_O)        0.124     1.848 r  tl/en_a_INST_0/O
+                         net (fo=2, unplaced)         0.800     2.648    ck_io7_OBUF
+    R14                  OBUF (Prop_obuf_I_O)         3.567     6.215 r  ck_io7_OBUF_inst/O
+                         net (fo=0)                   0.000     6.215    ck_io7
+    R14                                                               r  ck_io7 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/C
                             (rising edge-triggered cell FDRE)
   Destination:            SDI_a
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.166ns  (logic 4.425ns (71.768%)  route 1.741ns (28.232%))
+  Data Path Delay:        6.199ns  (logic 4.451ns (71.806%)  route 1.748ns (28.194%))
   Logic Levels:           4  (FDRE=1 LUT2=2 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/begin_out_reg/C
-                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/begin_out_reg/Q
-                         net (fo=2, unplaced)         0.481     0.940    d1/design_1_i/output_manager_0/inst/spi/begin_out
-                         LUT2 (Prop_lut2_I0_O)        0.295     1.235 r  d1/design_1_i/output_manager_0/inst/spi/sdi_INST_0/O
-                         net (fo=2, unplaced)         0.460     1.695    tl/tl_impl/SDI
-                         LUT2 (Prop_lut2_I0_O)        0.118     1.813 r  tl/tl_impl/SDI_a_INST_0/O
-                         net (fo=1, unplaced)         0.800     2.613    SDI_a_OBUF
-    Y18                  OBUF (Prop_obuf_I_O)         3.553     6.166 r  SDI_a_OBUF_inst/O
-                         net (fo=0)                   0.000     6.166    SDI_a
+                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/C
+                         FDRE (Prop_fdre_C_Q)         0.459     0.459 r  d1/design_1_i/output_manager_0/inst/spi/internal_shift_reg[24]/Q
+                         net (fo=3, unplaced)         0.488     0.947    d1/design_1_i/output_manager_0/inst/spi/p_0_in
+                         LUT2 (Prop_lut2_I0_O)        0.321     1.268 r  d1/design_1_i/output_manager_0/inst/spi/sdi_INST_0/O
+                         net (fo=2, unplaced)         0.460     1.728    tl/tl_impl/SDI
+                         LUT2 (Prop_lut2_I0_O)        0.118     1.846 r  tl/tl_impl/SDI_a_INST_0/O
+                         net (fo=1, unplaced)         0.800     2.646    SDI_a_OBUF
+    Y18                  OBUF (Prop_obuf_I_O)         3.553     6.199 r  SDI_a_OBUF_inst/O
+                         net (fo=0)                   0.000     6.199    SDI_a
     Y18                                                               r  SDI_a (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 d1/design_1_i/output_manager_0/inst/spi/tx_reg/C
+  Source:                 d1/design_1_i/output_manager_0/inst/spi/run_reg/C
                             (rising edge-triggered cell FDRE)
   Destination:            ck_io6
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.141ns  (logic 4.380ns (71.314%)  route 1.762ns (28.686%))
+  Data Path Delay:        6.149ns  (logic 4.380ns (71.221%)  route 1.770ns (28.779%))
   Logic Levels:           4  (FDRE=1 LUT2=2 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/tx_reg/C
-                         FDRE (Prop_fdre_C_Q)         0.459     0.459 f  d1/design_1_i/output_manager_0/inst/spi/tx_reg/Q
-                         net (fo=10, unplaced)        0.513     0.972    d1/design_1_i/output_manager_0/inst/spi/tx_reg_n_0
-                         LUT2 (Prop_lut2_I0_O)        0.295     1.267 r  d1/design_1_i/output_manager_0/inst/spi/LD_INST_0/O
-                         net (fo=1, unplaced)         0.449     1.716    tl/LD
-                         LUT2 (Prop_lut2_I1_O)        0.124     1.840 r  tl/en_a_INST_0/O
-                         net (fo=2, unplaced)         0.800     2.640    ck_io7_OBUF
-    R17                  OBUF (Prop_obuf_I_O)         3.502     6.141 r  ck_io6_OBUF_inst/O
-                         net (fo=0)                   0.000     6.141    ck_io6
+                         FDRE                         0.000     0.000 r  d1/design_1_i/output_manager_0/inst/spi/run_reg/C
+                         FDRE (Prop_fdre_C_Q)         0.459     0.459 f  d1/design_1_i/output_manager_0/inst/spi/run_reg/Q
+                         net (fo=14, unplaced)        0.521     0.980    d1/design_1_i/output_manager_0/inst/spi/run_reg_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.295     1.275 r  d1/design_1_i/output_manager_0/inst/spi/LD_INST_0/O
+                         net (fo=1, unplaced)         0.449     1.724    tl/LD
+                         LUT2 (Prop_lut2_I1_O)        0.124     1.848 r  tl/en_a_INST_0/O
+                         net (fo=2, unplaced)         0.800     2.648    ck_io7_OBUF
+    R17                  OBUF (Prop_obuf_I_O)         3.502     6.149 r  ck_io6_OBUF_inst/O
+                         net (fo=0)                   0.000     6.149    ck_io6
     R17                                                               r  ck_io6 (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15561,7 +15565,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.264ns  (logic 4.621ns (63.611%)  route 2.643ns (36.389%))
+  Data Path Delay:        7.238ns  (logic 4.595ns (63.480%)  route 2.643ns (36.520%))
   Logic Levels:           4  (BUFG=1 LUT2=1 LUT3=1 OBUF=1)
   Clock Uncertainty:      0.187ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -15586,13 +15590,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.456    -0.975 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    -0.175    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276     0.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.150     0.835 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.460     1.295    tl/tl_impl/SCK
-                         LUT2 (Prop_lut2_I0_O)        0.124     1.419 r  tl/tl_impl/SCK_a_INST_0/O
-                         net (fo=1, unplaced)         0.800     2.219    SCK_a_OBUF
-    Y17                  OBUF (Prop_obuf_I_O)         3.615     5.834 r  SCK_a_OBUF_inst/O
-                         net (fo=0)                   0.000     5.834    SCK_a
+                         net (fo=291, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.124     0.809 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.460     1.269    tl/tl_impl/SCK
+                         LUT2 (Prop_lut2_I0_O)        0.124     1.393 r  tl/tl_impl/SCK_a_INST_0/O
+                         net (fo=1, unplaced)         0.800     2.193    SCK_a_OBUF
+    Y17                  OBUF (Prop_obuf_I_O)         3.615     5.808 r  SCK_a_OBUF_inst/O
+                         net (fo=0)                   0.000     5.808    SCK_a
     Y17                                                               r  SCK_a (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15603,7 +15607,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.176ns  (logic 4.532ns (63.161%)  route 2.643ns (36.839%))
+  Data Path Delay:        7.150ns  (logic 4.506ns (63.027%)  route 2.643ns (36.973%))
   Logic Levels:           4  (BUFG=1 LUT3=2 OBUF=1)
   Clock Uncertainty:      0.187ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -15628,13 +15632,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.456    -0.975 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    -0.175    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276     0.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.150     0.835 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.460     1.295    tl/tl_impl/SCK
-                         LUT3 (Prop_lut3_I2_O)        0.124     1.419 r  tl/tl_impl/SCK_b_INST_0/O
-                         net (fo=1, unplaced)         0.800     2.219    SCK_b_OBUF
-    W19                  OBUF (Prop_obuf_I_O)         3.526     5.745 r  SCK_b_OBUF_inst/O
-                         net (fo=0)                   0.000     5.745    SCK_b
+                         net (fo=291, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.124     0.809 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.460     1.269    tl/tl_impl/SCK
+                         LUT3 (Prop_lut3_I2_O)        0.124     1.393 r  tl/tl_impl/SCK_b_INST_0/O
+                         net (fo=1, unplaced)         0.800     2.193    SCK_b_OBUF
+    W19                  OBUF (Prop_obuf_I_O)         3.526     5.719 r  SCK_b_OBUF_inst/O
+                         net (fo=0)                   0.000     5.719    SCK_b
     W19                                                               r  SCK_b (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15670,7 +15674,7 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.456    -0.975 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    -0.175    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276     0.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584     0.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.584     0.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.124     0.809 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.800     1.609    ck_io28_OBUF
     U13                  OBUF (Prop_obuf_I_O)         3.574     5.183 r  ck_io28_OBUF_inst/O
@@ -15716,7 +15720,7 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.141    -0.738 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.337    -0.401    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.080    -0.321 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.114    -0.207    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.114    -0.207    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.045    -0.162 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.337     0.175    ck_io28_OBUF
     U13                  OBUF (Prop_obuf_I_O)         1.275     1.450 r  ck_io28_OBUF_inst/O
@@ -15731,7 +15735,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        2.521ns  (logic 1.539ns (61.047%)  route 0.982ns (38.953%))
+  Data Path Delay:        2.520ns  (logic 1.538ns (61.032%)  route 0.982ns (38.968%))
   Logic Levels:           4  (BUFG=1 LUT3=2 OBUF=1)
   Clock Uncertainty:      0.187ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -15756,13 +15760,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.141    -0.738 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.337    -0.401    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.080    -0.321 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.046    -0.161 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.194     0.033    tl/tl_impl/SCK
-                         LUT3 (Prop_lut3_I2_O)        0.045     0.078 r  tl/tl_impl/SCK_b_INST_0/O
-                         net (fo=1, unplaced)         0.337     0.415    SCK_b_OBUF
-    W19                  OBUF (Prop_obuf_I_O)         1.227     1.643 r  SCK_b_OBUF_inst/O
-                         net (fo=0)                   0.000     1.643    SCK_b
+                         net (fo=291, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.045    -0.162 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.194     0.032    tl/tl_impl/SCK
+                         LUT3 (Prop_lut3_I2_O)        0.045     0.077 r  tl/tl_impl/SCK_b_INST_0/O
+                         net (fo=1, unplaced)         0.337     0.414    SCK_b_OBUF
+    W19                  OBUF (Prop_obuf_I_O)         1.227     1.642 r  SCK_b_OBUF_inst/O
+                         net (fo=0)                   0.000     1.642    SCK_b
     W19                                                               r  SCK_b (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15773,7 +15777,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        2.609ns  (logic 1.627ns (62.358%)  route 0.982ns (37.642%))
+  Data Path Delay:        2.608ns  (logic 1.626ns (62.344%)  route 0.982ns (37.656%))
   Logic Levels:           4  (BUFG=1 LUT2=1 LUT3=1 OBUF=1)
   Clock Uncertainty:      0.187ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -15798,13 +15802,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.141    -0.738 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.337    -0.401    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.080    -0.321 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.046    -0.161 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.194     0.033    tl/tl_impl/SCK
-                         LUT2 (Prop_lut2_I0_O)        0.045     0.078 r  tl/tl_impl/SCK_a_INST_0/O
-                         net (fo=1, unplaced)         0.337     0.415    SCK_a_OBUF
-    Y17                  OBUF (Prop_obuf_I_O)         1.315     1.730 r  SCK_a_OBUF_inst/O
-                         net (fo=0)                   0.000     1.730    SCK_a
+                         net (fo=291, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.045    -0.162 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.194     0.032    tl/tl_impl/SCK
+                         LUT2 (Prop_lut2_I0_O)        0.045     0.077 r  tl/tl_impl/SCK_a_INST_0/O
+                         net (fo=1, unplaced)         0.337     0.414    SCK_a_OBUF
+    Y17                  OBUF (Prop_obuf_I_O)         1.315     1.729 r  SCK_a_OBUF_inst/O
+                         net (fo=0)                   0.000     1.729    SCK_a
     Y17                                                               r  SCK_a (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15831,7 +15835,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.264ns  (logic 4.621ns (63.611%)  route 2.643ns (36.389%))
+  Data Path Delay:        7.238ns  (logic 4.595ns (63.480%)  route 2.643ns (36.520%))
   Logic Levels:           4  (BUFG=1 LUT2=1 LUT3=1 OBUF=1)
   Clock Uncertainty:      0.185ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -15856,13 +15860,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.456    -0.975 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    -0.175    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276     0.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.150     0.835 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.460     1.295    tl/tl_impl/SCK
-                         LUT2 (Prop_lut2_I0_O)        0.124     1.419 r  tl/tl_impl/SCK_a_INST_0/O
-                         net (fo=1, unplaced)         0.800     2.219    SCK_a_OBUF
-    Y17                  OBUF (Prop_obuf_I_O)         3.615     5.834 r  SCK_a_OBUF_inst/O
-                         net (fo=0)                   0.000     5.834    SCK_a
+                         net (fo=291, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.124     0.809 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.460     1.269    tl/tl_impl/SCK
+                         LUT2 (Prop_lut2_I0_O)        0.124     1.393 r  tl/tl_impl/SCK_a_INST_0/O
+                         net (fo=1, unplaced)         0.800     2.193    SCK_a_OBUF
+    Y17                  OBUF (Prop_obuf_I_O)         3.615     5.808 r  SCK_a_OBUF_inst/O
+                         net (fo=0)                   0.000     5.808    SCK_a
     Y17                                                               r  SCK_a (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15873,7 +15877,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.176ns  (logic 4.532ns (63.161%)  route 2.643ns (36.839%))
+  Data Path Delay:        7.150ns  (logic 4.506ns (63.027%)  route 2.643ns (36.973%))
   Logic Levels:           4  (BUFG=1 LUT3=2 OBUF=1)
   Clock Uncertainty:      0.185ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -15898,13 +15902,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.456    -0.975 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    -0.175    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276     0.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.150     0.835 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.460     1.295    tl/tl_impl/SCK
-                         LUT3 (Prop_lut3_I2_O)        0.124     1.419 r  tl/tl_impl/SCK_b_INST_0/O
-                         net (fo=1, unplaced)         0.800     2.219    SCK_b_OBUF
-    W19                  OBUF (Prop_obuf_I_O)         3.526     5.745 r  SCK_b_OBUF_inst/O
-                         net (fo=0)                   0.000     5.745    SCK_b
+                         net (fo=291, unplaced)       0.584     0.685    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.124     0.809 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.460     1.269    tl/tl_impl/SCK
+                         LUT3 (Prop_lut3_I2_O)        0.124     1.393 r  tl/tl_impl/SCK_b_INST_0/O
+                         net (fo=1, unplaced)         0.800     2.193    SCK_b_OBUF
+    W19                  OBUF (Prop_obuf_I_O)         3.526     5.719 r  SCK_b_OBUF_inst/O
+                         net (fo=0)                   0.000     5.719    SCK_b
     W19                                                               r  SCK_b (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -15940,7 +15944,7 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.456    -0.975 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.800    -0.175    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.276     0.101 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.584     0.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.584     0.685    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.124     0.809 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.800     1.609    ck_io28_OBUF
     U13                  OBUF (Prop_obuf_I_O)         3.574     5.183 r  ck_io28_OBUF_inst/O
@@ -15986,7 +15990,7 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.141    -0.738 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.337    -0.401    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.080    -0.321 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.114    -0.207    d1/design_1_i/adc_spi_wrapper_0/inst/clk
+                         net (fo=291, unplaced)       0.114    -0.207    d1/design_1_i/adc_spi_wrapper_0/inst/clk
                          LUT2 (Prop_lut2_I0_O)        0.045    -0.162 r  d1/design_1_i/adc_spi_wrapper_0/inst/SCKI_INST_0/O
                          net (fo=3, unplaced)         0.337     0.175    ck_io28_OBUF
     U13                  OBUF (Prop_obuf_I_O)         1.275     1.450 r  ck_io28_OBUF_inst/O
@@ -16001,7 +16005,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        2.521ns  (logic 1.539ns (61.047%)  route 0.982ns (38.953%))
+  Data Path Delay:        2.520ns  (logic 1.538ns (61.032%)  route 0.982ns (38.968%))
   Logic Levels:           4  (BUFG=1 LUT3=2 OBUF=1)
   Clock Uncertainty:      0.185ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -16026,13 +16030,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.141    -0.738 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.337    -0.401    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.080    -0.321 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.046    -0.161 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.194     0.033    tl/tl_impl/SCK
-                         LUT3 (Prop_lut3_I2_O)        0.045     0.078 r  tl/tl_impl/SCK_b_INST_0/O
-                         net (fo=1, unplaced)         0.337     0.415    SCK_b_OBUF
-    W19                  OBUF (Prop_obuf_I_O)         1.227     1.643 r  SCK_b_OBUF_inst/O
-                         net (fo=0)                   0.000     1.643    SCK_b
+                         net (fo=291, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.045    -0.162 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.194     0.032    tl/tl_impl/SCK
+                         LUT3 (Prop_lut3_I2_O)        0.045     0.077 r  tl/tl_impl/SCK_b_INST_0/O
+                         net (fo=1, unplaced)         0.337     0.414    SCK_b_OBUF
+    W19                  OBUF (Prop_obuf_I_O)         1.227     1.642 r  SCK_b_OBUF_inst/O
+                         net (fo=0)                   0.000     1.642    SCK_b
     W19                                                               r  SCK_b (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -16043,7 +16047,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        2.609ns  (logic 1.627ns (62.358%)  route 0.982ns (37.642%))
+  Data Path Delay:        2.608ns  (logic 1.626ns (62.344%)  route 0.982ns (37.656%))
   Logic Levels:           4  (BUFG=1 LUT2=1 LUT3=1 OBUF=1)
   Clock Uncertainty:      0.185ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -16068,13 +16072,13 @@ Slack:                    inf
                          FDRE (Prop_fdre_C_Q)         0.141    -0.738 r  clk_div_1/internal_clk_reg/Q
                          net (fo=1, unplaced)         0.337    -0.401    clk_div_1/out_clk
                          BUFG (Prop_bufg_I_O)         0.080    -0.321 r  clk_div_1/out_clk_BUFG_inst/O
-                         net (fo=287, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
-                         LUT3 (Prop_lut3_I2_O)        0.046    -0.161 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
-                         net (fo=2, unplaced)         0.194     0.033    tl/tl_impl/SCK
-                         LUT2 (Prop_lut2_I0_O)        0.045     0.078 r  tl/tl_impl/SCK_a_INST_0/O
-                         net (fo=1, unplaced)         0.337     0.415    SCK_a_OBUF
-    Y17                  OBUF (Prop_obuf_I_O)         1.315     1.730 r  SCK_a_OBUF_inst/O
-                         net (fo=0)                   0.000     1.730    SCK_a
+                         net (fo=291, unplaced)       0.114    -0.207    d1/design_1_i/output_manager_0/inst/spi/clk
+                         LUT3 (Prop_lut3_I0_O)        0.045    -0.162 r  d1/design_1_i/output_manager_0/inst/spi/spi_clk_INST_0/O
+                         net (fo=2, unplaced)         0.194     0.032    tl/tl_impl/SCK
+                         LUT2 (Prop_lut2_I0_O)        0.045     0.077 r  tl/tl_impl/SCK_a_INST_0/O
+                         net (fo=1, unplaced)         0.337     0.414    SCK_a_OBUF
+    Y17                  OBUF (Prop_obuf_I_O)         1.315     1.729 r  SCK_a_OBUF_inst/O
+                         net (fo=0)                   0.000     1.729    SCK_a
     Y17                                                               r  SCK_a (OUT)
   -------------------------------------------------------------------    -------------------
 

@@ -105,7 +105,7 @@ always @(posedge clk) begin
         polarity <= 12'h000;
     end else if(state == 2'b01) begin
         polarity[addr] <= data_read[12];
-        if(data_read[11] == 0) begin
+        if(data_read[12] == 0) begin
             data <= data_read[11:0];
         end else if(data_read[12] == 1) begin
             data <= ~data_read[11:0] + 1'b1;
